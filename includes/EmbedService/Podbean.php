@@ -16,6 +16,13 @@ final class Podbean extends AbstractEmbedService {
 	/**
 	 * @inheritDoc
 	 */
+	public function getServiceKey(): string {
+		return 'podbean';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	protected function getUrlRegex(): array {
 		return [
 			'#^https?://(?:www\.)?podbean\.com/player-v2/\?(?:[^\#]*&)*i=([A-Za-z0-9-]{6,40})#i',
