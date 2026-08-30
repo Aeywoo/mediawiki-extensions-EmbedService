@@ -111,6 +111,10 @@ class WistiaTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testGetCspUrls() {
 		$service = new Wistia( $this->validUrlId );
-		$this->assertEquals( [ 'https://wistia.com', 'https://fast.wistia.com', 'https://fast.wistia.net' ], $service->getCSPUrls() );
+		$this->assertEquals( [
+			'https://wistia.com',
+			'https://fast.wistia.com',
+			'https://fast.wistia.net'
+		], $service->getCSPUrls() );
 	}
 }
