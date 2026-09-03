@@ -93,7 +93,7 @@ class PodbeanTest extends MediaWikiIntegrationTestCase {
 	public function testUrl() {
 		$service = new Podbean( $this->validUrlId );
 
-		$this->assertStringContainsString( 'https://www.podbean.com/player-v2/', $service->getUrl() );
+		$this->assertStringContainsString( 'https://www.podbean.com/player-v2/?i=', $service->getUrl() );
 	}
 
 	/**

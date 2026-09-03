@@ -23,7 +23,7 @@ final class Youku extends AbstractEmbedService {
 	 * @inheritDoc
 	 */
 	public function getBaseUrl(): string {
-		return '//player.youku.com/embed/%1$s';
+		return 'https://player.youku.com/embed/%1$s';
 	}
 
 	/**
