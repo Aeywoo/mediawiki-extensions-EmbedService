@@ -148,8 +148,8 @@ class VideoHandler extends AudioHandler {
 	 * @param string $dstPath Filesystem destination path
 	 * @param string $dstUrl Destination URL to use in output HTML
 	 * @param array $params Arbitrary set of parameters validated by $this->validateParam()
-	 *                          Note: These parameters have *not* gone through
-	 *                          $this->normaliseParams()
+	 *							Note: These parameters have *not* gone through
+	 *							$this->normaliseParams()
 	 * @param int $flags A bitfield, may contain self::TRANSFORM_LATER
 	 * @return MediaTransformOutput
 	 */

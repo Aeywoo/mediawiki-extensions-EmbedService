@@ -67,7 +67,7 @@ class CccTest extends MediaWikiIntegrationTestCase {
 	public function testUrl() {
 		$service = new Ccc( $this->validUrlId );
 
-		$this->assertStringContainsString( '//media.ccc.de/v/', $service->getUrl() );
+		$this->assertStringContainsString( 'https://media.ccc.de/v/', $service->getUrl() );
 	}
 
 	/**

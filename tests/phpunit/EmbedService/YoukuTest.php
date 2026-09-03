@@ -35,7 +35,7 @@ class YoukuTest extends MediaWikiIntegrationTestCase {
 	 * An invalid url
 	 * @var string
 	 */
-	private string $invalidUrlId = 'https://youku.com/embed/XMzc0Mzg4NTE5Mg';
+	private string $invalidUrlId = 'https://player.youku.com/XMzc0Mzg4NTE5Mg';
 
 	/**
 	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID

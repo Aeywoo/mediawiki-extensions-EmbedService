@@ -33,14 +33,14 @@ class DailyMotionTest extends MediaWikiIntegrationTestCase {
 	 * A valid url containing an id
 	 * @var string
 	 */
-    // phpcs:ignore Generic.Files.LineLength.TooLong
+	// phpcs:ignore Generic.Files.LineLength.TooLong
 	private string $validUrlId = 'http://www.dailymotion.com/video/x1adiiw_archer-waking-up-as-h-jon-benjamin_shortfilms';
 
 	/**
 	 * An invalid url
 	 * @var string
 	 */
-	private string $invalidUrlId = '//www.daily-motion.com/videos/!null';
+	private string $invalidUrlId = 'https://www.daily-motion.com/videos/!null';
 
 	/**
 	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
@@ -98,7 +98,7 @@ class DailyMotionTest extends MediaWikiIntegrationTestCase {
 	public function testUrl() {
 		$service = new DailyMotion( $this->validUrlId );
 
-		$this->assertStringContainsString( '//www.dailymotion.com/embed/video/', $service->getUrl() );
+		$this->assertStringContainsString( 'https://www.dailymotion.com/embed/video/', $service->getUrl() );
 	}
 
 	/**

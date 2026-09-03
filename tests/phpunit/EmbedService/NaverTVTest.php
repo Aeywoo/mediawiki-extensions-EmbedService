@@ -97,7 +97,7 @@ class NaverTVTest extends MediaWikiIntegrationTestCase {
 	public function testUrl() {
 		$service = new NaverTV( $this->validUrlId );
 
-		$this->assertStringContainsString( '//tv.naver.com/embed/', $service->getUrl() );
+		$this->assertStringContainsString( 'https://tv.naver.com/embed/', $service->getUrl() );
 	}
 
 	/**

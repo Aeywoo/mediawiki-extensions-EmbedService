@@ -97,7 +97,7 @@ class VimeoTest extends MediaWikiIntegrationTestCase {
 	public function testUrl() {
 		$service = new Vimeo( $this->validUrlId );
 
-		$this->assertStringContainsString( '//player.vimeo.com/video/', $service->getUrl() );
+		$this->assertStringContainsString( 'https://player.vimeo.com/video/', $service->getUrl() );
 	}
 
 	/**

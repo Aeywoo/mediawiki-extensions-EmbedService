@@ -12,10 +12,10 @@ final class Bandcamp extends AbstractEmbedService {
 	public function getBaseUrl(): string {
 		if ( empty( $this->urlArgs ) ) {
 			// phpcs:ignore Generic.Files.LineLength.TooLong
-			return '//bandcamp.com/EmbeddedPlayer/album=%1$s/size=large/bgcol=181a1b/linkcol=056cc4/artwork=small/transparent=true/';
+			return 'https://bandcamp.com/EmbeddedPlayer/album=%1$s/size=large/bgcol=181a1b/linkcol=056cc4/artwork=small/transparent=true/';
 		}
 
-		return '//bandcamp.com/EmbeddedPlayer/album=%1$s/';
+		return 'https://bandcamp.com/EmbeddedPlayer/album=%1$s/';
 	}
 
 	/**

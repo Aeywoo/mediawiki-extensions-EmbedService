@@ -97,7 +97,7 @@ class YouTubeTest extends MediaWikiIntegrationTestCase {
 	public function testUrl() {
 		$service = new YouTube( $this->validUrlId );
 
-		$this->assertStringContainsString( '//www.youtube-nocookie.com/embed/', $service->getUrl() );
+		$this->assertStringContainsString( 'https://www.youtube-nocookie.com/embed/', $service->getUrl() );
 	}
 
 	/**
@@ -110,7 +110,7 @@ class YouTubeTest extends MediaWikiIntegrationTestCase {
 	public function testShortUrl() {
 		$service = new YouTube( 'https://youtu.be/0123video' );
 
-		$this->assertStringContainsString( '//www.youtube-nocookie.com/embed/', $service->getUrl() );
+		$this->assertStringContainsString( 'https://www.youtube-nocookie.com/embed/', $service->getUrl() );
 	}
 
 	/**

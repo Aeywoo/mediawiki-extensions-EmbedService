@@ -97,7 +97,7 @@ class ArchiveOrgTest extends MediaWikiIntegrationTestCase {
 	public function testUrl() {
 		$service = new ArchiveOrg( $this->validUrlId );
 
-		$this->assertStringContainsString( '//archive.org/embed', $service->getUrl() );
+		$this->assertStringContainsString( 'https://archive.org/embed', $service->getUrl() );
 	}
 
 	/**
@@ -200,7 +200,7 @@ class ArchiveOrgTest extends MediaWikiIntegrationTestCase {
 	public function testUrlWithSubFile() {
 		$service = new ArchiveOrg( $this->validIdWithSubFile );
 
-		$this->assertStringContainsString( '//archive.org/embed/', $service->getUrl() );
+		$this->assertStringContainsString( 'https://archive.org/embed/', $service->getUrl() );
 		$this->assertStringContainsString(
 			'2024-12-21-18-15-xjtv-2/动画片_2024-12-20_19_24_xjtv2.mp4',
 			$service->getUrl()
@@ -216,7 +216,7 @@ class ArchiveOrgTest extends MediaWikiIntegrationTestCase {
 	public function testUrlWithEncodedSubFile() {
 		$service = new ArchiveOrg( $this->validIdWithEncodedSubFile );
 
-		$this->assertStringContainsString( '//archive.org/embed/', $service->getUrl() );
+		$this->assertStringContainsString( 'https://archive.org/embed/', $service->getUrl() );
 		$this->assertStringContainsString( '00244%3D80126%3D79911%3D79912.avi', $service->getUrl() );
 	}
 }

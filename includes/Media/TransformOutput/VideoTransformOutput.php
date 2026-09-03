@@ -6,7 +6,7 @@
  * @author  Alexia E. Smith
  * @license MIT
  * @package EmbedVideo
- * @link    https://www.mediawiki.org/wiki/Extension:EmbedVideo
+ * @link	https://www.mediawiki.org/wiki/Extension:EmbedVideo
  */
 
 declare( strict_types=1 );
