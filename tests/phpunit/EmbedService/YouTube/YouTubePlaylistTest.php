@@ -91,6 +91,7 @@ class YouTubePlaylistTest extends MediaWikiIntegrationTestCase {
 	public function testUrl() {
 		$service = new YouTubePlaylist( $this->validUrlId );
 
+		// phpcs:ignore Generic.Files.LineLength.TooLong
 		$this->assertStringContainsString( 'https://www.youtube-nocookie.com/embed/videoseries?list=', $service->getUrl() );
 	}
 }
