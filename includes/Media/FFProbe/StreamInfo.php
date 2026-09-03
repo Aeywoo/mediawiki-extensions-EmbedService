@@ -2,7 +2,7 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Media\FFProbe;
+namespace MediaWiki\Extension\EmbedService\Media\FFProbe;
 
 class StreamInfo {
 	/**

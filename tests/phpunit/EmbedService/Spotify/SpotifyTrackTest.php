@@ -2,14 +2,14 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\EmbedService\Spotify;
+namespace MediaWiki\Extension\EmbedService\Tests\EmbedService\Spotify;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\Spotify\SpotifyTrack;
-use MediaWiki\Extension\EmbedVideo\EmbedVideoException;
+use MediaWiki\Extension\EmbedService\EmbedService\Spotify\SpotifyTrack;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class SpotifyTrackTest extends MediaWikiIntegrationTestCase {
 
@@ -38,19 +38,19 @@ class SpotifyTrackTest extends MediaWikiIntegrationTestCase {
 	private string $invalidUrlId = 'https://open.spotify.com/album/123';
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
 	 * @return void
 	 */
 	public function testInvalidId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 
 		new SpotifyTrack( $this->invalidId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Spotify\SpotifyTrack::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Spotify\SpotifyTrack::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Spotify\SpotifyTrack::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Spotify\SpotifyTrack::getIdRegex
 	 * @return void
 	 */
 	public function testValidId() {
@@ -60,9 +60,9 @@ class SpotifyTrackTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Spotify\SpotifyTrack::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Spotify\SpotifyTrack::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Spotify\SpotifyTrack::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Spotify\SpotifyTrack::getIdRegex
 	 * @return void
 	 */
 	public function testValidUrlId() {
@@ -73,21 +73,21 @@ class SpotifyTrackTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Spotify\SpotifyTrack::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Spotify\SpotifyTrack::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Spotify\SpotifyTrack::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Spotify\SpotifyTrack::getIdRegex
 	 * @return void
 	 */
 	public function testInvalidUrlId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 		new SpotifyTrack( $this->invalidUrlId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getUrl
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Spotify\SpotifyTrack::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Spotify\SpotifyTrack::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Spotify\SpotifyTrack::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Spotify\SpotifyTrack::getIdRegex
 	 * @return void
 	 */
 	public function testUrl() {
@@ -97,7 +97,7 @@ class SpotifyTrackTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Spotify\SpotifyTrack::getServiceKey
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Spotify\SpotifyTrack::getServiceKey
 	 * @return void
 	 */
 	public function testServiceKey() {

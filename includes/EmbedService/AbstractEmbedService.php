@@ -2,12 +2,12 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\EmbedService;
+namespace MediaWiki\Extension\EmbedService\EmbedService;
 
 use JsonException;
 use MediaTransformOutput;
 use MediaWiki\Config\Config;
-use MediaWiki\Extension\EmbedVideo\EmbedVideoException;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use RuntimeException;
@@ -21,7 +21,7 @@ abstract class AbstractEmbedService {
 	 */
 	// phpcs:disable Generic.Files.LineLength.TooLong
 	protected $iframeAttributes = [
-		'class' => 'embedvideo-player',
+		'class' => 'embedservice-player',
 		'loading' => 'lazy',
 		'frameborder' => 0,
 		'allow' => 'accelerometer; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; autoplay',
@@ -96,11 +96,11 @@ abstract class AbstractEmbedService {
 	/**
 	 * AbstractVideoService constructor.
 	 * @param string $id
-	 * @throws EmbedVideoException
+	 * @throws EmbedServiceException
 	 */
 	public function __construct( string $id ) {
 		if ( self::$config === null ) {
-			self::$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'EmbedVideo' );
+			self::$config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'EmbedService' );
 		}
 
 		$this->unparsedId = $id;
@@ -291,9 +291,9 @@ abstract class AbstractEmbedService {
 	 * @return void
 	 */
 	public function setWidth( $width = null ): void {
-		$videoMinWidth = self::$config->get( 'EmbedVideoMinWidth' );
-		$videoMaxWidth = self::$config->get( 'EmbedVideoMaxWidth' );
-		$videoDefaultWidth = self::$config->get( 'EmbedVideoDefaultWidth' );
+		$videoMinWidth = self::$config->get( 'EmbedServiceMinWidth' );
+		$videoMaxWidth = self::$config->get( 'EmbedServiceMaxWidth' );
+		$videoDefaultWidth = self::$config->get( 'EmbedServiceDefaultWidth' );
 
 		if ( !is_numeric( $width ) ) {
 			if ( $width === null && $this->width !== null && $videoDefaultWidth < 1 ) {
@@ -348,7 +348,7 @@ abstract class AbstractEmbedService {
 	 *
 	 * @param string $id Video ID/URL
 	 * @return string Parsed Video ID or false on failure.
-	 * @throws EmbedVideoException
+	 * @throws EmbedServiceException
 	 */
 	public function parseVideoID( $id ): string {
 		$id = trim( $id );
@@ -373,7 +373,7 @@ abstract class AbstractEmbedService {
 			}
 
 			// If nothing matches and matches are specified then return false for an invalid ID/URL.
-			throw new EmbedVideoException( 'Provided ID could not be validated.' );
+			throw new EmbedServiceException( 'Provided ID could not be validated.' );
 		}
 
 		// Service definition has not specified a sanitization/validation regex.
@@ -450,7 +450,7 @@ abstract class AbstractEmbedService {
 	 * Set a local filename to be used as the thumbnail for this embed
 	 *
 	 * @param string $localFileName
-	 * @throws EmbedVideoException When the local file was not found
+	 * @throws EmbedServiceException When the local file was not found
 	 * @throws RuntimeException When the local file could not be transformed
 	 */
 	public function setLocalThumb( string $localFileName ): void {
@@ -469,7 +469,7 @@ abstract class AbstractEmbedService {
 
 			$this->localThumb = $transform;
 		} else {
-			throw new EmbedVideoException( sprintf( 'Local file "%s" not found.', $localFileName ) );
+			throw new EmbedServiceException( sprintf( 'Local file "%s" not found.', $localFileName ) );
 		}
 	}
 

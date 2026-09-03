@@ -2,14 +2,14 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\EmbedService\Deezer;
+namespace MediaWiki\Extension\EmbedService\Tests\EmbedService\Deezer;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\Deezer\DeezerPlaylist;
-use MediaWiki\Extension\EmbedVideo\EmbedVideoException;
+use MediaWiki\Extension\EmbedService\EmbedService\Deezer\DeezerPlaylist;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class DeezerPlaylistTest extends MediaWikiIntegrationTestCase {
 
@@ -38,19 +38,19 @@ class DeezerPlaylistTest extends MediaWikiIntegrationTestCase {
 	private string $invalidUrlId = 'https://www.deezer.com/playlist/1234567890';
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
 	 * @return void
 	 */
 	public function testInvalidId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 
 		new DeezerPlaylist( $this->invalidId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Deezer\DeezerPlaylist::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Deezer\DeezerPlaylist::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Deezer\DeezerPlaylist::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Deezer\DeezerPlaylist::getIdRegex
 	 * @return void
 	 */
 	public function testValidId() {
@@ -60,9 +60,9 @@ class DeezerPlaylistTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Deezer\DeezerPlaylist::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Deezer\DeezerPlaylist::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Deezer\DeezerPlaylist::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Deezer\DeezerPlaylist::getIdRegex
 	 * @return void
 	 */
 	public function testValidUrlId() {
@@ -73,21 +73,21 @@ class DeezerPlaylistTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Deezer\DeezerPlaylist::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Deezer\DeezerPlaylist::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Deezer\DeezerPlaylist::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Deezer\DeezerPlaylist::getIdRegex
 	 * @return void
 	 */
 	public function testInvalidUrlId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 		new DeezerPlaylist( $this->invalidUrlId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getUrl
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Deezer\DeezerPlaylist::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Deezer\DeezerPlaylist::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Deezer\DeezerPlaylist::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Deezer\DeezerPlaylist::getIdRegex
 	 * @return void
 	 */
 	public function testUrl() {
@@ -97,7 +97,7 @@ class DeezerPlaylistTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Deezer\DeezerPlaylist::getServiceKey
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Deezer\DeezerPlaylist::getServiceKey
 	 * @return void
 	 */
 	public function testServiceKey() {

@@ -2,14 +2,14 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\EmbedService\YouTube;
+namespace MediaWiki\Extension\EmbedService\Tests\EmbedService\YouTube;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\YouTube\YouTubeVideoList;
-use MediaWiki\Extension\EmbedVideo\EmbedVideoException;
+use MediaWiki\Extension\EmbedService\EmbedService\YouTube\YouTubeVideoList;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class YouTubeVideoListTest extends MediaWikiIntegrationTestCase {
 
@@ -38,19 +38,19 @@ class YouTubeVideoListTest extends MediaWikiIntegrationTestCase {
 	private string $invalidUrlId = 'https://youtube.com/embed/videoid';
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
 	 * @return void
 	 */
 	public function testInvalidId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 
 		new YouTubeVideoList( $this->invalidId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\YouTube\YouTubeVideoList::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\YouTube\YouTubeVideoList::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\YouTube\YouTubeVideoList::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\YouTube\YouTubeVideoList::getIdRegex
 	 * @return void
 	 */
 	public function testValidId() {
@@ -60,9 +60,9 @@ class YouTubeVideoListTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\YouTube\YouTubeVideoList::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\YouTube\YouTubeVideoList::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\YouTube\YouTubeVideoList::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\YouTube\YouTubeVideoList::getIdRegex
 	 * @return void
 	 */
 	public function testValidUrlId() {
@@ -73,19 +73,19 @@ class YouTubeVideoListTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\YouTube\YouTubeVideoList::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\YouTube\YouTubeVideoList::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\YouTube\YouTubeVideoList::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\YouTube\YouTubeVideoList::getIdRegex
 	 * @return void
 	 */
 	public function testInvalidUrlId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 		new YouTubeVideoList( $this->invalidUrlId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\YouTube\YouTubeVideoList::getUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\YouTube\YouTubeVideoList::getUrl
 	 * @return void
 	 */
 	public function testUrl() {

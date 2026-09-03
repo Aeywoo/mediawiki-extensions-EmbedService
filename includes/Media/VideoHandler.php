@@ -2,13 +2,13 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Media;
+namespace MediaWiki\Extension\EmbedService\Media;
 
 use Exception;
 use MediaTransformOutput;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoEmbedTransformOutput;
-use MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput;
+use MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoEmbedTransformOutput;
+use MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput;
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\MediaWikiServices;
 
@@ -66,7 +66,7 @@ class VideoHandler extends AudioHandler {
 		parent::normaliseParams( $image, $params );
 		$config = MediaWikiServices::getInstance()
 			->getConfigFactory()
-			->makeConfig( 'EmbedVideo' );
+			->makeConfig( 'EmbedService' );
 
 		if ( isset( $params['poster'] ) ) {
 			$factory = MediaWikiServices::getInstance()->getTitleFactory();
@@ -94,7 +94,7 @@ class VideoHandler extends AudioHandler {
 		if ( isset( $params['lazy'] ) ) {
 			$params['lazy'] = true;
 		} else {
-			$params['lazy'] = $config->get( 'EmbedVideoLazyLoadLocalVideos' );
+			$params['lazy'] = $config->get( 'EmbedServiceLazyLoadLocalVideos' );
 		}
 
 		$width = $image->getWidth();
@@ -102,7 +102,7 @@ class VideoHandler extends AudioHandler {
 
 		if ( $width === 0 && $height === 0 ) {
 			// Force a reset.
-			$width = $config->get( 'EmbedVideoDefaultWidth' );
+			$width = $config->get( 'EmbedServiceDefaultWidth' );
 			$height = (int)( $width / ( 16 / 9 ) );
 		}
 
@@ -123,7 +123,7 @@ class VideoHandler extends AudioHandler {
 				$params['height'] = round( ( $height / $width ) * $params['width'] );
 			}
 		} else {
-			$params['width'] = $config->get( 'EmbedVideoDefaultWidth' );
+			$params['width'] = $config->get( 'EmbedServiceDefaultWidth' );
 		}
 
 		if ( isset( $params['height'] ) && $params['height'] > 0 && $params['height'] < $height ) {
@@ -158,8 +158,8 @@ class VideoHandler extends AudioHandler {
 
 		$styledLocalFiles = MediaWikiServices::getInstance()
 			->getConfigFactory()
-			->makeConfig( 'EmbedVideo' )
-			->get( 'EmbedVideoUseEmbedStyleForLocalVideos' );
+			->makeConfig( 'EmbedService' )
+			->get( 'EmbedServiceUseEmbedStyleForLocalVideos' );
 
 		$request = RequestContext::getMain();
 		$title = $request->getTitle();

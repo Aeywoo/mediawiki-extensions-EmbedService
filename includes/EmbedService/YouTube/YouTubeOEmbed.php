@@ -2,9 +2,9 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\EmbedService\YouTube;
+namespace MediaWiki\Extension\EmbedService\EmbedService\YouTube;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\OEmbedServiceInterface;
+use MediaWiki\Extension\EmbedService\EmbedService\OEmbedServiceInterface;
 
 /**
  * This should merely be an example

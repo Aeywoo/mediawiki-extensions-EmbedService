@@ -2,21 +2,21 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\EmbedService;
+namespace MediaWiki\Extension\EmbedService\Tests\EmbedService;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\ArchiveOrg;
-use MediaWiki\Extension\EmbedVideo\EmbedService\EmbedServiceFactory;
-use MediaWiki\Extension\EmbedVideo\EmbedVideoException;
+use MediaWiki\Extension\EmbedService\EmbedService\ArchiveOrg;
+use MediaWiki\Extension\EmbedService\EmbedService\EmbedServiceFactory;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class EmbedServiceFactoryTest extends MediaWikiIntegrationTestCase {
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\EmbedServiceFactory::newFromName
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\EmbedServiceFactory::newFromName
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
 	 * @return void
 	 */
 	public function testNewFromNameExists() {
@@ -27,11 +27,11 @@ class EmbedServiceFactoryTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\EmbedServiceFactory::newFromName
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\EmbedServiceFactory::newFromName
 	 * @return void
 	 */
 	public function testNewFromNameNotExists() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 
 		EmbedServiceFactory::newFromName( 'foo-service', '' );
 	}

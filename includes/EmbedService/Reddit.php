@@ -2,9 +2,9 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\EmbedService;
+namespace MediaWiki\Extension\EmbedService\EmbedService;
 
-use MediaWiki\Extension\EmbedVideo\EmbedVideoException;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 
 final class Reddit extends AbstractEmbedService {
 
@@ -43,7 +43,7 @@ final class Reddit extends AbstractEmbedService {
 	 *
 	 * @param string $id
 	 * @return string
-	 * @throws EmbedVideoException
+	 * @throws EmbedServiceException
 	 */
 	public function parseVideoID( $id ): string {
 		$id = trim( (string)$id );
@@ -54,7 +54,7 @@ final class Reddit extends AbstractEmbedService {
 			}
 		}
 
-		throw new EmbedVideoException( 'Provided ID could not be validated.' );
+		throw new EmbedServiceException( 'Provided ID could not be validated.' );
 	}
 
 	/**

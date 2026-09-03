@@ -2,14 +2,14 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\EmbedService\AppleMusic;
+namespace MediaWiki\Extension\EmbedService\Tests\EmbedService\AppleMusic;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\AppleMusic\AppleMusicArtist;
-use MediaWiki\Extension\EmbedVideo\EmbedVideoException;
+use MediaWiki\Extension\EmbedService\EmbedService\AppleMusic\AppleMusicArtist;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class AppleMusicArtistTest extends MediaWikiIntegrationTestCase {
 
@@ -44,19 +44,19 @@ class AppleMusicArtistTest extends MediaWikiIntegrationTestCase {
 	private string $invalidUrlId = 'https://music.apple.com/us/albums/123';
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
 	 * @return void
 	 */
 	public function testInvalidId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 
 		new AppleMusicArtist( $this->invalidId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AppleMusic\AppleMusicArtist::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AppleMusic\AppleMusicArtist::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AppleMusic\AppleMusicArtist::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AppleMusic\AppleMusicArtist::getIdRegex
 	 * @return void
 	 */
 	public function testValidId() {
@@ -66,9 +66,9 @@ class AppleMusicArtistTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AppleMusic\AppleMusicArtist::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AppleMusic\AppleMusicArtist::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AppleMusic\AppleMusicArtist::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AppleMusic\AppleMusicArtist::getIdRegex
 	 * @return void
 	 */
 	public function testValidUrlId() {
@@ -79,9 +79,9 @@ class AppleMusicArtistTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AppleMusic\AppleMusicArtist::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AppleMusic\AppleMusicArtist::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AppleMusic\AppleMusicArtist::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AppleMusic\AppleMusicArtist::getIdRegex
 	 * @return void
 	 */
 	public function testValidIntlUrlId() {
@@ -92,21 +92,21 @@ class AppleMusicArtistTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AppleMusic\AppleMusicArtist::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AppleMusic\AppleMusicArtist::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AppleMusic\AppleMusicArtist::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AppleMusic\AppleMusicArtist::getIdRegex
 	 * @return void
 	 */
 	public function testInvalidUrlId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 		new AppleMusicArtist( $this->invalidUrlId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getUrl
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AppleMusic\AppleMusicArtist::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AppleMusic\AppleMusicArtist::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AppleMusic\AppleMusicArtist::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AppleMusic\AppleMusicArtist::getIdRegex
 	 * @return void
 	 */
 	public function testUrl() {
@@ -116,7 +116,7 @@ class AppleMusicArtistTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AppleMusic\AppleMusicArtist::getServiceKey
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AppleMusic\AppleMusicArtist::getServiceKey
 	 * @return void
 	 */
 	public function testServiceKey() {

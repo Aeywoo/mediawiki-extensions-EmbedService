@@ -2,7 +2,7 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\EmbedService\Deezer;
+namespace MediaWiki\Extension\EmbedService\EmbedService\Deezer;
 
 final class DeezerTrack extends DeezerAlbum {
 	/**

@@ -2,10 +2,10 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Media\TransformOutput;
+namespace MediaWiki\Extension\EmbedService\Media\TransformOutput;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\EmbedHtmlFormatter;
-use MediaWiki\Extension\EmbedVideo\EmbedService\LocalVideo;
+use MediaWiki\Extension\EmbedService\EmbedService\EmbedHtmlFormatter;
+use MediaWiki\Extension\EmbedService\EmbedService\LocalVideo;
 use MediaWiki\Html\Html;
 
 class VideoEmbedTransformOutput extends VideoTransformOutput {
@@ -29,7 +29,7 @@ class VideoEmbedTransformOutput extends VideoTransformOutput {
 			return Html::rawElement(
 				'div',
 				[
-					'class' => 'embedvideo-wrapper embedvideo--local-embed-style',
+					'class' => 'embedservice-wrapper embedservice--local-embed-style',
 					'style' => 'position: relative;',
 				],
 				$overlayHtml . $videoHtml

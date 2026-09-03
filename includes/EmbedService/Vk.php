@@ -2,7 +2,7 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\EmbedService;
+namespace MediaWiki\Extension\EmbedService\EmbedService;
 
 final class Vk extends AbstractEmbedService {
 	/**

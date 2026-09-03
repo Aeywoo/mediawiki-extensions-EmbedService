@@ -2,9 +2,9 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Maintenance;
+namespace MediaWiki\Extension\EmbedService\Maintenance;
 
-use MediaWiki\Extension\EmbedVideo\Media\AudioHandler;
+use MediaWiki\Extension\EmbedService\Media\AudioHandler;
 use MediaWiki\FileRepo\File\FileSelectQueryBuilder;
 use MediaWiki\Maintenance\Maintenance;
 use Throwable;
@@ -22,10 +22,10 @@ class BackfillLocalMediaMetadata extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->addDescription(
-			'Backfill persisted EmbedVideo metadata for current local audio and video files.'
+			'Backfill persisted EmbedService metadata for current local audio and video files.'
 		);
 		$this->setBatchSize( 200 );
-		$this->requireExtension( 'EmbedVideo' );
+		$this->requireExtension( 'EmbedService' );
 
 		$this->addOption( 'start', 'File name to start with.', false, true );
 		$this->addOption( 'end', 'File name to end with.', false, true );
@@ -103,7 +103,7 @@ class BackfillLocalMediaMetadata extends Maintenance {
 					if ( !( $handler instanceof AudioHandler ) ) {
 						$skipped++;
 						if ( $verbose ) {
-							$this->output( "Skipping File:$lastName; handler is not EmbedVideo.\n" );
+							$this->output( "Skipping File:$lastName; handler is not EmbedService.\n" );
 						}
 						continue;
 					}
@@ -137,7 +137,7 @@ class BackfillLocalMediaMetadata extends Maintenance {
 		} while ( $res->numRows() === $batchSize );
 
 		$this->output(
-			"\nFinished backfilling EmbedVideo metadata. "
+			"\nFinished backfilling EmbedService metadata. "
 			. "$updated file(s) refreshed, $skipped file(s) skipped, "
 			. count( $failures ) . " file(s) failed.\n"
 		);

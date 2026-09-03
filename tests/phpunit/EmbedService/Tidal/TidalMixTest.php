@@ -2,14 +2,14 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\EmbedService\Tidal;
+namespace MediaWiki\Extension\EmbedService\Tests\EmbedService\Tidal;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalMix;
-use MediaWiki\Extension\EmbedVideo\EmbedVideoException;
+use MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalMix;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class TidalMixTest extends MediaWikiIntegrationTestCase {
 
@@ -38,19 +38,19 @@ class TidalMixTest extends MediaWikiIntegrationTestCase {
 	private string $invalidUrlId = 'https://tidal.com/en/mix/12051760';
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
 	 * @return void
 	 */
 	public function testInvalidId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 
 		new TidalMix( $this->invalidId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalMix::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalMix::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalMix::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalMix::getIdRegex
 	 * @return void
 	 */
 	public function testValidId() {
@@ -60,9 +60,9 @@ class TidalMixTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalMix::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalMix::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalMix::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalMix::getIdRegex
 	 * @return void
 	 */
 	public function testValidUrlId() {
@@ -73,21 +73,21 @@ class TidalMixTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalMix::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalMix::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalMix::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalMix::getIdRegex
 	 * @return void
 	 */
 	public function testInvalidUrlId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 		new TidalMix( $this->invalidUrlId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getUrl
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalMix::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalMix::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalMix::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalMix::getIdRegex
 	 * @return void
 	 */
 	public function testUrl() {
@@ -97,7 +97,7 @@ class TidalMixTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalMix::getServiceKey
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalMix::getServiceKey
 	 * @return void
 	 */
 	public function testServiceKey() {

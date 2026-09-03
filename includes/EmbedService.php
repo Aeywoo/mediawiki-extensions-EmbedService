@@ -2,21 +2,21 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo;
+namespace MediaWiki\Extension\EmbedService;
 
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigException;
-use MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService;
-use MediaWiki\Extension\EmbedVideo\EmbedService\EmbedHtmlFormatter;
-use MediaWiki\Extension\EmbedVideo\EmbedService\EmbedServiceFactory;
-use MediaWiki\Extension\EmbedVideo\EmbedService\OEmbedServiceInterface;
+use MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService;
+use MediaWiki\Extension\EmbedService\EmbedService\EmbedHtmlFormatter;
+use MediaWiki\Extension\EmbedService\EmbedService\EmbedServiceFactory;
+use MediaWiki\Extension\EmbedService\EmbedService\OEmbedServiceInterface;
 use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\PPFrame;
 use RuntimeException;
 
-class EmbedVideo {
+class EmbedService {
 	/**
 	 * @var Parser|null
 	 */
@@ -68,7 +68,7 @@ class EmbedVideo {
 	private $container = false;
 
 	/**
-	 * Creates a new EmbedVideo instance
+	 * Creates a new EmbedService instance
 	 *
 	 * @param Parser|null $parser
 	 * @param array $args
@@ -77,7 +77,7 @@ class EmbedVideo {
 	public function __construct( ?Parser $parser, array $args, bool $fromTag = false ) {
 		$this->parser = $parser;
 		$this->args = $this->parseArgs( $args, $fromTag );
-		$this->config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'EmbedVideo' );
+		$this->config = MediaWikiServices::getInstance()->getConfigFactory()->makeConfig( 'EmbedService' );
 	}
 
 	/**
@@ -125,7 +125,7 @@ class EmbedVideo {
 			}
 		}
 
-		$output = ( new EmbedVideo( $parser, $expandedArgs, $fromTag ) )->output();
+		$output = ( new EmbedService( $parser, $expandedArgs, $fromTag ) )->output();
 		if ( ( $output['isRawHTML'] ?? false ) ) {
 			// Use a nowiki strip marker as isRawHTML requires MW 1.44+ and Scribunto does not properly support
 			// isRawHTML yet (T428670)
@@ -175,16 +175,16 @@ class EmbedVideo {
 			$expandedArgs['service'] = 'youtube';
 		}
 
-		$ev = new EmbedVideo( $parser, $expandedArgs, true );
+		$ev = new EmbedService( $parser, $expandedArgs, true );
 
 		try {
 			$ev->init();
 			$ev->addModules();
 
 			if ( empty( $ev->args['text'] ) ) {
-				throw EmbedVideoException::newWithHtml( $ev->errorBoxHtml( 'missingparams', $ev->args['service'] ) );
+				throw EmbedServiceException::newWithHtml( $ev->errorBoxHtml( 'missingparams', $ev->args['service'] ) );
 			}
-		} catch ( EmbedVideoException $e ) {
+		} catch ( EmbedServiceException $e ) {
 			return [
 				$e->getHtml(),
 				'noparse' => true,
@@ -196,11 +196,11 @@ class EmbedVideo {
 			'data-mw-iframeconfig' => $ev->service->getIframeConfig( $ev->args['width'], $ev->args['height'] ),
 			'data-service' => $ev->args['service'],
 			'data-player' => $ev->args['player'] ?? 'default',
-			'class' => 'embedvideo-evl vplink',
+			'class' => 'embedservice-evl vplink',
 			'href' => '#',
 		];
 
-		if ( MediaWikiServices::getInstance()->getMainConfig()->get( 'EmbedVideoRequireConsent' ) === true ) {
+		if ( MediaWikiServices::getInstance()->getMainConfig()->get( 'EmbedServiceRequireConsent' ) === true ) {
 			$linkConfig['data-privacy-url'] = $ev->service->getPrivacyPolicyUrl();
 		}
 
@@ -263,8 +263,8 @@ class EmbedVideo {
 		$args = array_filter( $args );
 
 		$parser->getOutput()?->addModules( [
-			'ext.embedVideo.videolink',
-			'ext.embedVideo.messages',
+			'ext.embedService.videolink',
+			'ext.embedService.messages',
 		] );
 
 		return self::parseEV( $parser, $frame, $args, true );
@@ -302,7 +302,7 @@ class EmbedVideo {
 		$service = $this->args['service'] ?? null;
 
 		try {
-			$enabledServices = $this->config->get( 'EmbedVideoEnabledServices' ) ?? [];
+			$enabledServices = $this->config->get( 'EmbedServiceEnabledServices' ) ?? [];
 			if ( !empty( $enabledServices ) && !in_array( $service, $enabledServices, true ) ) {
 				return $this->error( 'service', sprintf( '%s (as it is disabled)', $service ) );
 			}
@@ -312,7 +312,7 @@ class EmbedVideo {
 
 		try {
 			$this->init();
-		} catch ( EmbedVideoException $e ) {
+		} catch ( EmbedServiceException $e ) {
 			return [
 				$e->getHtml(),
 				'noparse' => true,
@@ -439,13 +439,13 @@ class EmbedVideo {
 			[
 				'class' => 'errorbox',
 			],
-			wfMessage( "embedvideo-error-$type", ...$arguments )->text(),
+			wfMessage( "embedservice-error-$type", ...$arguments )->text(),
 		);
 	}
 
 	/**
 	 * Initializes the service and checks for errors
-	 * @throws EmbedVideoException
+	 * @throws EmbedServiceException
 	 */
 	private function init(): void {
 		[
@@ -477,7 +477,7 @@ class EmbedVideo {
 		}
 
 		if ( !$service || !$id ) {
-			throw EmbedVideoException::newWithHtml( $this->errorBoxHtml( 'missingparams', $service, $id ) );
+			throw EmbedServiceException::newWithHtml( $this->errorBoxHtml( 'missingparams', $service, $id ) );
 		}
 
 		$this->service = EmbedServiceFactory::newFromName( $service, $id );
@@ -486,12 +486,12 @@ class EmbedVideo {
 		$this->service->setWidth( $rpl( (string)$width ) );
 		$this->service->setHeight( $rpl( (string)$height ) );
 
-		if ( $this->config->get( 'EmbedVideoRequireConsent' ) === true ) {
+		if ( $this->config->get( 'EmbedServiceRequireConsent' ) === true ) {
 			$this->service->setUrlArgs( $this->service->getAutoplayParameter() );
 		}
 
 		if ( !$this->service->setUrlArgs( $urlArgs ) ) {
-			throw EmbedVideoException::newWithHtml( $this->errorBoxHtml( 'urlargs', $service, $urlArgs ) );
+			throw EmbedServiceException::newWithHtml( $this->errorBoxHtml( 'urlargs', $service, $urlArgs ) );
 		}
 
 		if ( $this->parser !== null ) {
@@ -501,21 +501,21 @@ class EmbedVideo {
 		}
 
 		if ( !$this->setContainer( $container ) ) {
-			throw EmbedVideoException::newWithHtml( $this->errorBoxHtml( 'container', $container ) );
+			throw EmbedServiceException::newWithHtml( $this->errorBoxHtml( 'container', $container ) );
 		}
 
 		if ( !$this->setAlignment( $alignment ) ) {
-			throw EmbedVideoException::newWithHtml( $this->errorBoxHtml( 'alignment', $alignment ) );
+			throw EmbedServiceException::newWithHtml( $this->errorBoxHtml( 'alignment', $alignment ) );
 		}
 
 		if ( !$this->setVerticalAlignment( $vAlignment ) ) {
-			throw EmbedVideoException::newWithHtml( $this->errorBoxHtml( 'valignment', $vAlignment ) );
+			throw EmbedServiceException::newWithHtml( $this->errorBoxHtml( 'valignment', $vAlignment ) );
 		}
 
 		if ( !empty( $cover ?? $poster ?? '' ) ) {
 			try {
 				$this->service->setLocalThumb( $cover ?? $poster );
-			} catch ( EmbedVideoException | RuntimeException $e ) {
+			} catch ( EmbedServiceException | RuntimeException $e ) {
 				wfLogWarning( $e->getMessage() );
 			}
 		}
@@ -626,9 +626,9 @@ class EmbedVideo {
 	 */
 	private function makeHtmlFormatConfig( $embedService ): array {
 		$classString = implode( ' ', array_filter( [
-			'embedvideo',
+			'embedservice',
 			// This should probably be added as a RL variable
-			$this->config->get( 'EmbedVideoFetchExternalThumbnails' ) ? '' : 'no-fetch',
+			$this->config->get( 'EmbedServiceFetchExternalThumbnails' ) ? '' : 'no-fetch',
 			strip_tags( $this->args['class'] ?? '' ),
 		] ) );
 		$serviceString = $embedService::getServiceName();
@@ -652,7 +652,7 @@ class EmbedVideo {
 			'service' => $serviceString,
 			'autoresize' => $this->args['autoresize'] === true,
 			// phpcs:ignore Generic.Files.LineLength.TooLong
-			'withConsent' => !( $this->service instanceof OEmbedServiceInterface ) && $this->config->get( 'EmbedVideoRequireConsent' ),
+			'withConsent' => !( $this->service instanceof OEmbedServiceInterface ) && $this->config->get( 'EmbedServiceRequireConsent' ),
 			'description' => $this->description,
 		];
 	}
@@ -675,11 +675,11 @@ class EmbedVideo {
 			}
 		}
 
-		$out?->addModuleStyles( [ 'ext.embedVideo.styles' ] );
+		$out?->addModuleStyles( [ 'ext.embedService.styles' ] );
 
-		if ( MediaWikiServices::getInstance()->getMainConfig()->get( 'EmbedVideoRequireConsent' ) === true ) {
+		if ( MediaWikiServices::getInstance()->getMainConfig()->get( 'EmbedServiceRequireConsent' ) === true ) {
 			$out?->addModules( [
-				'ext.embedVideo.consent',
+				'ext.embedService.consent',
 			] );
 
 			$serviceAttributes = $this->service->getIframeAttributes();

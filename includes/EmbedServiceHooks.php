@@ -2,15 +2,15 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo;
+namespace MediaWiki\Extension\EmbedService;
 
 use LocalFile;
 use MediaWiki\Config\Config;
 use MediaWiki\Config\ConfigFactory;
 use MediaWiki\Exception\MWException;
-use MediaWiki\Extension\EmbedVideo\EmbedService\EmbedServiceFactory;
-use MediaWiki\Extension\EmbedVideo\Media\AudioHandler;
-use MediaWiki\Extension\EmbedVideo\Media\VideoHandler;
+use MediaWiki\Extension\EmbedService\EmbedService\EmbedServiceFactory;
+use MediaWiki\Extension\EmbedService\Media\AudioHandler;
+use MediaWiki\Extension\EmbedService\Media\VideoHandler;
 use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\ParserFirstCallInitHook;
 use MediaWiki\Hook\SkinTemplateNavigation__UniversalHook;
@@ -22,15 +22,15 @@ use MediaWiki\SpecialPage\SpecialPage;
 use RepoGroup;
 
 /**
- * EmbedVideo
- * EmbedVideo Hooks
+ * EmbedService
+ * EmbedService Hooks
  *
  * @license MIT
- * @package EmbedVideo
- * @link    https://www.mediawiki.org/wiki/Extension:EmbedVideo
+ * @package EmbedService
+ * @link    https://www.mediawiki.org/wiki/Extension:EmbedService
  */
 
-class EmbedVideoHooks implements
+class EmbedServiceHooks implements
 	ParserFirstCallInitHook,
 	BeforePageDisplayHook,
 	SkinTemplateNavigation__UniversalHook
@@ -46,7 +46,7 @@ class EmbedVideoHooks implements
 		ConfigFactory $factory,
 		private RepoGroup $repoGroup
 	) {
-		$this->config = $factory->makeConfig( 'EmbedVideo' );
+		$this->config = $factory->makeConfig( 'EmbedService' );
 	}
 
 	/**
@@ -55,20 +55,20 @@ class EmbedVideoHooks implements
 	 * @return void
 	 */
 	public static function setup(): void {
-		global $wgFileExtensions, $wgMediaHandlers, $wgEmbedVideoDefaultWidth,
-			   $wgEmbedVideoEnableAudioHandler, $wgEmbedVideoEnableVideoHandler, $wgEmbedVideoAddFileExtensions;
+		global $wgFileExtensions, $wgMediaHandlers, $wgEmbedServiceDefaultWidth,
+			   $wgEmbedServiceEnableAudioHandler, $wgEmbedServiceEnableVideoHandler, $wgEmbedServiceAddFileExtensions;
 
-		if ( !isset( $wgEmbedVideoDefaultWidth ) &&
+		if ( !isset( $wgEmbedServiceDefaultWidth ) &&
 			( isset( $_SERVER['HTTP_X_MOBILE'] ) && $_SERVER['HTTP_X_MOBILE'] === 'true' ) &&
 			$_COOKIE['stopMobileRedirect'] !== 1 ) {
 			// Set a smaller default width when in mobile view.
-			$wgEmbedVideoDefaultWidth = 320;
+			$wgEmbedServiceDefaultWidth = 320;
 		}
 
 		$audioHandler = AudioHandler::class;
 		$videoHandler = VideoHandler::class;
 
-		if ( $wgEmbedVideoEnableAudioHandler ) {
+		if ( $wgEmbedServiceEnableAudioHandler ) {
 			$wgMediaHandlers['application/ogg']		= $audioHandler;
 			$wgMediaHandlers['audio/flac']			= $audioHandler;
 			$wgMediaHandlers['audio/ogg']			= $audioHandler;
@@ -79,7 +79,7 @@ class EmbedVideoHooks implements
 			$wgMediaHandlers['audio/x-flac']		= $audioHandler;
 		}
 
-		if ( $wgEmbedVideoEnableVideoHandler ) {
+		if ( $wgEmbedServiceEnableVideoHandler ) {
 			$wgMediaHandlers['video/mp4']			= $videoHandler;
 			$wgMediaHandlers['video/ogg']			= $videoHandler;
 			$wgMediaHandlers['video/quicktime']		= $videoHandler;
@@ -87,7 +87,7 @@ class EmbedVideoHooks implements
 			$wgMediaHandlers['video/x-matroska']	= $videoHandler;
 		}
 
-		if ( $wgEmbedVideoAddFileExtensions ) {
+		if ( $wgEmbedServiceAddFileExtensions ) {
 			$wgFileExtensions[] = 'flac';
 			$wgFileExtensions[] = 'mkv';
 			$wgFileExtensions[] = 'mov';
@@ -108,45 +108,45 @@ class EmbedVideoHooks implements
 	 */
 	public function onParserFirstCallInit( $parser ): void {
 		try {
-			$parser->setHook( 'embedvideo', [ EmbedVideo::class, 'parseEVTag' ] );
+			$parser->setHook( 'embedservice', [ EmbedService::class, 'parseEVTag' ] );
 
 			$parser->setFunctionHook(
 				'ev',
-				[ EmbedVideo::class, 'parseEV' ],
+				[ EmbedService::class, 'parseEV' ],
 				Parser::SFH_OBJECT_ARGS
 			);
 
 			$parser->setFunctionHook(
 				'evt',
-				[ EmbedVideo::class, 'parseEV' ],
+				[ EmbedService::class, 'parseEV' ],
 				Parser::SFH_OBJECT_ARGS
 			);
 
 			$parser->setFunctionHook(
 				'evu',
-				[ EmbedVideo::class, 'parseEVU' ],
+				[ EmbedService::class, 'parseEVU' ],
 				Parser::SFH_OBJECT_ARGS
 			);
 
 			$parser->setFunctionHook(
 				'evl',
-				[ EmbedVideo::class, 'parseEVL' ],
+				[ EmbedService::class, 'parseEVL' ],
 				Parser::SFH_OBJECT_ARGS
 			);
 
 			$parser->setFunctionHook(
 				'vlink',
-				[ EmbedVideo::class, 'parseEVL' ],
+				[ EmbedService::class, 'parseEVL' ],
 				Parser::SFH_OBJECT_ARGS
 			);
 
-			$parser->setHook( 'evlplayer', [ EmbedVideo::class, 'parseEVLTag' ] );
-			$parser->setHook( 'vplayer', [ EmbedVideo::class, 'parseEVLTag' ] );
+			$parser->setHook( 'evlplayer', [ EmbedService::class, 'parseEVLTag' ] );
+			$parser->setHook( 'vplayer', [ EmbedService::class, 'parseEVLTag' ] );
 		} catch ( MWException $e ) {
 			wfLogWarning( $e->getMessage() );
 		}
 
-		$enabledServices = $this->config->get( 'EmbedVideoEnabledServices' );
+		$enabledServices = $this->config->get( 'EmbedServiceEnabledServices' );
 		$checkEnabledServices = !empty( $enabledServices );
 
 		foreach ( EmbedServiceFactory::getAvailableServices() as $service ) {
@@ -158,7 +158,7 @@ class EmbedVideoHooks implements
 					continue;
 				}
 
-				$parser->setHook( $name, [ EmbedVideo::class, "parseTag{$name}" ] );
+				$parser->setHook( $name, [ EmbedService::class, "parseTag{$name}" ] );
 			} catch ( MWException $e ) {
 				wfLogWarning( $e->getMessage() );
 			}
@@ -166,15 +166,15 @@ class EmbedVideoHooks implements
 	}
 
 	/**
-	 * Adds required modules if $wgEmbedVideoUseEmbedStyleForLocalVideos is true
+	 * Adds required modules if $wgEmbedServiceUseEmbedStyleForLocalVideos is true
 	 *
 	 * @param OutputPage $out
 	 * @param Skin $skin
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
-		if ( $this->config->get( 'EmbedVideoUseEmbedStyleForLocalVideos' ) === true ) {
-			$out->addModuleStyles( [ 'ext.embedVideo.styles' ] );
-			$out->addModules( [ 'ext.embedVideo.overlay' ] );
+		if ( $this->config->get( 'EmbedServiceUseEmbedStyleForLocalVideos' ) === true ) {
+			$out->addModuleStyles( [ 'ext.embedService.styles' ] );
+			$out->addModules( [ 'ext.embedService.overlay' ] );
 		}
 	}
 
@@ -188,7 +188,7 @@ class EmbedVideoHooks implements
 		$title = $sktemplate->getTitle();
 		if (
 			$title->getNamespace() !== NS_FILE ||
-			!$sktemplate->getUser()->isAllowed( 'embedvideo-refreshmetadata' )
+			!$sktemplate->getUser()->isAllowed( 'embedservice-refreshmetadata' )
 		) {
 			return;
 		}
@@ -198,12 +198,12 @@ class EmbedVideoHooks implements
 			return;
 		}
 
-		$label = $sktemplate->msg( 'embedvideo-refreshmetadata-tab' )->text();
-		$links['actions']['embedvideo-refreshmetadata'] = [
+		$label = $sktemplate->msg( 'embedservice-refreshmetadata-tab' )->text();
+		$links['actions']['embedservice-refreshmetadata'] = [
 			'text' => $label,
 			'title' => $label,
 			'href' => SpecialPage::getTitleFor(
-				'RefreshEmbedVideoMetadata',
+				'RefreshEmbedServiceMetadata',
 				$title->getDBkey()
 			)->getLocalURL(),
 		];

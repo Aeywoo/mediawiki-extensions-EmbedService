@@ -5,19 +5,19 @@ const fetchThumb = async ( url, parent, container ) => {
 
 	const removeElements = () => {
 		// Thumbnail
-		parent.querySelectorAll( '.embedvideo-thumbnail' ).forEach( ( thumb ) => {
+		parent.querySelectorAll( '.embedservice-thumbnail' ).forEach( ( thumb ) => {
 			parent.removeChild( thumb );
 		} );
 
 		// Title
-		const overlay = parent.querySelector( '.embedvideo-loader' );
-		overlay.querySelectorAll( '.embedvideo-loader__title:not(.embedvideo-loader__title--manual)' ).forEach( ( title ) => {
+		const overlay = parent.querySelector( '.embedservice-loader' );
+		overlay.querySelectorAll( '.embedservice-loader__title:not(.embedservice-loader__title--manual)' ).forEach( ( title ) => {
 			overlay.removeChild( title );
 		} );
 
 		// Duration
-		const footer = parent.querySelector( '.embedvideo-loader__footer' );
-		footer.querySelectorAll( '.embedvideo-loader__duration' ).forEach( ( duration ) => {
+		const footer = parent.querySelector( '.embedservice-loader__footer' );
+		footer.querySelectorAll( '.embedservice-loader__duration' ).forEach( ( duration ) => {
 			footer.removeChild( duration );
 		} );
 	};
@@ -68,19 +68,19 @@ const fetchThumb = async ( url, parent, container ) => {
 				picture = document.createElement( 'picture' ),
 				image = document.createElement( 'img' );
 
-			picture.classList.add( 'embedvideo-thumbnail' );
+			picture.classList.add( 'embedservice-thumbnail' );
 			image.src = json.thumbnail;
 			image.setAttribute( 'loading', 'lazy' );
-			image.classList.add( 'embedvideo-thumbnail__image' );
+			image.classList.add( 'embedservice-thumbnail__image' );
 			picture.append( image );
 			parent.prepend( picture );
 
-			if ( typeof json.title !== 'undefined' && json.title.length > 0 && parent.querySelector( '.embedvideo-loader__title--manual' ) === null ) {
+			if ( typeof json.title !== 'undefined' && json.title.length > 0 && parent.querySelector( '.embedservice-loader__title--manual' ) === null ) {
 				const
-					overlay = parent.querySelector( '.embedvideo-loader' ),
+					overlay = parent.querySelector( '.embedservice-loader' ),
 					title = document.createElement( 'div' );
 
-				title.classList.add( 'embedvideo-loader__title' );
+				title.classList.add( 'embedservice-loader__title' );
 				title.innerText = json.title;
 				overlay.prepend( title );
 			}
@@ -100,10 +100,10 @@ const fetchThumb = async ( url, parent, container ) => {
 				};
 
 				const
-					footer = parent.querySelector( '.embedvideo-loader__footer' ),
+					footer = parent.querySelector( '.embedservice-loader__footer' ),
 					duration = document.createElement( 'div' );
 
-				duration.classList.add( 'embedvideo-loader__duration' );
+				duration.classList.add( 'embedservice-loader__duration' );
 				duration.innerText = formatTime( json.duration );
 				footer.append( duration );
 			}
@@ -115,17 +115,17 @@ const fetchThumb = async ( url, parent, container ) => {
  * @param {HTMLElement} ev
  */
 const makeIframe = function ( ev ) {
-	const wrapper = ev.querySelector( '.embedvideo-wrapper' );
+	const wrapper = ev.querySelector( '.embedservice-wrapper' );
 	/** @type {HTMLDivElement|null} */
-	const consentDiv = wrapper.querySelector( '.embedvideo-consent' );
+	const consentDiv = wrapper.querySelector( '.embedservice-consent' );
 	let iframeConfig = ev.dataset.mwIframeconfig;
 
 	if ( consentDiv === null || iframeConfig === null ) {
 		return;
 	}
 
-	const loader = consentDiv.querySelector( '.embedvideo-loader' );
-	const privacyNotice = consentDiv.querySelector( '.embedvideo-privacyNotice' );
+	const loader = consentDiv.querySelector( '.embedservice-loader' );
+	const privacyNotice = consentDiv.querySelector( '.embedservice-privacyNotice' );
 
 	const getSessionStorageKey = function () {
 		return `ev-${ ev.dataset.service }-consent-given`;
@@ -175,8 +175,8 @@ const makeIframe = function ( ev ) {
 	iframeConfig = getIframeConfig();
 
 	if ( consentDiv.dataset.showPrivacyNotice === '1' ) {
-		const continueBtn = consentDiv.querySelector( '.embedvideo-privacyNotice__continue' );
-		const dismissBtn = consentDiv.querySelector( '.embedvideo-privacyNotice__dismiss' );
+		const continueBtn = consentDiv.querySelector( '.embedservice-privacyNotice__continue' );
+		const dismissBtn = consentDiv.querySelector( '.embedservice-privacyNotice__dismiss' );
 
 		consentDiv.addEventListener( 'click', togglePrivacyClickListener );
 		continueBtn.addEventListener( 'click', ( event ) => {

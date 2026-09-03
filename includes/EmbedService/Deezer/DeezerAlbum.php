@@ -2,9 +2,9 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\EmbedService\Deezer;
+namespace MediaWiki\Extension\EmbedService\EmbedService\Deezer;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService;
+use MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService;
 
 class DeezerAlbum extends AbstractEmbedService {
 	protected $additionalIframeAttributes = [

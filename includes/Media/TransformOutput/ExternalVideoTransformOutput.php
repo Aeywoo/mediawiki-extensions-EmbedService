@@ -2,7 +2,7 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Media\TransformOutput;
+namespace MediaWiki\Extension\EmbedService\Media\TransformOutput;
 
 class ExternalVideoTransformOutput extends VideoTransformOutput {
 	/**

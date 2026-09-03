@@ -2,23 +2,23 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests;
+namespace MediaWiki\Extension\EmbedService\Tests;
 
 use Exception;
-use MediaWiki\Extension\EmbedVideo\OEmbed;
+use MediaWiki\Extension\EmbedService\OEmbed;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Status\Status;
 use MWHttpRequest;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class OEmbedTest extends \MediaWikiIntegrationTestCase {
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::get
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::newFromRequest
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::get
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::newFromRequest
 	 * @return void
 	 */
 	public function testConstructor() {
@@ -30,10 +30,10 @@ class OEmbedTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::get
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::newFromRequest
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::getHtml
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::get
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::newFromRequest
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::getHtml
 	 * @return void
 	 */
 	public function testGetHtml() {
@@ -48,18 +48,18 @@ class OEmbedTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::get
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::newFromRequest
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::getTitle
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::getAuthorName
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::getAuthorUrl
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::getProviderName
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::getProviderUrl
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::getWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::getHeight
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::getThumbnailWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::getThumbnailHeight
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::get
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::newFromRequest
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::getTitle
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::getAuthorName
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::getAuthorUrl
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::getProviderName
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::getProviderUrl
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::getWidth
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::getHeight
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::getThumbnailWidth
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::getThumbnailHeight
 	 * @return void
 	 */
 	public function testGetAllFalse() {
@@ -85,18 +85,18 @@ class OEmbedTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::get
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::newFromRequest
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::getTitle
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::getAuthorName
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::getAuthorUrl
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::getProviderName
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::getProviderUrl
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::getWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::getHeight
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::getThumbnailWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\OEmbed::getThumbnailHeight
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::get
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::newFromRequest
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::getTitle
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::getAuthorName
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::getAuthorUrl
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::getProviderName
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::getProviderUrl
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::getWidth
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::getHeight
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::getThumbnailWidth
+	 * @covers \MediaWiki\Extension\EmbedService\OEmbed::getThumbnailHeight
 	 * @return void
 	 */
 	public function testGetAll() {

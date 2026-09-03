@@ -2,7 +2,7 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\EmbedService\Twitch;
+namespace MediaWiki\Extension\EmbedService\EmbedService\Twitch;
 
 final class TwitchClip extends Twitch {
 

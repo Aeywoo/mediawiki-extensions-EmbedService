@@ -1,11 +1,11 @@
 <?php
 /**
- * EmbedVideo
- * EmbedVideo Magic Words
+ * EmbedService
+ * EmbedService Magic Words
  *
  * @license MIT
- * @package EmbedVideo
- * @link    https://www.mediawiki.org/wiki/Extension:EmbedVideo
+ * @package EmbedService
+ * @link    https://www.mediawiki.org/wiki/Extension:EmbedService
  */
 
 $magicWords = [];

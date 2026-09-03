@@ -1,4 +1,4 @@
-.embedvideo {
+.embedservice {
 	display: inline-block; // default to render inline, like default MW syntax
 	max-width: 100%; // no overflow
 	margin: 0;
@@ -23,7 +23,7 @@
 		pointer-events: none;
 		transition: opacity 250ms ease;
 
-		.embedvideo-overlay {
+		.embedservice-overlay {
 			display: flex;
 			width: 100%;
 			height: 100%;
@@ -61,7 +61,7 @@
 		width: 100%;
 		aspect-ratio: 16 / 9;
 
-		.embedvideo-wrapper {
+		.embedservice-wrapper {
 			height: 100%;
 		}
 	}
@@ -73,7 +73,7 @@
 
 		&:hover,
 		&:focus-within {
-			.embedvideo-localEmbedStyle {
+			.embedservice-localEmbedStyle {
 				opacity: 0;
 			}
 		}

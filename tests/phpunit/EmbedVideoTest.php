@@ -2,10 +2,10 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests;
+namespace MediaWiki\Extension\EmbedService\Tests;
 
 use Exception;
-use MediaWiki\Extension\EmbedVideo\EmbedVideo;
+use MediaWiki\Extension\EmbedService\EmbedService;
 use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Parser\PPCustomFrame_Hash;
@@ -13,35 +13,35 @@ use MediaWiki\Parser\PPFrame_Hash;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
-class EmbedVideoTest extends MediaWikiIntegrationTestCase {
+class EmbedServiceTest extends MediaWikiIntegrationTestCase {
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseArgs
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseArgs
 	 * @return void
 	 */
 	public function testConstructor() {
-		$ev = new EmbedVideo( null, [] );
+		$ev = new EmbedService( null, [] );
 
-		$this->assertInstanceOf( EmbedVideo::class, $ev );
+		$this->assertInstanceOf( EmbedService::class, $ev );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEVU
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEV
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::output
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::init
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::addModules
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::makeHtmlFormatConfig
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEVU
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEV
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::output
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::init
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::addModules
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::makeHtmlFormatConfig
 	 * @return void
 	 * @throws Exception
 	 */
 	public function testParseEVUYouTubeValid() {
 		$parser = $this->getParser();
 
-		$output = EmbedVideo::parseEVU(
+		$output = EmbedService::parseEVU(
 			$parser,
 			$this->getFrame( $parser ),
 			[
@@ -53,25 +53,25 @@ class EmbedVideoTest extends MediaWikiIntegrationTestCase {
 		$this->assertIsArray( $output );
 		$this->assertCount( 2, $output );
 		$this->assertStringContainsString(
-			'<figure class="embedvideo" data-service="youtube"',
+			'<figure class="embedservice" data-service="youtube"',
 			$this->resolveHtml( $parser, $output )
 		);
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEVU
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEV
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::output
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::init
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::addModules
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::makeHtmlFormatConfig
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEVU
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEV
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::output
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::init
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::addModules
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::makeHtmlFormatConfig
 	 * @return void
 	 * @throws Exception
 	 */
 	public function testParseEVUYouTubeInvalid() {
 		$parser = $this->getParser();
 
-		$output = EmbedVideo::parseEVU(
+		$output = EmbedService::parseEVU(
 			$parser,
 			$this->getFrame( $parser ),
 			[
@@ -82,23 +82,23 @@ class EmbedVideoTest extends MediaWikiIntegrationTestCase {
 
 		$this->assertIsArray( $output );
 		$this->assertCount( 3, $output );
-		$this->assertStringNotContainsString( '<figure class="embedvideo" data-service="youtube"', $output[0] );
+		$this->assertStringNotContainsString( '<figure class="embedservice" data-service="youtube"', $output[0] );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEVU
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEV
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::output
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::init
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::addModules
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::makeHtmlFormatConfig
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEVU
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEV
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::output
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::init
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::addModules
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::makeHtmlFormatConfig
 	 * @return void
 	 * @throws Exception
 	 */
 	public function testParseEVUEmpty() {
 		$parser = $this->getParser();
 
-		$output = EmbedVideo::parseEVU(
+		$output = EmbedService::parseEVU(
 			$parser,
 			$this->getFrame( $parser ),
 			[],
@@ -111,22 +111,22 @@ class EmbedVideoTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEV
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::output
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::init
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::addModules
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::makeHtmlFormatConfig
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEV
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::output
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::init
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::addModules
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::makeHtmlFormatConfig
 	 * @return void
 	 * @throws Exception
 	 */
 	public function testParseEVYouTubeValid() {
 		$this->overrideConfigValues( [
-			'EmbedVideoRequireConsent' => true,
+			'EmbedServiceRequireConsent' => true,
 		] );
 
 		$parser = $this->getParser();
 
-		$output = EmbedVideo::parseEV(
+		$output = EmbedService::parseEV(
 			$parser,
 			$this->getFrame( $parser ),
 			[
@@ -139,26 +139,26 @@ class EmbedVideoTest extends MediaWikiIntegrationTestCase {
 		$this->assertIsArray( $output );
 		$this->assertCount( 2, $output );
         // phpcs:ignore Generic.Files.LineLength.TooLong
-		$this->assertStringContainsString( '<figure class="embedvideo" data-service="youtube" data-mw-iframeconfig="{&quot;src&quot;:&quot;https://www.youtube-nocookie.com/embed/foobar?autoplay=1&quot;}" style="width:640px">', $this->resolveHtml( $parser, $output ) );
+		$this->assertStringContainsString( '<figure class="embedservice" data-service="youtube" data-mw-iframeconfig="{&quot;src&quot;:&quot;https://www.youtube-nocookie.com/embed/foobar?autoplay=1&quot;}" style="width:640px">', $this->resolveHtml( $parser, $output ) );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEV
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::output
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::init
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::addModules
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::makeHtmlFormatConfig
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEV
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::output
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::init
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::addModules
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::makeHtmlFormatConfig
 	 * @return void
 	 * @throws Exception
 	 */
 	public function testParseEVYouTubeValidCustomArgs() {
 		$this->overrideConfigValues( [
-			'EmbedVideoRequireConsent' => true,
+			'EmbedServiceRequireConsent' => true,
 		] );
 
 		$parser = $this->getParser();
 
-		$output = EmbedVideo::parseEV(
+		$output = EmbedService::parseEV(
 			$parser,
 			$this->getFrame( $parser ),
 			[
@@ -178,18 +178,18 @@ class EmbedVideoTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEV
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::output
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::init
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::addModules
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::makeHtmlFormatConfig
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEV
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::output
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::init
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::addModules
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::makeHtmlFormatConfig
 	 * @return void
 	 * @throws Exception
 	 */
 	public function testParseEVDimensionHeightOnly() {
 		$parser = $this->getParser();
 
-		$output = EmbedVideo::parseEV(
+		$output = EmbedService::parseEV(
 			$parser,
 			$this->getFrame( $parser ),
 			[
@@ -209,18 +209,18 @@ class EmbedVideoTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEV
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::output
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::init
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::addModules
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::makeHtmlFormatConfig
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEV
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::output
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::init
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::addModules
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::makeHtmlFormatConfig
 	 * @return void
 	 * @throws Exception
 	 */
 	public function testParseEVDimensionWidthOnly() {
 		$parser = $this->getParser();
 
-		$output = EmbedVideo::parseEV(
+		$output = EmbedService::parseEV(
 			$parser,
 			$this->getFrame( $parser ),
 			[
@@ -240,19 +240,19 @@ class EmbedVideoTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEVTag
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEV
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::output
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::init
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::addModules
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::makeHtmlFormatConfig
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEVTag
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEV
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::output
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::init
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::addModules
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::makeHtmlFormatConfig
 	 * @return void
 	 * @throws Exception
 	 */
 	public function testParseEVTag() {
 		$parser = $this->getParser();
 
-		$output = EmbedVideo::parseEVTag(
+		$output = EmbedService::parseEVTag(
 			'',
 			[
 				'service' => 'youtube',
@@ -267,20 +267,20 @@ class EmbedVideoTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEVTag
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEV
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::output
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::init
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::addModules
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::makeHtmlFormatConfig
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::error
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEVTag
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEV
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::output
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::init
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::addModules
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::makeHtmlFormatConfig
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::error
 	 * @return void
 	 * @throws Exception
 	 */
 	public function testParseEVTagMissingService() {
 		$parser = $this->getParser();
 
-		$output = EmbedVideo::parseEVTag(
+		$output = EmbedService::parseEVTag(
 			'',
 			[
 				'id' => 'https://youtube.com/?v=foobar',
@@ -291,24 +291,24 @@ class EmbedVideoTest extends MediaWikiIntegrationTestCase {
 
 		$this->assertIsArray( $output );
 		$this->assertCount( 3, $output );
-		$this->assertStringContainsString( wfMessage( 'embedvideo-error-missingparams' )->plain(), $output[0] );
+		$this->assertStringContainsString( wfMessage( 'embedservice-error-missingparams' )->plain(), $output[0] );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEVTag
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEV
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::output
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::init
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::addModules
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::makeHtmlFormatConfig
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::error
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEVTag
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEV
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::output
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::init
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::addModules
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::makeHtmlFormatConfig
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::error
 	 * @return void
 	 * @throws Exception
 	 */
 	public function testParseEVTagIdInInput() {
 		$parser = $this->getParser();
 
-		$output = EmbedVideo::parseEVTag(
+		$output = EmbedService::parseEVTag(
 			'https://youtube.com/?v=foobar',
 			[
 				'service' => 'youtube',
@@ -320,25 +320,25 @@ class EmbedVideoTest extends MediaWikiIntegrationTestCase {
 		$this->assertIsArray( $output );
 		$this->assertCount( 2, $output );
 		$this->assertStringContainsString(
-			'<figure class="embedvideo" data-service="youtube" data-mw-iframeconfig',
+			'<figure class="embedservice" data-service="youtube" data-mw-iframeconfig',
 			$this->resolveHtml( $parser, $output )
 		);
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEVTag
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEV
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::output
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::init
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::addModules
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::makeHtmlFormatConfig
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEVTag
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEV
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::output
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::init
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::addModules
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::makeHtmlFormatConfig
 	 * @return void
 	 * @throws Exception
 	 */
 	public function testParseArgsExample1() {
 		$parser = $this->getParser();
 
-		$output = EmbedVideo::parseEV(
+		$output = EmbedService::parseEV(
 			$parser,
 			$this->getFrame( $parser ),
 			[
@@ -351,26 +351,26 @@ class EmbedVideoTest extends MediaWikiIntegrationTestCase {
 		$this->assertIsArray( $output );
 		$this->assertCount( 2, $output );
 		$this->assertStringContainsString(
-			'<figure class="embedvideo" data-service="youtube" data-mw-iframeconfig',
+			'<figure class="embedservice" data-service="youtube" data-mw-iframeconfig',
 			$this->resolveHtml( $parser, $output )
 		);
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEVTag
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEV
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::output
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::init
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::addModules
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::makeHtmlFormatConfig
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::setAlignment
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEVTag
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEV
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::output
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::init
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::addModules
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::makeHtmlFormatConfig
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::setAlignment
 	 * @return void
 	 * @throws Exception
 	 */
 	public function testParseArgsExample2() {
 		$parser = $this->getParser();
 
-		$output = EmbedVideo::parseEV(
+		$output = EmbedService::parseEV(
 			$parser,
 			$this->getFrame( $parser ),
 			[
@@ -393,25 +393,25 @@ class EmbedVideoTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEVTag
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEV
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::output
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::init
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::addModules
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::makeHtmlFormatConfig
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::setAlignment
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEVTag
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEV
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::output
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::init
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::addModules
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::makeHtmlFormatConfig
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::setAlignment
 	 * @return void
 	 * @throws Exception
 	 */
 	public function testParseArgsExample6() {
 		$this->overrideConfigValues( [
-			'EmbedVideoRequireConsent' => true,
-			'EmbedVideoShowPrivacyNotice' => true,
+			'EmbedServiceRequireConsent' => true,
+			'EmbedServiceShowPrivacyNotice' => true,
 		] );
 
 		$parser = $this->getParser();
 
-		$output = EmbedVideo::parseEV(
+		$output = EmbedService::parseEV(
 			$parser,
 			$this->getFrame( $parser ),
 			[
@@ -428,25 +428,25 @@ class EmbedVideoTest extends MediaWikiIntegrationTestCase {
 		$html = $this->resolveHtml( $parser, $output );
 		$this->assertStringContainsString( '"width":320,"height":320', htmlspecialchars_decode( $html ) );
 		$this->assertStringContainsString(
-			'<div class="embedvideo-loader__title embedvideo-loader__title--manual">Title of the Embed</div>',
+			'<div class="embedservice-loader__title embedservice-loader__title--manual">Title of the Embed</div>',
 			$html
 		);
-		$this->assertStringContainsString( 'class="embedvideo-privacyNotice__link"', $html );
+		$this->assertStringContainsString( 'class="embedservice-privacyNotice__link"', $html );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEVL
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::init
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::addModules
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getIframeConfig
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getPrivacyPolicyUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEVL
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::init
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::addModules
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getIframeConfig
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getPrivacyPolicyUrl
 	 * @return void
 	 * @throws Exception
 	 */
 	public function testParseEVLYouTube() {
 		$parser = $this->getParser();
 
-		$output = EmbedVideo::parseEVL(
+		$output = EmbedService::parseEVL(
 			$parser,
 			$this->getFrame( $parser ),
 			[
@@ -466,16 +466,16 @@ class EmbedVideoTest extends MediaWikiIntegrationTestCase {
 	 * Ensure <evlplayer> without defaultid renders a visible placeholder container
 	 * using the videolink service and the correct player class.
 	 *
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEVLTag
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEV
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::output
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEVLTag
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEV
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::output
 	 * @return void
 	 * @throws Exception
 	 */
 	public function testParseEVLTagPlaceholderWithoutDefaultId() {
 		$parser = $this->getParser();
 
-		$output = EmbedVideo::parseEVLTag(
+		$output = EmbedService::parseEVLTag(
 			'',
 			[
 				'id' => 'p1',
@@ -489,7 +489,7 @@ class EmbedVideoTest extends MediaWikiIntegrationTestCase {
 		$this->assertIsArray( $output );
 		$this->assertCount( 2, $output );
 		$html = $this->resolveHtml( $parser, $output );
-		$this->assertStringContainsString( 'class="embedvideo evlplayer evlplayer-p1"', $html );
+		$this->assertStringContainsString( 'class="embedservice evlplayer evlplayer-p1"', $html );
 		$this->assertStringContainsString( 'data-service="videolink"', $html );
 	}
 
@@ -497,15 +497,15 @@ class EmbedVideoTest extends MediaWikiIntegrationTestCase {
 	 * Ensure the explicit 'player' attribute on <evlplayer> overrides the legacy 'id'
 	 * attribute as the player name, preserving backwards compatibility.
 	 *
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEVLTag
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEV
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEVLTag
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEV
 	 * @return void
 	 * @throws Exception
 	 */
 	public function testParseEVLTagPlayerAttributeOverridesId() {
 		$parser = $this->getParser();
 
-		$output = EmbedVideo::parseEVLTag(
+		$output = EmbedService::parseEVLTag(
 			'',
 			[
 				'id' => 'legacy-id',
@@ -522,7 +522,7 @@ class EmbedVideoTest extends MediaWikiIntegrationTestCase {
 		$this->assertIsArray( $output );
 		$this->assertCount( 2, $output );
 		$this->assertStringContainsString(
-			'class="embedvideo evlplayer evlplayer-explicit-player"',
+			'class="embedservice evlplayer evlplayer-explicit-player"',
 			$this->resolveHtml( $parser, $output )
 		);
 	}

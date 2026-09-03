@@ -1,28 +1,28 @@
 <?php
 /**
- * EmbedVideo
- * ApiEmbedVideo class
+ * EmbedService
+ * ApiEmbedService class
  *
  * @license MIT
- * @package EmbedVideo
- * @link    https://gitlab.com/hydrawiki/extensions/EmbedVideo
+ * @package EmbedService
+ * @link    https://gitlab.com/hydrawiki/extensions/EmbedService
  */
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo;
+namespace MediaWiki\Extension\EmbedService;
 
 use MediaWiki\Api\ApiBase;
 use Wikimedia\ParamValidator\ParamValidator;
 
-class ApiEmbedVideo extends ApiBase {
+class ApiEmbedService extends ApiBase {
 	/**
 	 * Execute the API call.
 	 *
 	 * @return bool
 	 */
 	public function execute(): bool {
-		$ev = new EmbedVideo( null, [
+		$ev = new EmbedService( null, [
 			'service' => $this->getMain()->getVal( 'service' ),
 			'id' => $this->getMain()->getVal( 'id' ),
 			'dimensions' => $this->getMain()->getVal( 'dimensions' ),

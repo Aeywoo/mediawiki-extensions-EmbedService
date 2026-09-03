@@ -2,9 +2,9 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\EmbedService\Tidal;
+namespace MediaWiki\Extension\EmbedService\EmbedService\Tidal;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService;
+use MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService;
 
 class TidalAlbum extends AbstractEmbedService {
 	protected $additionalIframeAttributes = [

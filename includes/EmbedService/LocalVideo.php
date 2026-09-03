@@ -2,10 +2,10 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\EmbedService;
+namespace MediaWiki\Extension\EmbedService\EmbedService;
 
 use MediaTransformOutput;
-use MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput;
+use MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput;
 
 /**
  * This faux service takes a local file for use in EmbedHtmlFormatter

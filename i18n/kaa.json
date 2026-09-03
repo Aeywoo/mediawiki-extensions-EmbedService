@@ -4,11 +4,11 @@
 			"Ajiniyaz Nurniyazov"
 		]
 	},
-	"embedvideo-load": "$1 dı júkleń",
-	"embedvideo-type-audio": "audio",
-	"embedvideo-type-video": "video",
-	"embedvideo-consent-privacy-policy": "Konfidenciallıq siyasatı",
-	"embedvideo-consent-privacy-notice-text": "$1 jeke maǵlıwmatlardı toplawı múmkin.",
-	"embedvideo-consent-privacy-notice-continue": "Dawam etiw",
-	"embedvideo-consent-privacy-notice-dismiss": "Biykarlaw"
+	"embedservice-load": "$1 dı júkleń",
+	"embedservice-type-audio": "audio",
+	"embedservice-type-video": "video",
+	"embedservice-consent-privacy-policy": "Konfidenciallıq siyasatı",
+	"embedservice-consent-privacy-notice-text": "$1 jeke maǵlıwmatlardı toplawı múmkin.",
+	"embedservice-consent-privacy-notice-continue": "Dawam etiw",
+	"embedservice-consent-privacy-notice-dismiss": "Biykarlaw"
 }

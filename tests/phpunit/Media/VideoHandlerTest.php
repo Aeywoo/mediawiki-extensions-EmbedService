@@ -2,25 +2,25 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\Media;
+namespace MediaWiki\Extension\EmbedService\Tests\Media;
 
 use LocalFile;
 use MediaTransformOutput;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoEmbedTransformOutput;
-use MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput;
-use MediaWiki\Extension\EmbedVideo\Media\VideoHandler;
+use MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoEmbedTransformOutput;
+use MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput;
+use MediaWiki\Extension\EmbedService\Media\VideoHandler;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\Utils\UrlUtils;
 use RepoGroup;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class VideoHandlerTest extends \MediaWikiIntegrationTestCase {
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::getParamMap
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::getParamMap
 	 * @return void
 	 */
 	public function testParamMap(): void {
@@ -31,8 +31,8 @@ class VideoHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::validateParam
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::parseTimeString
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::validateParam
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::parseTimeString
 	 * @return void
 	 */
 	public function testValidateParam(): void {
@@ -74,12 +74,12 @@ class VideoHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::normaliseParams
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::normaliseParams
 	 * @return void
 	 */
 	public function testNormaliseParamsSmallerWidth() {
 		$this->overrideConfigValues( [
-			'EmbedVideoLazyLoadLocalVideos' => 'custom-val',
+			'EmbedServiceLazyLoadLocalVideos' => 'custom-val',
 		] );
 
 		$handler = new VideoHandler();
@@ -95,12 +95,12 @@ class VideoHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::normaliseParams
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::normaliseParams
 	 * @return void
 	 */
 	public function testNormaliseParamsCalculatedSize() {
 		$this->overrideConfigValues( [
-			'EmbedVideoDefaultWidth' => 1280,
+			'EmbedServiceDefaultWidth' => 1280,
 		] );
 
 		$handler = new VideoHandler();
@@ -115,7 +115,7 @@ class VideoHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::normaliseParams
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::normaliseParams
 	 * @return void
 	 */
 	public function testNormaliseParamsSquareVideo() {
@@ -134,7 +134,7 @@ class VideoHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::normaliseParams
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::normaliseParams
 	 * @return void
 	 */
 	public function testNormaliseParamsDifferentAspectRatio() {
@@ -153,14 +153,14 @@ class VideoHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::normaliseParams
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::normaliseParams
 	 * @return void
 	 */
 	public function testNormaliseParamsPoster() {
 		$this->markTestSkipped( 'Somehow: Class "MediaWiki\\Title\\TitleFactory" does not exist on MW1_39' );
 
 		$this->overrideConfigValues( [
-			'EmbedVideoLazyLoadLocalVideos' => 'custom-val',
+			'EmbedServiceLazyLoadLocalVideos' => 'custom-val',
 		] );
 
 		$handler = new VideoHandler();
@@ -215,13 +215,13 @@ class VideoHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::doTransform
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::normaliseParams
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::doTransform
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::normaliseParams
 	 * @return void
 	 */
 	public function testDoTransform() {
 		$this->overrideConfigValues( [
-			'EmbedVideoUseEmbedStyleForLocalVideos' => false,
+			'EmbedServiceUseEmbedStyleForLocalVideos' => false,
 		] );
 
 		$handler = new VideoHandler();
@@ -231,13 +231,13 @@ class VideoHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::doTransform
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::normaliseParams
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::doTransform
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::normaliseParams
 	 * @return void
 	 */
 	public function testDoTransformStyled() {
 		$this->overrideConfigValues( [
-			'EmbedVideoUseEmbedStyleForLocalVideos' => true,
+			'EmbedServiceUseEmbedStyleForLocalVideos' => true,
 		] );
 
 		$title = $this->getTitleMock( NS_MAIN );
@@ -256,14 +256,14 @@ class VideoHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::doTransform
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::normaliseParams
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::doTransform
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::normaliseParams
 	 * @return void
 	 */
 	public function testDoTransformStyledOnFilePage(): void {
 		$this->overrideConfigValues( [
-			'EmbedVideoUseEmbedStyleForLocalVideos' => true,
-			'EmbedVideoLazyLoadLocalVideos' => true,
+			'EmbedServiceUseEmbedStyleForLocalVideos' => true,
+			'EmbedServiceLazyLoadLocalVideos' => true,
 		] );
 
 		$title = $this->getTitleMock( NS_FILE );
@@ -279,7 +279,7 @@ class VideoHandlerTest extends \MediaWikiIntegrationTestCase {
 		$file = $this->getVideoFileMock();
 		$output = $handler->doTransform( $file, '', '', [] );
 		$parameters = ( new \ReflectionProperty(
-			\MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput::class,
+			\MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput::class,
 			'parameters'
 		) );
 
@@ -288,13 +288,13 @@ class VideoHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::doTransform
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::normaliseParams
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::doTransform
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::normaliseParams
 	 * @return void
 	 */
 	public function testDoTransformStyledWithoutRequestTitle(): void {
 		$this->overrideConfigValues( [
-			'EmbedVideoUseEmbedStyleForLocalVideos' => true,
+			'EmbedServiceUseEmbedStyleForLocalVideos' => true,
 		] );
 
 		$this->setMwGlobals( [
@@ -311,13 +311,13 @@ class VideoHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::doTransform
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::normaliseParams
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::doTransform
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::normaliseParams
 	 * @return void
 	 */
 	public function testDoTransformStyledNotWhenGif() {
 		$this->overrideConfigValues( [
-			'EmbedVideoUseEmbedStyleForLocalVideos' => true,
+			'EmbedServiceUseEmbedStyleForLocalVideos' => true,
 		] );
 
 		$title = $this->getTitleMock( NS_MAIN );
@@ -339,7 +339,7 @@ class VideoHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::getDimensionsString
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::getDimensionsString
 	 * @return void
 	 */
 	public function testGetDimensionsString() {
@@ -355,7 +355,7 @@ class VideoHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::getDimensionsString
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::getDimensionsString
 	 * @return void
 	 */
 	public function testGetDimensionsStringMissingMetadata() {
@@ -371,7 +371,7 @@ class VideoHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::getShortDesc
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::getShortDesc
 	 * @return void
 	 */
 	public function testGetShortDesc() {
@@ -387,7 +387,7 @@ class VideoHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::getLongDesc
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::getLongDesc
 	 * @return void
 	 */
 	public function testGetLongDesc() {
@@ -416,7 +416,7 @@ class VideoHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::getLongDesc
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::getLongDesc
 	 * @return void
 	 */
 	public function testGetLongDescWithForeignApiFile(): void {
@@ -466,7 +466,7 @@ class VideoHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::getLength
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::getLength
 	 * @return void
 	 */
 	public function testGetLength() {

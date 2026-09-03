@@ -1,18 +1,18 @@
 ( function () {
 	mw.hook( 'wikipage.content' ).add( () => {
-		document.querySelectorAll( '[data-service="local-embed"] .embedvideo-wrapper' ).forEach( ( div ) => {
-			const consentDiv = div.querySelector( '.embedvideo-consent' );
+		document.querySelectorAll( '[data-service="local-embed"] .embedservice-wrapper' ).forEach( ( div ) => {
+			const consentDiv = div.querySelector( '.embedservice-consent' );
 			const video = div.querySelector( 'video' );
-			const fakeButton = div.querySelector( '.embedvideo-loader__fakeButton' );
-			const localEmbedStyle = div.querySelector( '.embedvideo-localEmbedStyle' );
+			const fakeButton = div.querySelector( '.embedservice-loader__fakeButton' );
+			const localEmbedStyle = div.querySelector( '.embedservice-localEmbedStyle' );
 
 			if ( localEmbedStyle !== null && video !== null ) {
 				video.addEventListener( 'play', () => {
-					localEmbedStyle.classList.add( 'embedvideo-localEmbedStyle--hidden' );
+					localEmbedStyle.classList.add( 'embedservice-localEmbedStyle--hidden' );
 				} );
 
 				video.addEventListener( 'ended', () => {
-					localEmbedStyle.classList.remove( 'embedvideo-localEmbedStyle--hidden' );
+					localEmbedStyle.classList.remove( 'embedservice-localEmbedStyle--hidden' );
 				} );
 			}
 
@@ -27,7 +27,7 @@
 				consentDiv.parentElement.removeChild( consentDiv );
 			};
 
-			fakeButton.innerHTML = mw.message( 'embedvideo-play' ).escaped();
+			fakeButton.innerHTML = mw.message( 'embedservice-play' ).escaped();
 
 			video.controls = false;
 

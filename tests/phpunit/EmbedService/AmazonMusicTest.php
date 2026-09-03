@@ -2,14 +2,14 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\EmbedService;
+namespace MediaWiki\Extension\EmbedService\Tests\EmbedService;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\AmazonMusic;
-use MediaWiki\Extension\EmbedVideo\EmbedVideoException;
+use MediaWiki\Extension\EmbedService\EmbedService\AmazonMusic;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class AmazonMusicTest extends MediaWikiIntegrationTestCase {
 
@@ -50,19 +50,19 @@ class AmazonMusicTest extends MediaWikiIntegrationTestCase {
 	private string $invalidUrlId = 'https://amazon.com/albums/B0D9WK6RYX';
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
 	 * @return void
 	 */
 	public function testInvalidId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 
 		new AmazonMusic( $this->invalidId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AmazonMusic::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AmazonMusic::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AmazonMusic::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AmazonMusic::getIdRegex
 	 * @return void
 	 */
 	public function testValidId() {
@@ -72,9 +72,9 @@ class AmazonMusicTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AmazonMusic::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AmazonMusic::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AmazonMusic::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AmazonMusic::getIdRegex
 	 * @return void
 	 */
 	public function testValidUrlId() {
@@ -85,9 +85,9 @@ class AmazonMusicTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AmazonMusic::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AmazonMusic::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AmazonMusic::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AmazonMusic::getIdRegex
 	 * @return void
 	 */
 	public function testValidTrackUrlId() {
@@ -98,9 +98,9 @@ class AmazonMusicTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AmazonMusic::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AmazonMusic::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AmazonMusic::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AmazonMusic::getIdRegex
 	 * @return void
 	 */
 	public function testValidPlaylistUrlId() {
@@ -111,21 +111,21 @@ class AmazonMusicTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AmazonMusic::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AmazonMusic::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AmazonMusic::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AmazonMusic::getIdRegex
 	 * @return void
 	 */
 	public function testInvalidUrlId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 		new AmazonMusic( $this->invalidUrlId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getUrl
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AmazonMusic::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AmazonMusic::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AmazonMusic::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AmazonMusic::getIdRegex
 	 * @return void
 	 */
 	public function testUrl() {
@@ -135,7 +135,7 @@ class AmazonMusicTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AmazonMusic::getServiceKey
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AmazonMusic::getServiceKey
 	 * @return void
 	 */
 	public function testServiceKey() {
@@ -144,7 +144,7 @@ class AmazonMusicTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AmazonMusic::getCSPUrls
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AmazonMusic::getCSPUrls
 	 * @return void
 	 */
 	public function testGetCspUrls() {

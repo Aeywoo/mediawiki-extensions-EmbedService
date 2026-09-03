@@ -2,38 +2,38 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\EmbedService;
+namespace MediaWiki\Extension\EmbedService\EmbedService;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\AppleMusic\AppleMusicAlbum;
-use MediaWiki\Extension\EmbedVideo\EmbedService\AppleMusic\AppleMusicArtist;
-use MediaWiki\Extension\EmbedVideo\EmbedService\AppleMusic\AppleMusicPlaylist;
-use MediaWiki\Extension\EmbedVideo\EmbedService\AppleMusic\AppleMusicTrack;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Deezer\DeezerAlbum;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Deezer\DeezerArtist;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Deezer\DeezerEpisode;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Deezer\DeezerPlaylist;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Deezer\DeezerShow;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Deezer\DeezerTrack;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzAlbum;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzTrack;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Spotify\SpotifyAlbum;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Spotify\SpotifyArtist;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Spotify\SpotifyEpisode;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Spotify\SpotifyPlaylist;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Spotify\SpotifyShow;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Spotify\SpotifyTrack;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalAlbum;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalMix;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalTrack;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalVideo;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Twitch\Twitch;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Twitch\TwitchClip;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Twitch\TwitchVod;
-use MediaWiki\Extension\EmbedVideo\EmbedService\YouTube\YouTube;
-use MediaWiki\Extension\EmbedVideo\EmbedService\YouTube\YouTubeOEmbed;
-use MediaWiki\Extension\EmbedVideo\EmbedService\YouTube\YouTubePlaylist;
-use MediaWiki\Extension\EmbedVideo\EmbedService\YouTube\YouTubeVideoList;
-use MediaWiki\Extension\EmbedVideo\EmbedVideoException;
+use MediaWiki\Extension\EmbedService\EmbedService\AppleMusic\AppleMusicAlbum;
+use MediaWiki\Extension\EmbedService\EmbedService\AppleMusic\AppleMusicArtist;
+use MediaWiki\Extension\EmbedService\EmbedService\AppleMusic\AppleMusicPlaylist;
+use MediaWiki\Extension\EmbedService\EmbedService\AppleMusic\AppleMusicTrack;
+use MediaWiki\Extension\EmbedService\EmbedService\Deezer\DeezerAlbum;
+use MediaWiki\Extension\EmbedService\EmbedService\Deezer\DeezerArtist;
+use MediaWiki\Extension\EmbedService\EmbedService\Deezer\DeezerEpisode;
+use MediaWiki\Extension\EmbedService\EmbedService\Deezer\DeezerPlaylist;
+use MediaWiki\Extension\EmbedService\EmbedService\Deezer\DeezerShow;
+use MediaWiki\Extension\EmbedService\EmbedService\Deezer\DeezerTrack;
+use MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzAlbum;
+use MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzTrack;
+use MediaWiki\Extension\EmbedService\EmbedService\Spotify\SpotifyAlbum;
+use MediaWiki\Extension\EmbedService\EmbedService\Spotify\SpotifyArtist;
+use MediaWiki\Extension\EmbedService\EmbedService\Spotify\SpotifyEpisode;
+use MediaWiki\Extension\EmbedService\EmbedService\Spotify\SpotifyPlaylist;
+use MediaWiki\Extension\EmbedService\EmbedService\Spotify\SpotifyShow;
+use MediaWiki\Extension\EmbedService\EmbedService\Spotify\SpotifyTrack;
+use MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalAlbum;
+use MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalMix;
+use MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalTrack;
+use MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalVideo;
+use MediaWiki\Extension\EmbedService\EmbedService\Twitch\Twitch;
+use MediaWiki\Extension\EmbedService\EmbedService\Twitch\TwitchClip;
+use MediaWiki\Extension\EmbedService\EmbedService\Twitch\TwitchVod;
+use MediaWiki\Extension\EmbedService\EmbedService\YouTube\YouTube;
+use MediaWiki\Extension\EmbedService\EmbedService\YouTube\YouTubeOEmbed;
+use MediaWiki\Extension\EmbedService\EmbedService\YouTube\YouTubePlaylist;
+use MediaWiki\Extension\EmbedService\EmbedService\YouTube\YouTubeVideoList;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 
 final class EmbedServiceFactory {
 
@@ -283,7 +283,7 @@ final class EmbedServiceFactory {
 				return new YouTubeVideoList( $id );
 
 			default:
-				throw new EmbedVideoException( sprintf( 'VideoService "%s" not recognized.', $serviceName ) );
+				throw new EmbedServiceException( sprintf( 'VideoService "%s" not recognized.', $serviceName ) );
 		}
 	}
 

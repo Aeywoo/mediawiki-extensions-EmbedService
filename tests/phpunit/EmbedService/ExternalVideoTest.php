@@ -2,20 +2,20 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\EmbedService;
+namespace MediaWiki\Extension\EmbedService\Tests\EmbedService;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\EmbedServiceFactory;
-use MediaWiki\Extension\EmbedVideo\EmbedService\ExternalVideo;
-use MediaWiki\Extension\EmbedVideo\EmbedVideoException;
+use MediaWiki\Extension\EmbedService\EmbedService\EmbedServiceFactory;
+use MediaWiki\Extension\EmbedService\EmbedService\ExternalVideo;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class ExternalVideoTest extends MediaWikiIntegrationTestCase {
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\ExternalVideo::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\ExternalVideo::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\ExternalVideo::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\ExternalVideo::getUrlRegex
 	 * @return void
 	 */
 	public function testWhitelistedUrl() {
@@ -29,8 +29,8 @@ class ExternalVideoTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\ExternalVideo::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\ExternalVideo::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\ExternalVideo::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\ExternalVideo::getUrlRegex
 	 * @return void
 	 */
 	public function testNonWhitelistedUrl() {
@@ -38,12 +38,12 @@ class ExternalVideoTest extends MediaWikiIntegrationTestCase {
 			'AllowExternalImagesFrom' => 'bar',
 		] );
 
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 		EmbedServiceFactory::newFromName( 'external', 'foo' );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\ExternalVideo::getBaseUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\ExternalVideo::getBaseUrl
 	 * @return void
 	 */
 	public function testGetBaseUrl() {
@@ -57,7 +57,7 @@ class ExternalVideoTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\ExternalVideo::getCSPUrls
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\ExternalVideo::getCSPUrls
 	 * @return void
 	 */
 	public function testGetCspUrls() {

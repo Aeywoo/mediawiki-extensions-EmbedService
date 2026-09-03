@@ -2,14 +2,14 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\EmbedService;
+namespace MediaWiki\Extension\EmbedService\Tests\EmbedService;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\SharePoint;
-use MediaWiki\Extension\EmbedVideo\EmbedVideoException;
+use MediaWiki\Extension\EmbedService\EmbedService\SharePoint;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class SharePointTest extends MediaWikiIntegrationTestCase {
 
@@ -26,9 +26,9 @@ class SharePointTest extends MediaWikiIntegrationTestCase {
 	private string $invalidUrlId = 'https://sub.sharepoint.com/anything.mp4';
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\SharePoint::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\SharePoint::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\SharePoint::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\SharePoint::getIdRegex
 	 * @return void
 	 */
 	public function testValidUrlId() {
@@ -39,13 +39,13 @@ class SharePointTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\SharePoint::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\SharePoint::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\SharePoint::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\SharePoint::getIdRegex
 	 * @return void
 	 */
 	public function testInvalidUrlId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 		new SharePoint( $this->invalidUrlId );
 	}
 }

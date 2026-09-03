@@ -2,9 +2,9 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\EmbedService\Spotify;
+namespace MediaWiki\Extension\EmbedService\EmbedService\Spotify;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService;
+use MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService;
 
 class SpotifyAlbum extends AbstractEmbedService {
 	protected $additionalIframeAttributes = [

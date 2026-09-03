@@ -2,9 +2,9 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz;
+namespace MediaWiki\Extension\EmbedService\EmbedService\Qobuz;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService;
+use MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService;
 
 class QobuzAlbum extends AbstractEmbedService {
 	protected $extraIds = [

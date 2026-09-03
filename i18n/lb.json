@@ -5,16 +5,16 @@
 			"Volvox"
 		]
 	},
-	"embedvideo-load": "$1 lueden",
-	"embedvideo-type-content": "Inhalt",
-	"embedvideo-type-video": "Video",
-	"embedvideo-consent-privacy-policy": "Dateschutzrichtlinnen",
-	"embedvideo-consent-privacy-notice-continue": "Virufueren",
-	"embedvideo-consent-privacy-notice-dismiss": "Verwerfen",
-	"embedvideo-service-localvideo": "Lokale Fichier",
-	"embedvideo-service-externalvideo": "Externe Video",
-	"embedvideo-play": "Video spillen",
-	"embedvideo-error-cantdecode_evu": "Konnt de Video vun $1 net analyséieren",
-	"apihelp-embedvideo-param-service": "Numm vum Service (youtube, twitch, asw.)",
-	"apihelp-embedvideo-param-description": "Beschreiwung vum Video"
+	"embedservice-load": "$1 lueden",
+	"embedservice-type-content": "Inhalt",
+	"embedservice-type-video": "Video",
+	"embedservice-consent-privacy-policy": "Dateschutzrichtlinnen",
+	"embedservice-consent-privacy-notice-continue": "Virufueren",
+	"embedservice-consent-privacy-notice-dismiss": "Verwerfen",
+	"embedservice-service-localvideo": "Lokale Fichier",
+	"embedservice-service-externalvideo": "Externe Video",
+	"embedservice-play": "Video spillen",
+	"embedservice-error-cantdecode_evu": "Konnt de Video vun $1 net analyséieren",
+	"apihelp-embedservice-param-service": "Numm vum Service (youtube, twitch, asw.)",
+	"apihelp-embedservice-param-description": "Beschreiwung vum Video"
 }

@@ -2,15 +2,15 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\EmbedService;
+namespace MediaWiki\Extension\EmbedService\Tests\EmbedService;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\EmbedHtmlFormatter;
-use MediaWiki\Extension\EmbedVideo\EmbedService\EmbedServiceFactory;
+use MediaWiki\Extension\EmbedService\EmbedService\EmbedHtmlFormatter;
+use MediaWiki\Extension\EmbedService\EmbedService\EmbedServiceFactory;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @group EmbedVideo
- * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Alugha
+ * @group EmbedService
+ * @covers \MediaWiki\Extension\EmbedService\EmbedService\Alugha
  */
 class AlughaTest extends MediaWikiIntegrationTestCase {
 	private const VALID_ID = 'b8fe2460-81e1-11eb-8b27-65de6c3aea52';
@@ -19,7 +19,7 @@ class AlughaTest extends MediaWikiIntegrationTestCase {
 	 * A bare UUID is accepted and produces the expected embed src.
 	 */
 	public function testValidIdProducesEmbedUrl(): void {
-		$this->overrideConfigValue( 'EmbedVideoRequireConsent', true );
+		$this->overrideConfigValue( 'EmbedServiceRequireConsent', true );
 
 		$service = EmbedServiceFactory::newFromName( 'alugha', self::VALID_ID );
 		$html = EmbedHtmlFormatter::toHtml( $service );

@@ -2,14 +2,14 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\EmbedService\Qobuz;
+namespace MediaWiki\Extension\EmbedService\Tests\EmbedService\Qobuz;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzTrack;
-use MediaWiki\Extension\EmbedVideo\EmbedVideoException;
+use MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzTrack;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class QobuzTrackTest extends MediaWikiIntegrationTestCase {
 
@@ -44,19 +44,19 @@ class QobuzTrackTest extends MediaWikiIntegrationTestCase {
 	private string $invalidUrlId = 'https://play.qobuz.com/album/123';
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
 	 * @return void
 	 */
 	public function testInvalidId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 
 		new QobuzTrack( $this->invalidId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzTrack::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzTrack::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzTrack::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzTrack::getIdRegex
 	 * @return void
 	 */
 	public function testValidId() {
@@ -66,9 +66,9 @@ class QobuzTrackTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzTrack::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzTrack::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzTrack::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzTrack::getIdRegex
 	 * @return void
 	 */
 	public function testValidUrlId() {
@@ -79,10 +79,10 @@ class QobuzTrackTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getUrl
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzTrack::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzTrack::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzTrack::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzTrack::getIdRegex
 	 * @return void
 	 */
 	public function testValidWidgetUrlId() {
@@ -94,21 +94,21 @@ class QobuzTrackTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzTrack::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzTrack::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzTrack::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzTrack::getIdRegex
 	 * @return void
 	 */
 	public function testInvalidUrlId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 		new QobuzTrack( $this->invalidUrlId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getUrl
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzTrack::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzTrack::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzTrack::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzTrack::getIdRegex
 	 * @return void
 	 */
 	public function testUrl() {
@@ -118,7 +118,7 @@ class QobuzTrackTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzTrack::getServiceKey
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzTrack::getServiceKey
 	 * @return void
 	 */
 	public function testServiceKey() {

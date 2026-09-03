@@ -2,48 +2,48 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests;
+namespace MediaWiki\Extension\EmbedService\Tests;
 
 use Exception;
 use LocalFile;
 use LocalRepo;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Extension\EmbedVideo\EmbedService\EmbedServiceFactory;
-use MediaWiki\Extension\EmbedVideo\EmbedVideoHooks;
-use MediaWiki\Extension\EmbedVideo\Media\AudioHandler;
+use MediaWiki\Extension\EmbedService\EmbedService\EmbedServiceFactory;
+use MediaWiki\Extension\EmbedService\EmbedServiceHooks;
+use MediaWiki\Extension\EmbedService\Media\AudioHandler;
 use MediaWiki\Output\OutputPage;
 use MediaWikiIntegrationTestCase;
 use RepoGroup;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
-class EmbedVideoHooksTest extends MediaWikiIntegrationTestCase {
+class EmbedServiceHooksTest extends MediaWikiIntegrationTestCase {
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideoHooks
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedServiceHooks
 	 * @return void
 	 * @throws Exception
 	 */
 	public function testConstructor() {
-		$hooks = new EmbedVideoHooks(
+		$hooks = new EmbedServiceHooks(
 			$this->getServiceContainer()->getConfigFactory(),
 			$this->getServiceContainer()->getRepoGroup()
 		);
 
-		$this->assertInstanceOf( EmbedVideoHooks::class, $hooks );
+		$this->assertInstanceOf( EmbedServiceHooks::class, $hooks );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideoHooks::onBeforePageDisplay
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedServiceHooks::onBeforePageDisplay
 	 * @return void
 	 * @throws Exception
 	 */
 	public function testNotAddModules() {
 		$this->overrideConfigValues( [
-			'EmbedVideoUseEmbedStyleForLocalVideos' => false,
+			'EmbedServiceUseEmbedStyleForLocalVideos' => false,
 		] );
 
-		$hooks = new EmbedVideoHooks(
+		$hooks = new EmbedServiceHooks(
 			$this->getServiceContainer()->getConfigFactory(),
 			$this->getServiceContainer()->getRepoGroup()
 		);
@@ -57,16 +57,16 @@ class EmbedVideoHooksTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideoHooks::onBeforePageDisplay
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedServiceHooks::onBeforePageDisplay
 	 * @return void
 	 * @throws Exception
 	 */
 	public function testAddModules() {
 		$this->overrideConfigValues( [
-			'EmbedVideoUseEmbedStyleForLocalVideos' => true,
+			'EmbedServiceUseEmbedStyleForLocalVideos' => true,
 		] );
 
-		$hooks = new EmbedVideoHooks(
+		$hooks = new EmbedServiceHooks(
 			$this->getServiceContainer()->getConfigFactory(),
 			$this->getServiceContainer()->getRepoGroup()
 		);
@@ -78,52 +78,52 @@ class EmbedVideoHooksTest extends MediaWikiIntegrationTestCase {
 		$this->assertNotEmpty( $page->getModules() );
 		$this->assertNotEmpty( $page->getModuleStyles() );
 
-		$this->assertEquals( 'ext.embedVideo.overlay', $page->getModules()[0] );
-		$this->assertEquals( 'ext.embedVideo.styles', $page->getModuleStyles()[0] );
+		$this->assertEquals( 'ext.embedService.overlay', $page->getModules()[0] );
+		$this->assertEquals( 'ext.embedService.styles', $page->getModuleStyles()[0] );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideoHooks::setup
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedServiceHooks::setup
 	 * @return void
 	 */
 	public function testAddAudioHandler() {
 		global $wgMediaHandlers;
 
 		$this->overrideConfigValues( [
-			'EmbedVideoEnableAudioHandler' => true,
+			'EmbedServiceEnableAudioHandler' => true,
 		] );
 
-		EmbedVideoHooks::setup();
+		EmbedServiceHooks::setup();
 
 		$this->assertEquals( AudioHandler::class, $wgMediaHandlers['audio/ogg'] );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideoHooks::setup
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedServiceHooks::setup
 	 * @return void
 	 */
 	public function testNotAddAudioHandler() {
 		$this->markTestSkipped( 'Can\'t disable extension setup function' );
 
-		global $wgMediaHandlers, $wgEmbedVideoEnableAudioHandler;
+		global $wgMediaHandlers, $wgEmbedServiceEnableAudioHandler;
 
 		$this->setMwGlobals( [
-			'$wgEmbedVideoEnableAudioHandler' => false,
+			'$wgEmbedServiceEnableAudioHandler' => false,
 		] );
-		$wgEmbedVideoEnableAudioHandler = false;
+		$wgEmbedServiceEnableAudioHandler = false;
 
-		EmbedVideoHooks::setup();
+		EmbedServiceHooks::setup();
 
 		$this->assertNotEquals( AudioHandler::class, $wgMediaHandlers['audio/ogg'] );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideoHooks::onParserFirstCallInit
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedServiceHooks::onParserFirstCallInit
 	 * @return void
 	 * @throws Exception
 	 */
 	public function testAddFunctionHooks() {
-		$hooks = new EmbedVideoHooks(
+		$hooks = new EmbedServiceHooks(
 			$this->getServiceContainer()->getConfigFactory(),
 			$this->getServiceContainer()->getRepoGroup()
 		);
@@ -141,19 +141,19 @@ class EmbedVideoHooksTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideoHooks::onParserFirstCallInit
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\EmbedServiceFactory::getAvailableServices
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedServiceHooks::onParserFirstCallInit
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\EmbedServiceFactory::getAvailableServices
 	 * @return void
 	 * @throws Exception
 	 */
 	public function testAddFunctionHooksPartial() {
 		$this->overrideConfigValues( [
-			'EmbedVideoEnabledServices' => [
+			'EmbedServiceEnabledServices' => [
 				'youtube'
 			]
 		] );
 
-		$hooks = new EmbedVideoHooks(
+		$hooks = new EmbedServiceHooks(
 			$this->getServiceContainer()->getConfigFactory(),
 			$this->getServiceContainer()->getRepoGroup()
 		);
@@ -175,13 +175,13 @@ class EmbedVideoHooksTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideoHooks::onSkinTemplateNavigation__Universal
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedServiceHooks::onSkinTemplateNavigation__Universal
 	 */
 	public function testAddsRefreshMetadataActionForLocalFile(): void {
 		$title = $this->getServiceContainer()->getTitleFactory()->newFromText( 'Test.ogg', NS_FILE );
 		$user = new class {
 			public function isAllowed( string $permission ): bool {
-				return $permission === 'embedvideo-refreshmetadata';
+				return $permission === 'embedservice-refreshmetadata';
 			}
 		};
 
@@ -220,7 +220,7 @@ class EmbedVideoHooksTest extends MediaWikiIntegrationTestCase {
 			}
 
 			public function msg( string $key ) {
-				if ( $key !== 'embedvideo-refreshmetadata-tab' ) {
+				if ( $key !== 'embedservice-refreshmetadata-tab' ) {
 					throw new \InvalidArgumentException( "Unexpected message key: $key" );
 				}
 
@@ -228,7 +228,7 @@ class EmbedVideoHooksTest extends MediaWikiIntegrationTestCase {
 			}
 		};
 
-		$hooks = new EmbedVideoHooks(
+		$hooks = new EmbedServiceHooks(
 			$this->getServiceContainer()->getConfigFactory(),
 			$repoGroup
 		);
@@ -236,10 +236,10 @@ class EmbedVideoHooksTest extends MediaWikiIntegrationTestCase {
 		$links = [ 'actions' => [] ];
 		$hooks->onSkinTemplateNavigation__Universal( $skin, $links );
 
-		$this->assertArrayHasKey( 'embedvideo-refreshmetadata', $links['actions'] );
+		$this->assertArrayHasKey( 'embedservice-refreshmetadata', $links['actions'] );
 		$this->assertStringContainsString(
-			'Special:RefreshEmbedVideoMetadata/Test.ogg',
-			$links['actions']['embedvideo-refreshmetadata']['href']
+			'Special:RefreshEmbedServiceMetadata/Test.ogg',
+			$links['actions']['embedservice-refreshmetadata']['href']
 		);
 	}
 

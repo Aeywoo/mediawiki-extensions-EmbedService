@@ -2,7 +2,7 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz;
+namespace MediaWiki\Extension\EmbedService\EmbedService\Qobuz;
 
 final class QobuzTrack extends QobuzAlbum {
 	/**

@@ -2,18 +2,18 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\Media\FFProbe;
+namespace MediaWiki\Extension\EmbedService\Tests\Media\FFProbe;
 
-use MediaWiki\Extension\EmbedVideo\Media\FFProbe\FormatInfo;
+use MediaWiki\Extension\EmbedService\Media\FFProbe\FormatInfo;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class FormatInfoTest extends MediaWikiIntegrationTestCase {
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FormatInfo
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FormatInfo
 	 * @return void
 	 */
 	public function testConstructor() {
@@ -23,8 +23,8 @@ class FormatInfoTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FormatInfo::getFilePath
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FormatInfo::getFilePath
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FormatInfo::getFilePath
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FormatInfo::getFilePath
 	 * @return void
 	 */
 	public function testGetMissingField() {
@@ -34,10 +34,10 @@ class FormatInfoTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FormatInfo::getField
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FormatInfo::getFilePath
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FormatInfo::getDuration
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FormatInfo::getBitRate
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FormatInfo::getField
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FormatInfo::getFilePath
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FormatInfo::getDuration
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FormatInfo::getBitRate
 	 * @return void
 	 */
 	public function testGetAllMissingFields() {
@@ -49,8 +49,8 @@ class FormatInfoTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FormatInfo::getDuration
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FormatInfo::getField
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FormatInfo::getDuration
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FormatInfo::getField
 	 * @return void
 	 */
 	public function testGetField() {

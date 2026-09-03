@@ -1,4 +1,4 @@
-.embedvideo {
+.embedservice {
 	&-consent {
 		.hidden {
 			opacity: 0;
@@ -81,7 +81,7 @@
 		}
 
 		&:hover {
-			.embedvideo-loader {
+			.embedservice-loader {
 				&__fakeButton {
 					background-color: #36c;
 				}
@@ -103,8 +103,8 @@
 		}
 
 		// When thumbnail presents, change overlay styles
-		+ .embedvideo-overlay {
-			.embedvideo-loader {
+		+ .embedservice-overlay {
+			.embedservice-loader {
 				color: #eaecf0;
 
 				&__title {
@@ -167,10 +167,10 @@
 	}
 }
 
-[ data-service='local-embed' ] .embedvideo-consent {
+[ data-service='local-embed' ] .embedservice-consent {
 	background-color: transparent;
 }
 
-.center .floatnone > .embedvideo {
+.center .floatnone > .embedservice {
 	margin: 0 auto;
 }

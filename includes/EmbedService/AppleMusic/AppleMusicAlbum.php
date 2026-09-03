@@ -2,9 +2,9 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\EmbedService\AppleMusic;
+namespace MediaWiki\Extension\EmbedService\EmbedService\AppleMusic;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService;
+use MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService;
 
 class AppleMusicAlbum extends AbstractEmbedService {
 	protected $additionalIframeAttributes = [

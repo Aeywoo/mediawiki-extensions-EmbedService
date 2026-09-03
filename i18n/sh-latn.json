@@ -4,10 +4,10 @@
 			"Winston Sung"
 		]
 	},
-	"embedvideo-type-audio": "zvuk",
-	"embedvideo-type-content": "sadržaj",
-	"embedvideo-type-video": "video",
-	"embedvideo-consent-privacy-policy": "Politika privatnosti",
-	"embedvideo-consent-privacy-notice-continue": "Nastavi",
-	"embedvideo-consent-privacy-notice-dismiss": "Odbaci"
+	"embedservice-type-audio": "zvuk",
+	"embedservice-type-content": "sadržaj",
+	"embedservice-type-video": "video",
+	"embedservice-consent-privacy-policy": "Politika privatnosti",
+	"embedservice-consent-privacy-notice-continue": "Nastavi",
+	"embedservice-consent-privacy-notice-dismiss": "Odbaci"
 }

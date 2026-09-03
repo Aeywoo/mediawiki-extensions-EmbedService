@@ -1,6 +1,6 @@
 {
-	"name": "starcitizenwiki/embedvideo",
-	"version": "4.1.1",
+	"name": "aeywoo/embedservice",
+	"version": "4.1.2",
 	"type": "mediawiki-extension",
 	"description": "Adds a parser function embedding video from popular sources.",
 	"license": "MIT",
@@ -28,7 +28,7 @@
 		"phan": "phan -d . --long-progress-bar"
 	},
 	"extra": {
-		"installer-name": "EmbedVideo"
+		"installer-name": "EmbedService"
 	},
 	"config": {
 		"allow-plugins": {

@@ -2,20 +2,20 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\EmbedService;
+namespace MediaWiki\Extension\EmbedService\Tests\EmbedService;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\LocalVideo;
-use MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput;
+use MediaWiki\Extension\EmbedService\EmbedService\LocalVideo;
+use MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput;
 use MediaWikiIntegrationTestCase;
 use UnregisteredLocalFile;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class LocalVideoTest extends MediaWikiIntegrationTestCase {
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\LocalVideo
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\LocalVideo::setTitle
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\LocalVideo
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\LocalVideo::setTitle
 	 * @return void
 	 */
 	public function testConstructor() {
@@ -28,9 +28,9 @@ class LocalVideoTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\LocalVideo
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\LocalVideo::getDefaultWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\LocalVideo::getDefaultHeight
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\LocalVideo
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\LocalVideo::getDefaultWidth
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\LocalVideo::getDefaultHeight
 	 * @return void
 	 */
 	public function testGetWidthHeight() {

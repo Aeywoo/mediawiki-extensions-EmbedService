@@ -1,6 +1,6 @@
 {
-	"name": "EmbedVideo",
-	"version": "4.1.1",
+	"name": "EmbedService",
+	"version": "4.1.2",
 	"author": [
 		"[https://www.mediawiki.org/wiki/User:Octfx Octfx]",
 		"[https://www.mediawiki.org/wiki/User:Alistair3149 Alistair3149]",
@@ -9,8 +9,8 @@
 		"Alexia E. Smith",
 		"Cameron M. Chunn"
 	],
-	"url": "https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo",
-	"descriptionmsg": "embedvideo-description",
+	"url": "https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedService",
+	"descriptionmsg": "embedservice-description",
 	"license-name": "MIT",
 	"type": "parserhook",
 	"requires": {
@@ -20,69 +20,69 @@
 		}
 	},
 	"MessagesDirs": {
-		"EmbedVideo": [
+		"EmbedService": [
 			"i18n"
 		]
 	},
 	"ExtensionMessagesFiles": {
-		"EmbedVideoMagic": "EmbedVideo.i18n.magic.php",
-		"EmbedVideoAliases": "EmbedVideo.alias.php"
+		"EmbedServiceMagic": "EmbedService.i18n.magic.php",
+		"EmbedServiceAliases": "EmbedService.alias.php"
 	},
 	"AutoloadNamespaces": {
-		"MediaWiki\\Extension\\EmbedVideo\\": "includes/"
+		"MediaWiki\\Extension\\EmbedService\\": "includes/"
 	},
 	"APIModules": {
-		"embedvideo": "MediaWiki\\Extension\\EmbedVideo\\ApiEmbedVideo"
+		"embedservice": "MediaWiki\\Extension\\EmbedService\\ApiEmbedService"
 	},
 	"ResourceModules": {
-		"ext.embedVideo.messages": {
+		"ext.embedService.messages": {
 			"messages": [
-				"embedvideo-description",
-				"embedvideo-load",
-				"embedvideo-play",
-				"embedvideo-type-audio",
-				"embedvideo-type-content",
-				"embedvideo-type-video",
-				"embedvideo-consent-privacy-policy",
-				"embedvideo-consent-privacy-notice-text",
-				"embedvideo-consent-privacy-notice-continue",
-				"embedvideo-consent-privacy-notice-dismiss",
-				"embedvideo-service-alugha",
-				"embedvideo-service-amazonmusic",
-				"embedvideo-service-aparat",
-				"embedvideo-service-applemusic",
-				"embedvideo-service-archiveorg",
-				"embedvideo-service-bandcamp",
-				"embedvideo-service-bilibili",
-				"embedvideo-service-ccc",
-				"embedvideo-service-dailymotion",
-				"embedvideo-service-deezer",
-				"embedvideo-service-loom",
-				"embedvideo-service-navertv",
-				"embedvideo-service-niconico",
-				"embedvideo-service-podbean",
-				"embedvideo-service-qobuz",
-				"embedvideo-service-reddit",
-				"embedvideo-service-sharepoint",
-				"embedvideo-service-soundcloud",
-				"embedvideo-service-spotify",
-				"embedvideo-service-substack",
-				"embedvideo-service-takhtesefid",
-				"embedvideo-service-tidal",
-				"embedvideo-service-twitch",
-				"embedvideo-service-videolink",
-				"embedvideo-service-vimeo",
-				"embedvideo-service-vk",
-				"embedvideo-service-wistia",
-				"embedvideo-service-youku",
-				"embedvideo-service-youtube",
-				"embedvideo-service-localvideo",
-				"embedvideo-service-externalvideo"
+				"embedservice-description",
+				"embedservice-load",
+				"embedservice-play",
+				"embedservice-type-audio",
+				"embedservice-type-content",
+				"embedservice-type-video",
+				"embedservice-consent-privacy-policy",
+				"embedservice-consent-privacy-notice-text",
+				"embedservice-consent-privacy-notice-continue",
+				"embedservice-consent-privacy-notice-dismiss",
+				"embedservice-service-alugha",
+				"embedservice-service-amazonmusic",
+				"embedservice-service-aparat",
+				"embedservice-service-applemusic",
+				"embedservice-service-archiveorg",
+				"embedservice-service-bandcamp",
+				"embedservice-service-bilibili",
+				"embedservice-service-ccc",
+				"embedservice-service-dailymotion",
+				"embedservice-service-deezer",
+				"embedservice-service-loom",
+				"embedservice-service-navertv",
+				"embedservice-service-niconico",
+				"embedservice-service-podbean",
+				"embedservice-service-qobuz",
+				"embedservice-service-reddit",
+				"embedservice-service-sharepoint",
+				"embedservice-service-soundcloud",
+				"embedservice-service-spotify",
+				"embedservice-service-substack",
+				"embedservice-service-takhtesefid",
+				"embedservice-service-tidal",
+				"embedservice-service-twitch",
+				"embedservice-service-videolink",
+				"embedservice-service-vimeo",
+				"embedservice-service-vk",
+				"embedservice-service-wistia",
+				"embedservice-service-youku",
+				"embedservice-service-youtube",
+				"embedservice-service-localvideo",
+				"embedservice-service-externalvideo"
 			]
 		},
-		"ext.embedVideo.videolink": {
+		"ext.embedService.videolink": {
 			"packageFiles": [
-				"ext.embedVideo.videolink.js",
+				"ext.embedService.videolink.js",
 				"fetchers/fetchFactory.js",
 				"fetchers/queryKeyParser.js",
 				"fetchers/bilibili.js",
@@ -91,16 +91,16 @@
 				"modules/iframe.js"
 			],
 			"styles": [
-				"ext.embedVideo.consent.less",
-				"ext.embedVideo.evl.less"
+				"ext.embedService.consent.less",
+				"ext.embedService.evl.less"
 			],
 			"dependencies": [
 				"mediawiki.storage"
 			]
 		},
-		"ext.embedVideo.consent": {
+		"ext.embedService.consent": {
 			"packageFiles": [
-				"ext.embedVideo.consent.js",
+				"ext.embedService.consent.js",
 				"fetchers/fetchFactory.js",
 				"fetchers/queryKeyParser.js",
 				"fetchers/bilibili.js",
@@ -109,63 +109,63 @@
 				"modules/iframe.js"
 			],
 			"styles": [
-				"ext.embedVideo.consent.less"
+				"ext.embedService.consent.less"
 			],
 			"dependencies": [
 				"mediawiki.storage"
 			]
 		},
-		"ext.embedVideo.overlay": {
+		"ext.embedService.overlay": {
 			"scripts": [
-				"ext.embedVideo.overlay.js"
+				"ext.embedService.overlay.js"
 			],
 			"styles": [
-				"ext.embedVideo.consent.less"
+				"ext.embedService.consent.less"
 			],
 			"messages": [
-				"embedvideo-play"
+				"embedservice-play"
 			]
 		},
-		"ext.embedVideo.styles": {
+		"ext.embedService.styles": {
 			"styles": [
-				"ext.embedVideo.styles.less"
+				"ext.embedService.styles.less"
 			]
 		}
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",
-		"remoteExtPath": "EmbedVideo/resources"
+		"remoteExtPath": "EmbedService/resources"
 	},
 	"config": {
-		"EmbedVideoAddFileExtensions": {
+		"EmbedServiceAddFileExtensions": {
 			"description": "Adds 'flac', 'mkv', 'mov', 'mp3', 'mp4', 'oga', 'ogg', 'ogv', 'wav', 'webm' to $wgFileExtensions.",
 			"value": true
 		},
-		"EmbedVideoEnableVideoHandler": {
+		"EmbedServiceEnableVideoHandler": {
 			"description": "Enables the video handler which displays local videos using the html5 <video> tag.",
 			"value": true
 		},
-		"EmbedVideoLazyLoadLocalVideos": {
+		"EmbedServiceLazyLoadLocalVideos": {
 			"description": "Sets 'preload=none' on every <video> tag.",
 			"value": false
 		},
-		"EmbedVideoUseEmbedStyleForLocalVideos": {
+		"EmbedServiceUseEmbedStyleForLocalVideos": {
 			"description": "Styles local videos like they are embedded",
 			"value": true
 		},
-		"EmbedVideoEnableAudioHandler": {
+		"EmbedServiceEnableAudioHandler": {
 			"description": "Enables the audio handler which displays local videos using the html5 <audio> tag.",
 			"value": true
 		},
-		"EmbedVideoMinWidth": {
+		"EmbedServiceMinWidth": {
 			"description": "Minimum width of the embedded iframe.",
 			"value": null
 		},
-		"EmbedVideoMaxWidth": {
+		"EmbedServiceMaxWidth": {
 			"description": "Maximum width of the embedded iframe.",
 			"value": null
 		},
-		"EmbedVideoDefaultWidth": {
+		"EmbedServiceDefaultWidth": {
 			"description": "Default fallback width",
 			"value": 640
 		},
@@ -173,40 +173,40 @@
 			"description": "Location to ffprobe",
 			"value": "/usr/bin/ffprobe"
 		},
-		"EmbedVideoEnabledServices": {
+		"EmbedServiceEnabledServices": {
 			"description": "List of services to enable, if empty, enable all",
 			"value": []
 		},
-		"EmbedVideoRequireConsent": {
+		"EmbedServiceRequireConsent": {
 			"description": "Explicitly require consent by only loading the iframe after the user clicks play",
 			"value": true
 		},
-		"EmbedVideoFetchExternalThumbnails": {
+		"EmbedServiceFetchExternalThumbnails": {
 			"description": "Fetch video thumbnails by querying the respective external oembed endpoints. This results in a http call.",
 			"value": true
 		},
-		"EmbedVideoShowPrivacyNotice": {
+		"EmbedServiceShowPrivacyNotice": {
 			"description": "Require the user to acknowledge that the external service may collect user data, after giving consent",
 			"value": true
 		}
 	},
 	"ConfigRegistry": {
-		"EmbedVideo": "MediaWiki\\Config\\GlobalVarConfig::newInstance"
+		"EmbedService": "MediaWiki\\Config\\GlobalVarConfig::newInstance"
 	},
 	"AvailableRights": [
-		"embedvideo-refreshmetadata"
+		"embedservice-refreshmetadata"
 	],
 	"GroupPermissions": {
 		"sysop": {
-			"embedvideo-refreshmetadata": true
+			"embedservice-refreshmetadata": true
 		}
 	},
 	"ExtensionFunctions": [
-		"MediaWiki\\Extension\\EmbedVideo\\EmbedVideoHooks::setup"
+		"MediaWiki\\Extension\\EmbedService\\EmbedServiceHooks::setup"
 	],
 	"HookHandlers": {
-		"EmbedVideoHooks": {
-			"class": "MediaWiki\\Extension\\EmbedVideo\\EmbedVideoHooks",
+		"EmbedServiceHooks": {
+			"class": "MediaWiki\\Extension\\EmbedService\\EmbedServiceHooks",
 			"services": [
 				"ConfigFactory",
 				"RepoGroup"
@@ -214,13 +214,13 @@
 		}
 	},
 	"Hooks": {
-		"ParserFirstCallInit": "EmbedVideoHooks",
-		"BeforePageDisplay": "EmbedVideoHooks",
-		"SkinTemplateNavigation::Universal": "EmbedVideoHooks"
+		"ParserFirstCallInit": "EmbedServiceHooks",
+		"BeforePageDisplay": "EmbedServiceHooks",
+		"SkinTemplateNavigation::Universal": "EmbedServiceHooks"
 	},
 	"SpecialPages": {
-		"RefreshEmbedVideoMetadata": {
-			"class": "MediaWiki\\Extension\\EmbedVideo\\Specials\\SpecialRefreshEmbedVideoMetadata",
+		"RefreshEmbedServiceMetadata": {
+			"class": "MediaWiki\\Extension\\EmbedService\\Specials\\SpecialRefreshEmbedServiceMetadata",
 			"services": [
 				"RepoGroup",
 				"TitleFactory"

@@ -2,18 +2,18 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\Media\FFProbe;
+namespace MediaWiki\Extension\EmbedService\Tests\Media\FFProbe;
 
-use MediaWiki\Extension\EmbedVideo\Media\FFProbe\StreamInfo;
+use MediaWiki\Extension\EmbedService\Media\FFProbe\StreamInfo;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class StreamInfoTest extends MediaWikiIntegrationTestCase {
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\StreamInfo
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\StreamInfo
 	 * @return void
 	 */
 	public function testConstructor() {
@@ -23,8 +23,8 @@ class StreamInfoTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\StreamInfo::getWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\StreamInfo::getField
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\StreamInfo::getWidth
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\StreamInfo::getField
 	 * @return void
 	 */
 	public function testGetMissingField() {
@@ -34,16 +34,16 @@ class StreamInfoTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\StreamInfo::getField
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\StreamInfo::getWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\StreamInfo::getType
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\StreamInfo::getCodecName
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\StreamInfo::getCodecLongName
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\StreamInfo::getWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\StreamInfo::getHeight
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\StreamInfo::getBitDepth
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\StreamInfo::getDuration
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\StreamInfo::getBitRate
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\StreamInfo::getField
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\StreamInfo::getWidth
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\StreamInfo::getType
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\StreamInfo::getCodecName
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\StreamInfo::getCodecLongName
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\StreamInfo::getWidth
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\StreamInfo::getHeight
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\StreamInfo::getBitDepth
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\StreamInfo::getDuration
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\StreamInfo::getBitRate
 	 * @return void
 	 */
 	public function testGetAllMissingFields() {
@@ -60,8 +60,8 @@ class StreamInfoTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\StreamInfo::getWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\StreamInfo::getField
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\StreamInfo::getWidth
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\StreamInfo::getField
 	 * @return void
 	 */
 	public function testGetField() {

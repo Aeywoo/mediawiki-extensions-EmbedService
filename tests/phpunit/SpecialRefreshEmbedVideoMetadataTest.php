@@ -2,22 +2,22 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests;
+namespace MediaWiki\Extension\EmbedService\Tests;
 
 use LocalFile;
 use LocalRepo;
-use MediaWiki\Extension\EmbedVideo\Media\AudioHandler;
-use MediaWiki\Extension\EmbedVideo\Specials\SpecialRefreshEmbedVideoMetadata;
+use MediaWiki\Extension\EmbedService\Media\AudioHandler;
+use MediaWiki\Extension\EmbedService\Specials\SpecialRefreshEmbedServiceMetadata;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\SpecialPage\SpecialPage;
 use RepoGroup;
 
 /**
  * @group Database
- * @group EmbedVideo
- * @covers \MediaWiki\Extension\EmbedVideo\Specials\SpecialRefreshEmbedVideoMetadata
+ * @group EmbedService
+ * @covers \MediaWiki\Extension\EmbedService\Specials\SpecialRefreshEmbedServiceMetadata
  */
-class SpecialRefreshEmbedVideoMetadataTest extends \SpecialPageTestBase {
+class SpecialRefreshEmbedServiceMetadataTest extends \SpecialPageTestBase {
 	private RepoGroup $repoGroup;
 	private LocalRepo $localRepo;
 
@@ -30,7 +30,7 @@ class SpecialRefreshEmbedVideoMetadataTest extends \SpecialPageTestBase {
 	}
 
 	protected function newSpecialPage(): SpecialPage {
-		return new SpecialRefreshEmbedVideoMetadata(
+		return new SpecialRefreshEmbedServiceMetadata(
 			$this->repoGroup,
 			$this->getServiceContainer()->getTitleFactory()
 		);
@@ -38,16 +38,16 @@ class SpecialRefreshEmbedVideoMetadataTest extends \SpecialPageTestBase {
 
 	public function testMissingTargetShowsError(): void {
 		$performer = $this->getMutableTestUser()->getUser();
-		$this->overrideUserPermissions( $performer, [ 'embedvideo-refreshmetadata' => true ] );
+		$this->overrideUserPermissions( $performer, [ 'embedservice-refreshmetadata' => true ] );
 
 		[ $html ] = $this->executeSpecialPage( '', null, 'qqx', $performer );
 
-		$this->assertStringContainsString( 'embedvideo-refreshmetadata-missing-target', $html );
+		$this->assertStringContainsString( 'embedservice-refreshmetadata-missing-target', $html );
 	}
 
 	public function testPostedRefreshCallsUpgradeRow(): void {
 		$performer = $this->getMutableTestUser()->getUser();
-		$this->overrideUserPermissions( $performer, [ 'embedvideo-refreshmetadata' => true ] );
+		$this->overrideUserPermissions( $performer, [ 'embedservice-refreshmetadata' => true ] );
 
 		$file = $this->createMock( LocalFile::class );
 		$file->method( 'exists' )->willReturn( true );
@@ -62,6 +62,6 @@ class SpecialRefreshEmbedVideoMetadataTest extends \SpecialPageTestBase {
 
 		[ $html ] = $this->executeSpecialPage( 'Test.ogg', $request, 'qqx', $performer );
 
-		$this->assertStringContainsString( 'embedvideo-refreshmetadata-success', $html );
+		$this->assertStringContainsString( 'embedservice-refreshmetadata-success', $html );
 	}
 }

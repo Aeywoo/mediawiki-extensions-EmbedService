@@ -2,7 +2,7 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\EmbedService\AppleMusic;
+namespace MediaWiki\Extension\EmbedService\EmbedService\AppleMusic;
 
 class AppleMusicPlaylist extends AppleMusicAlbum {
 	/**

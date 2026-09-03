@@ -1,16 +1,16 @@
 <?php
 /**
- * EmbedVideo
- * EmbedVideo OEmbed Class
+ * EmbedService
+ * EmbedService OEmbed Class
  *
  * @license MIT
- * @package EmbedVideo
- * @link    https://www.mediawiki.org/wiki/Extension:EmbedVideo
+ * @package EmbedService
+ * @link    https://www.mediawiki.org/wiki/Extension:EmbedService
  */
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo;
+namespace MediaWiki\Extension\EmbedService;
 
 use JsonException;
 use MediaWiki\MediaWikiServices;
@@ -192,7 +192,7 @@ class OEmbed {
 			'timeout' => $timeout,
 			'connectTimeout' => $timeout,
 			'userAgent' => sprintf(
-				'EmbedVideo/3.0/%s',
+				'EmbedService/3.0/%s',
 				MediaWikiServices::getInstance()->getMainConfig()->get( 'Server' )
 			),
 			'followRedirects' => true,

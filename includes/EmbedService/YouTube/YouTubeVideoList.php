@@ -2,7 +2,7 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\EmbedService\YouTube;
+namespace MediaWiki\Extension\EmbedService\EmbedService\YouTube;
 
 final class YouTubeVideoList extends YouTube {
 	/**

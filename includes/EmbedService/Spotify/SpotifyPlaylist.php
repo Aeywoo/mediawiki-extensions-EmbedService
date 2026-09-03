@@ -2,7 +2,7 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\EmbedService\Spotify;
+namespace MediaWiki\Extension\EmbedService\EmbedService\Spotify;
 
 class SpotifyPlaylist extends SpotifyAlbum {
 	/**

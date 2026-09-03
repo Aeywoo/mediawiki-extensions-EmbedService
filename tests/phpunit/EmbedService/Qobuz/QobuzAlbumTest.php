@@ -2,14 +2,14 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\EmbedService\Qobuz;
+namespace MediaWiki\Extension\EmbedService\Tests\EmbedService\Qobuz;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzAlbum;
-use MediaWiki\Extension\EmbedVideo\EmbedVideoException;
+use MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzAlbum;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class QobuzAlbumTest extends MediaWikiIntegrationTestCase {
 
@@ -44,19 +44,19 @@ class QobuzAlbumTest extends MediaWikiIntegrationTestCase {
 	private string $invalidUrlId = 'https://play.qobuz.com/track/123';
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
 	 * @return void
 	 */
 	public function testInvalidId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 
 		new QobuzAlbum( $this->invalidId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzAlbum::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzAlbum::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzAlbum::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzAlbum::getIdRegex
 	 * @return void
 	 */
 	public function testValidId() {
@@ -66,9 +66,9 @@ class QobuzAlbumTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzAlbum::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzAlbum::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzAlbum::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzAlbum::getIdRegex
 	 * @return void
 	 */
 	public function testValidUrlId() {
@@ -79,10 +79,10 @@ class QobuzAlbumTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getUrl
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzAlbum::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzAlbum::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzAlbum::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzAlbum::getIdRegex
 	 * @return void
 	 */
 	public function testValidWidgetUrlId() {
@@ -94,21 +94,21 @@ class QobuzAlbumTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzAlbum::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzAlbum::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzAlbum::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzAlbum::getIdRegex
 	 * @return void
 	 */
 	public function testInvalidUrlId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 		new QobuzAlbum( $this->invalidUrlId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getUrl
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzAlbum::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzAlbum::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzAlbum::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzAlbum::getIdRegex
 	 * @return void
 	 */
 	public function testUrl() {
@@ -118,7 +118,7 @@ class QobuzAlbumTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzAlbum::getServiceKey
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzAlbum::getServiceKey
 	 * @return void
 	 */
 	public function testServiceKey() {
@@ -127,7 +127,7 @@ class QobuzAlbumTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Qobuz\QobuzAlbum::getCSPUrls
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Qobuz\QobuzAlbum::getCSPUrls
 	 * @return void
 	 */
 	public function testGetCspUrls() {

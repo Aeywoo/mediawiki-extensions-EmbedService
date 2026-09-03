@@ -2,12 +2,12 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Media;
+namespace MediaWiki\Extension\EmbedService\Media;
 
 use MediaHandler;
 use MediaTransformOutput;
-use MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe;
-use MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput;
+use MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe;
+use MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput;
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\MediaWikiServices;
 use stdClass;
@@ -140,12 +140,12 @@ class AudioHandler extends MediaHandler {
 	 * @return bool Success
 	 */
 	public function normaliseParams( $image, &$params ): bool {
-		global $wgEmbedVideoDefaultWidth;
+		global $wgEmbedServiceDefaultWidth;
 
 		if ( isset( $params['width'] ) && $params['width'] > 0 ) {
 			$params['width'] = (int)$params['width'];
 		} else {
-			$params['width'] = $wgEmbedVideoDefaultWidth;
+			$params['width'] = $wgEmbedServiceDefaultWidth;
 		}
 
 		if ( isset( $params['start'] ) ) {
@@ -201,7 +201,7 @@ class AudioHandler extends MediaHandler {
 		}
 
 		return wfMessage(
-			'embedvideo-audio-short-desc',
+			'embedservice-audio-short-desc',
 			$this->contentLanguage->formatTimePeriod( (float)$duration )
 		)->text();
 	}
@@ -220,7 +220,7 @@ class AudioHandler extends MediaHandler {
 		}
 
 		return wfMessage(
-			'embedvideo-audio-short-desc',
+			'embedservice-audio-short-desc',
 			$this->contentLanguage->formatTimePeriod( (float)$duration ),
 			$this->contentLanguage->formatSize( $file->getSize() )
 		)->text();

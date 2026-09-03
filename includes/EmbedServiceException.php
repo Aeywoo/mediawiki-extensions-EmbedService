@@ -1,11 +1,11 @@
 <?php
 
-namespace MediaWiki\Extension\EmbedVideo;
+namespace MediaWiki\Extension\EmbedService;
 
 use Exception;
 use HtmlArmor;
 
-class EmbedVideoException extends Exception {
+class EmbedServiceException extends Exception {
 
 	/**
 	 * @param string|HtmlArmor $msg

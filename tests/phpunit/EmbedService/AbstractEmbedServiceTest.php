@@ -2,15 +2,15 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\EmbedService\YouTube;
+namespace MediaWiki\Extension\EmbedService\Tests\EmbedService\YouTube;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService;
-use MediaWiki\Extension\EmbedVideo\EmbedVideoException;
+use MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWikiIntegrationTestCase;
 use RuntimeException;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	private AbstractEmbedService $service;
@@ -78,8 +78,8 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getDefaultWidth
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getWidth
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getDefaultWidth
 	 * @return void
 	 */
 	public function testGetWidth() {
@@ -87,8 +87,8 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getHeight
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getDefaultHeight
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getHeight
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getDefaultHeight
 	 * @return void
 	 */
 	public function testGetHeight() {
@@ -96,7 +96,7 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getId
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getId
 	 * @return void
 	 */
 	public function testGetId() {
@@ -104,7 +104,7 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getContentType
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getContentType
 	 * @return void
 	 */
 	public function testGetContentType() {
@@ -112,7 +112,7 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getPrivacyPolicyUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getPrivacyPolicyUrl
 	 * @return void
 	 */
 	public function testGetPrivacyPolicyUrl() {
@@ -120,7 +120,7 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getPrivacyPolicyShortText
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getPrivacyPolicyShortText
 	 * @return void
 	 */
 	public function testGetPrivacyPolicyShortText() {
@@ -128,7 +128,7 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getPrivacyPolicyShortText
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getPrivacyPolicyShortText
 	 * @return void
 	 */
 	public function testGetAutoplayParameter() {
@@ -136,7 +136,7 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getServiceKey
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getServiceKey
 	 * @return void
 	 */
 	public function testGetServiceKey() {
@@ -144,7 +144,7 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getServiceName
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getServiceName
 	 * @return void
 	 */
 	public function testGetServiceName() {
@@ -152,7 +152,7 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getDefaultWidth
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getDefaultWidth
 	 * @return void
 	 */
 	public function testGetDefaultWidth() {
@@ -160,7 +160,7 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getDefaultHeight
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getDefaultHeight
 	 * @return void
 	 */
 	public function testGetDefaultHeight() {
@@ -168,7 +168,7 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getCSPUrls
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getCSPUrls
 	 * @return void
 	 */
 	public function testGetCspUrls() {
@@ -176,8 +176,8 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::setWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getWidth
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::setWidth
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getWidth
 	 * @return void
 	 */
 	public function testSetWidth() {
@@ -186,13 +186,13 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::setWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getWidth
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::setWidth
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getWidth
 	 * @return void
 	 */
 	public function testSetWidthNull() {
 		$this->overrideConfigValues( [
-			'EmbedVideoDefaultWidth' => 123,
+			'EmbedServiceDefaultWidth' => 123,
 		] );
 
 		$this->service->setWidth();
@@ -200,13 +200,13 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::setWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getWidth
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::setWidth
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getWidth
 	 * @return void
 	 */
 	public function testSetWidthGreaterMaxWidth() {
 		$this->overrideConfigValues( [
-			'EmbedVideoMaxWidth' => 120,
+			'EmbedServiceMaxWidth' => 120,
 		] );
 
 		$this->service->setWidth( 450 );
@@ -214,13 +214,13 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::setWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getWidth
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::setWidth
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getWidth
 	 * @return void
 	 */
 	public function testSetWidthLowerMinWidth() {
 		$this->overrideConfigValues( [
-			'EmbedVideoMinWidth' => 120,
+			'EmbedServiceMinWidth' => 120,
 		] );
 
 		$this->service->setWidth( 12 );
@@ -228,8 +228,8 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::setHeight
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getHeight
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::setHeight
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getHeight
 	 * @return void
 	 */
 	public function testSetHeight() {
@@ -238,9 +238,9 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::setWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::setHeight
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getHeight
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::setWidth
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::setHeight
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getHeight
 	 * @return void
 	 */
 	public function testSetHeightNull() {
@@ -250,9 +250,9 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::setWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::setHeight
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getHeight
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::setWidth
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::setHeight
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getHeight
 	 * @return void
 	 */
 	public function testSetHeightNullForAudio() {
@@ -286,7 +286,7 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getUrlArgs
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getUrlArgs
 	 * @return void
 	 */
 	public function testGetUrlArgsEmpty() {
@@ -294,8 +294,8 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getUrlArgs
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::setUrlArgs
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getUrlArgs
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::setUrlArgs
 	 * @return void
 	 */
 	public function testSetGetUrlArgs() {
@@ -307,8 +307,8 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::setUrlArgs
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getUrlArgs
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::setUrlArgs
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getUrlArgs
 	 * @return void
 	 */
 	public function testSetUrlArgsEmpty() {
@@ -317,8 +317,8 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::setUrlArgs
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getUrlArgs
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::setUrlArgs
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getUrlArgs
 	 * @return void
 	 */
 	public function testSetUrlArgsStringValid() {
@@ -327,8 +327,8 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::setUrlArgs
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getUrlArgs
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::setUrlArgs
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getUrlArgs
 	 * @return void
 	 */
 	public function testSetUrlArgsStringWithEmpty() {
@@ -337,8 +337,8 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::addIframeAttribute
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getIframeAttributes
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::addIframeAttribute
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getIframeAttributes
 	 * @return void
 	 */
 	public function testSetGetIframeAttributes() {
@@ -348,8 +348,8 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::setTitle
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getTitle
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::setTitle
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getTitle
 	 * @return void
 	 */
 	public function testSetGetTitle() {
@@ -359,8 +359,8 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::setTitle
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getTitle
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::setTitle
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getTitle
 	 * @return void
 	 */
 	public function testSetGetTitleEmpty() {
@@ -370,21 +370,21 @@ class AbstractEmbedServiceTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::setLocalThumb
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::setLocalThumb
 	 * @return void
 	 */
 	public function testSetLocalThumb() {
 		if ( version_compare( MW_VERSION, '1.41.0', '>=' ) ) {
 			$this->expectException( RuntimeException::class );
 		} else {
-			$this->expectException( EmbedVideoException::class );
+			$this->expectException( EmbedServiceException::class );
 		}
 
 		$this->service->setLocalThumb( 'FooFile.jpg' );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getLocalThumb
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getLocalThumb
 	 * @return void
 	 */
 	public function testGetLocalThumb() {

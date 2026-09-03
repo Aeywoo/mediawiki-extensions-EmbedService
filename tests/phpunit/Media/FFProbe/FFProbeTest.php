@@ -2,12 +2,12 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\Media\FFProbe;
+namespace MediaWiki\Extension\EmbedService\Tests\Media\FFProbe;
 
 use Exception;
-use MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe;
-use MediaWiki\Extension\EmbedVideo\Media\FFProbe\FormatInfo;
-use MediaWiki\Extension\EmbedVideo\Media\FFProbe\StreamInfo;
+use MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe;
+use MediaWiki\Extension\EmbedService\Media\FFProbe\FormatInfo;
+use MediaWiki\Extension\EmbedService\Media\FFProbe\StreamInfo;
 use MediaWiki\Shell\Command;
 use MediaWiki\Shell\CommandFactory;
 use MediaWikiIntegrationTestCase;
@@ -16,7 +16,7 @@ use UnregisteredLocalFile;
 use Wikimedia\AtEase\AtEase;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class FFProbeTest extends MediaWikiIntegrationTestCase {
 	/**
@@ -30,7 +30,7 @@ class FFProbeTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe
 	 * @return void
 	 */
 	public function testConstructor() {
@@ -40,9 +40,9 @@ class FFProbeTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::loadMetaData
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::invokeFFProbe
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::getFilePath
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::loadMetaData
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::invokeFFProbe
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::getFilePath
 	 * @return void
 	 */
 	public function testLoadMetadata() {
@@ -58,8 +58,8 @@ class FFProbeTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::loadMetaData
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::invokeFFProbe
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::loadMetaData
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::invokeFFProbe
 	 * @return void
 	 */
 	public function testLoadMetadataNoFfProbe() {
@@ -73,9 +73,9 @@ class FFProbeTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::getStream
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::loadMetaData
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::invokeFFProbe
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::getStream
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::loadMetaData
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::invokeFFProbe
 	 * @return void
 	 * @throws Exception
 	 */
@@ -93,9 +93,9 @@ class FFProbeTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::getFormat
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::loadMetaData
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::invokeFFProbe
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::getFormat
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::loadMetaData
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::invokeFFProbe
 	 * @return void
 	 * @throws Exception
 	 */
@@ -118,9 +118,9 @@ class FFProbeTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::getFormat
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::loadMetaData
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::invokeFFProbe
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::getFormat
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::loadMetaData
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::invokeFFProbe
 	 * @return void
 	 * @throws Exception
 	 */
@@ -136,9 +136,9 @@ class FFProbeTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::getStream
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::loadMetaData
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::invokeFFProbe
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::getStream
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::loadMetaData
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::invokeFFProbe
 	 * @return void
 	 * @throws Exception
 	 */
@@ -164,9 +164,9 @@ class FFProbeTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::getStream
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::loadMetaData
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::invokeFFProbe
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::getStream
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::loadMetaData
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::invokeFFProbe
 	 * @return void
 	 * @throws Exception
 	 */
@@ -193,10 +193,10 @@ class FFProbeTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::getFormat
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::getStream
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::loadMetaData
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\FFProbe\FFProbe::invokeFFProbe
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::getFormat
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::getStream
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::loadMetaData
+	 * @covers \MediaWiki\Extension\EmbedService\Media\FFProbe\FFProbe::invokeFFProbe
 	 * @return void
 	 */
 	public function testProbeMemoizedWithinInstance() {

@@ -2,10 +2,10 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\Media;
+namespace MediaWiki\Extension\EmbedService\Tests\Media;
 
 use LocalFile;
-use MediaWiki\Extension\EmbedVideo\Media\VideoHandler;
+use MediaWiki\Extension\EmbedService\Media\VideoHandler;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
@@ -14,7 +14,7 @@ use MediaWikiIntegrationTestCase;
  * Integration tests verifying that local videos render correctly inside
  * thumb/frame contexts via the full Linker::makeThumbLink2 pipeline.
  *
- * @group EmbedVideo
+ * @group EmbedService
  */
 class LocalVideoFramingTest extends MediaWikiIntegrationTestCase {
 
@@ -67,9 +67,9 @@ class LocalVideoFramingTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::doTransform
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoEmbedTransformOutput::toHtml
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getStyle
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::doTransform
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoEmbedTransformOutput::toHtml
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getStyle
 	 *
 	 * When a video is rendered with |thumb|, the output should:
 	 * 1. Have exactly one <figure> (core's frame), not nested figures
@@ -78,7 +78,7 @@ class LocalVideoFramingTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testThumbVideoFraming(): void {
 		$this->overrideConfigValues( [
-			'EmbedVideoUseEmbedStyleForLocalVideos' => true,
+			'EmbedServiceUseEmbedStyleForLocalVideos' => true,
 		] );
 
 		$file = $this->getVideoFileMock();
@@ -110,10 +110,10 @@ class LocalVideoFramingTest extends MediaWikiIntegrationTestCase {
 		// The embed-style path should NOT generate a second <figure>
 		// Count <figure occurrences — there should be exactly one
 		$this->assertSame( 1, substr_count( $html, '<figure' ),
-			'Should have exactly one <figure> (core\'s), not nested figures from EmbedVideo' );
+			'Should have exactly one <figure> (core\'s), not nested figures from EmbedService' );
 
 		// The embed overlay should still be present for the styled path
-		$this->assertStringContainsString( 'embedvideo-localEmbedStyle', $html,
+		$this->assertStringContainsString( 'embedservice-localEmbedStyle', $html,
 			'Local embed style overlay should be present' );
 
 		// The video element should be present
@@ -121,14 +121,14 @@ class LocalVideoFramingTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::doTransform
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getStyle
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::doTransform
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getStyle
 	 *
-	 * Same test with EmbedVideoUseEmbedStyleForLocalVideos=false (plain VideoTransformOutput path)
+	 * Same test with EmbedServiceUseEmbedStyleForLocalVideos=false (plain VideoTransformOutput path)
 	 */
 	public function testThumbVideoFramingWithoutEmbedStyle(): void {
 		$this->overrideConfigValues( [
-			'EmbedVideoUseEmbedStyleForLocalVideos' => false,
+			'EmbedServiceUseEmbedStyleForLocalVideos' => false,
 		] );
 
 		$file = $this->getVideoFileMock();
@@ -157,14 +157,14 @@ class LocalVideoFramingTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\VideoHandler::doTransform
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoEmbedTransformOutput::toHtml
+	 * @covers \MediaWiki\Extension\EmbedService\Media\VideoHandler::doTransform
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoEmbedTransformOutput::toHtml
 	 *
 	 * When a video is rendered with |frame| (no scaling), framing should still be correct.
 	 */
 	public function testFrameVideoFraming(): void {
 		$this->overrideConfigValues( [
-			'EmbedVideoUseEmbedStyleForLocalVideos' => true,
+			'EmbedServiceUseEmbedStyleForLocalVideos' => true,
 		] );
 
 		$file = $this->getVideoFileMock();

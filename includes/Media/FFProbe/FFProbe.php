@@ -2,7 +2,7 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Media\FFProbe;
+namespace MediaWiki\Extension\EmbedService\Media\FFProbe;
 
 use Exception;
 use JsonException;
@@ -157,7 +157,7 @@ class FFProbe {
 		try {
 			$ffprobeLocation = MediaWikiServices::getInstance()
 				->getConfigFactory()
-				->makeConfig( 'EmbedVideo' )
+				->makeConfig( 'EmbedService' )
 				->get( 'FFProbeLocation' );
 		} catch ( ConfigException $e ) {
 			return null;

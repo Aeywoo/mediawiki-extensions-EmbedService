@@ -2,19 +2,19 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\Media;
+namespace MediaWiki\Extension\EmbedService\Tests\Media;
 
 use File;
-use MediaWiki\Extension\EmbedVideo\Media\AudioHandler;
-use MediaWiki\Extension\EmbedVideo\Media\FFProbe\FormatInfo;
-use MediaWiki\Extension\EmbedVideo\Media\FFProbe\StreamInfo;
-use MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput;
+use MediaWiki\Extension\EmbedService\Media\AudioHandler;
+use MediaWiki\Extension\EmbedService\Media\FFProbe\FormatInfo;
+use MediaWiki\Extension\EmbedService\Media\FFProbe\StreamInfo;
+use MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput;
 use UnregisteredLocalFile;
 
 class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler
 	 * @return void
 	 */
 	public function testConstructor() {
@@ -24,7 +24,7 @@ class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::getParamMap
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::getParamMap
 	 * @return void
 	 */
 	public function testParamMap(): void {
@@ -35,8 +35,8 @@ class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::validateParam
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::parseTimeString
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::validateParam
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::parseTimeString
 	 * @return void
 	 */
 	public function testValidateParam(): void {
@@ -71,7 +71,7 @@ class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::makeParamString
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::makeParamString
 	 * @return void
 	 */
 	public function testMakeParamString(): void {
@@ -82,7 +82,7 @@ class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::parseParamString
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::parseParamString
 	 * @return void
 	 */
 	public function testParseParamString(): void {
@@ -93,7 +93,7 @@ class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::normaliseParams
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::normaliseParams
 	 * @return void
 	 */
 	public function testNormaliseParamsWidth(): void {
@@ -109,12 +109,12 @@ class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::normaliseParams
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::normaliseParams
 	 * @return void
 	 */
 	public function testNormaliseParamsDefaultWidth(): void {
 		$this->overrideConfigValues( [
-			'EmbedVideoDefaultWidth' => 123,
+			'EmbedServiceDefaultWidth' => 123,
 		] );
 
 		$handler = new AudioHandler();
@@ -127,7 +127,7 @@ class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::normaliseParams
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::normaliseParams
 	 * @return void
 	 */
 	public function testNormaliseParamsStart(): void {
@@ -143,7 +143,7 @@ class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::normaliseParams
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::normaliseParams
 	 * @return void
 	 */
 	public function testNormaliseParamsLeadingColonStart(): void {
@@ -159,7 +159,7 @@ class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::normaliseParams
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::normaliseParams
 	 * @return void
 	 */
 	public function testNormaliseParamsInvalidStart(): void {
@@ -175,7 +175,7 @@ class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::normaliseParams
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::normaliseParams
 	 * @return void
 	 */
 	public function testNormaliseParamsEnd(): void {
@@ -191,7 +191,7 @@ class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::normaliseParams
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::normaliseParams
 	 * @return void
 	 */
 	public function testNormaliseParamsInvalidEnd(): void {
@@ -207,8 +207,8 @@ class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::doTransform
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::normaliseParams
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::doTransform
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::normaliseParams
 	 * @return void
 	 */
 	public function testNormaliseParamsDoTransform(): void {
@@ -222,7 +222,7 @@ class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::getDimensionsString
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::getDimensionsString
 	 * @return void
 	 */
 	public function testGetDimensionString(): void {
@@ -231,13 +231,13 @@ class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 		$file = $this->getAudioFileMock( [ 'duration' => '10' ] );
 
 		$this->assertEquals(
-			wfMessage( 'embedvideo-audio-short-desc', 'duration:10' )->plain(),
+			wfMessage( 'embedservice-audio-short-desc', 'duration:10' )->plain(),
 			$handler->getDimensionsString( $file )
 		);
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::getDimensionsString
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::getDimensionsString
 	 * @return void
 	 */
 	public function testGetDimensionStringEmpty(): void {
@@ -249,7 +249,7 @@ class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::getShortDesc
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::getShortDesc
 	 * @return void
 	 */
 	public function testGetShortDesc(): void {
@@ -258,13 +258,13 @@ class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 		$file = $this->getAudioFileMock( [ 'duration' => '10' ], 1000 );
 
 		$this->assertEquals(
-			wfMessage( 'embedvideo-audio-short-desc', 'duration:10', 'size:1000' )->plain(),
+			wfMessage( 'embedservice-audio-short-desc', 'duration:10', 'size:1000' )->plain(),
 			$handler->getShortDesc( $file )
 		);
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::getLongDesc
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::getLongDesc
 	 * @return void
 	 */
 	public function testGetLongDesc(): void {
@@ -287,7 +287,7 @@ class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::getLongDesc
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::getLongDesc
 	 * @return void
 	 */
 	public function testGetLongDescWithForeignApiFile(): void {
@@ -321,7 +321,7 @@ class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::getLength
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::getLength
 	 * @return void
 	 */
 	public function testGetLength(): void {
@@ -332,8 +332,8 @@ class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::getDimensionsString
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::getFFProbeResult
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::getDimensionsString
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::getFFProbeResult
 	 * @return void
 	 */
 	public function testGetSizeAndMetadataEmpty(): void {
@@ -352,8 +352,8 @@ class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::getSizeAndMetadata
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::getFFProbeResult
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::getSizeAndMetadata
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::getFFProbeResult
 	 * @return void
 	 */
 	public function testGetSizeAndMetadata(): void {
@@ -378,8 +378,8 @@ class AudioHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::getSizeAndMetadata
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\AudioHandler::getFFProbeResult
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::getSizeAndMetadata
+	 * @covers \MediaWiki\Extension\EmbedService\Media\AudioHandler::getFFProbeResult
 	 * @return void
 	 */
 	public function testGetSizeAndMetadataStreamAndInfo(): void {

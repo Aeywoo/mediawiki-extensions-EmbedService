@@ -2,18 +2,18 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\Media\TransformOutput;
+namespace MediaWiki\Extension\EmbedService\Tests\Media\TransformOutput;
 
-use MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput;
+use MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput;
 use UnregisteredLocalFile;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class AudioTransformOutputTest extends \MediaWikiIntegrationTestCase {
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput
 	 * @return void
 	 */
 	public function testConstructor() {
@@ -26,11 +26,11 @@ class AudioTransformOutputTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput::toHtml
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput::getWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput::getSrc
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput::getStyle
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput::getDescription
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput::toHtml
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput::getWidth
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput::getSrc
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput::getStyle
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput::getDescription
 	 * @return void
 	 */
 	public function testToHtmlNoParams() {
@@ -46,11 +46,11 @@ class AudioTransformOutputTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput::toHtml
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput::getWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput::getSrc
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput::getStyle
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput::getDescription
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput::toHtml
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput::getWidth
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput::getSrc
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput::getStyle
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput::getDescription
 	 * @return void
 	 */
 	public function testToHtmlNoControls() {
@@ -68,11 +68,11 @@ class AudioTransformOutputTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput::toHtml
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput::getWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput::getSrc
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput::getStyle
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput::getDescription
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput::toHtml
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput::getWidth
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput::getSrc
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput::getStyle
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput::getDescription
 	 * @return void
 	 */
 	public function testToHtmlFullParams() {
@@ -102,7 +102,7 @@ class AudioTransformOutputTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput::toHtml
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput::toHtml
 	 * Ensures that in gallery contexts, width attribute is omitted
 	 * when 'no-dimensions' is set.
 	 * @return void
@@ -121,7 +121,7 @@ class AudioTransformOutputTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\AudioTransformOutput::toHtml
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\AudioTransformOutput::toHtml
 	 * Ensures override-width/override-height behave like gallery sizing flags.
 	 * @return void
 	 */

@@ -2,18 +2,18 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\Media\TransformOutput;
+namespace MediaWiki\Extension\EmbedService\Tests\Media\TransformOutput;
 
-use MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput;
+use MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput;
 use UnregisteredLocalFile;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class VideoTransformOutputTest extends \MediaWikiIntegrationTestCase {
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput
 	 * @return void
 	 */
 	public function testConstructor() {
@@ -26,11 +26,11 @@ class VideoTransformOutputTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::toHtml
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getSrc
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getStyle
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getDescription
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::toHtml
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getWidth
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getSrc
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getStyle
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getDescription
 	 * @return void
 	 */
 	public function testToHtmlNoParams() {
@@ -46,11 +46,11 @@ class VideoTransformOutputTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::toHtml
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getSrc
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getStyle
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getDescription
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::toHtml
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getWidth
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getSrc
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getStyle
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getDescription
 	 * @return void
 	 */
 	public function testToHtmlNoControls() {
@@ -68,11 +68,11 @@ class VideoTransformOutputTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::toHtml
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getSrc
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getStyle
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getDescription
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::toHtml
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getWidth
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getSrc
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getStyle
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getDescription
 	 * @return void
 	 */
 	public function testToHtmlFullParams() {
@@ -102,12 +102,12 @@ class VideoTransformOutputTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::toHtml
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getSrc
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getStyle
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getDescription
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::toHtml
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getWidth
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getSrc
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getStyle
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getDescription
 	 * @return void
 	 */
 	public function testToHtmlFullParamsGif() {
@@ -138,12 +138,12 @@ class VideoTransformOutputTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::toHtml
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getSrc
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getStyle
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getDescription
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::toHtml
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getWidth
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getSrc
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getStyle
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getDescription
 	 * @return void
 	 */
 	public function testToHtmlParamsLazy() {
@@ -160,7 +160,7 @@ class VideoTransformOutputTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::getStyle
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::getStyle
 	 * Ensures video uses height:auto (not fixed px) so it scales proportionally
 	 * when max-width constrains the width inside a thumb frame.
 	 * @return void
@@ -180,7 +180,7 @@ class VideoTransformOutputTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::toHtml
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::toHtml
 	 * Ensures that in gallery contexts, width/height attributes are omitted
 	 * and style does not include fixed width/height when 'no-dimensions' is set.
 	 * @return void
@@ -205,7 +205,7 @@ class VideoTransformOutputTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput::toHtml
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput::toHtml
 	 * Ensures override-width/override-height behave like gallery sizing flags.
 	 * @return void
 	 */

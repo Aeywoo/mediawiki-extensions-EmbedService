@@ -12,7 +12,7 @@
 		not follow lowerCamelCase.
 	-->
 	<rule ref="MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName">
-		<exclude-pattern>*/includes/EmbedVideoHooks.php</exclude-pattern>
+		<exclude-pattern>*/includes/EmbedServiceHooks.php</exclude-pattern>
 	</rule>
 	<file>.</file>
 	<arg name="extensions" value="php"/>

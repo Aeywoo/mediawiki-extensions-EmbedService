@@ -2,18 +2,18 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\EmbedService;
+namespace MediaWiki\Extension\EmbedService\Tests\EmbedService;
 
 use Exception;
-use MediaWiki\Extension\EmbedVideo\EmbedService\SoundCloud;
-use MediaWiki\Extension\EmbedVideo\EmbedVideo;
-use MediaWiki\Extension\EmbedVideo\EmbedVideoException;
+use MediaWiki\Extension\EmbedService\EmbedService\SoundCloud;
+use MediaWiki\Extension\EmbedService\EmbedService;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Parser\PPCustomFrame_Hash;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class SoundCloudTest extends MediaWikiIntegrationTestCase {
 
@@ -42,19 +42,19 @@ class SoundCloudTest extends MediaWikiIntegrationTestCase {
 	private string $invalidUrlId = 'https://soundcloud.com/some-link';
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
 	 * @return void
 	 */
 	public function testInvalidId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 
 		new SoundCloud( $this->invalidId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\SoundCloud::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\SoundCloud::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\SoundCloud::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\SoundCloud::getIdRegex
 	 * @return void
 	 */
 	public function testValidId() {
@@ -64,9 +64,9 @@ class SoundCloudTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\SoundCloud::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\SoundCloud::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\SoundCloud::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\SoundCloud::getIdRegex
 	 * @return void
 	 */
 	public function testValidUrlId() {
@@ -77,21 +77,21 @@ class SoundCloudTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\SoundCloud::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\SoundCloud::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\SoundCloud::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\SoundCloud::getIdRegex
 	 * @return void
 	 */
 	public function testInvalidUrlId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 		new SoundCloud( $this->invalidUrlId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getUrl
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\SoundCloud::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\SoundCloud::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\SoundCloud::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\SoundCloud::getIdRegex
 	 * @return void
 	 */
 	public function testUrl() {
@@ -101,7 +101,7 @@ class SoundCloudTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\SoundCloud::getBaseUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\SoundCloud::getBaseUrl
 	 * @return void
 	 */
 	public function testGetBaseUrl() {
@@ -115,9 +115,9 @@ class SoundCloudTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\SoundCloud::getAspectRatio
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\SoundCloud::getDefaultWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\SoundCloud::getDefaultHeight
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\SoundCloud::getAspectRatio
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\SoundCloud::getDefaultWidth
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\SoundCloud::getDefaultHeight
 	 * @return void
 	 */
 	public function testGetAspectRatio() {
@@ -130,9 +130,9 @@ class SoundCloudTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\SoundCloud::getAspectRatio
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\SoundCloud::getDefaultWidth
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\SoundCloud::getDefaultHeight
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\SoundCloud::getAspectRatio
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\SoundCloud::getDefaultWidth
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\SoundCloud::getDefaultHeight
 	 * @return void
 	 */
 	public function testGetContentType() {
@@ -142,9 +142,9 @@ class SoundCloudTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getUrl
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEVU
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEVU
 	 * @return void
 	 * @throws Exception
 	 */
@@ -153,7 +153,7 @@ class SoundCloudTest extends MediaWikiIntegrationTestCase {
 		$parser->setOptions( ParserOptions::newFromAnon() );
 		$parser->clearState();
 
-		$out = EmbedVideo::parseEVU(
+		$out = EmbedService::parseEVU(
 			$parser, new PPCustomFrame_Hash( $parser->getPreprocessor(), [] ), [
 			$this->validUrlId
 		] );

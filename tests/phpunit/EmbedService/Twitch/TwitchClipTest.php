@@ -2,14 +2,14 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\EmbedService\Spotify;
+namespace MediaWiki\Extension\EmbedService\Tests\EmbedService\Spotify;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\Twitch\TwitchClip;
-use MediaWiki\Extension\EmbedVideo\EmbedVideoException;
+use MediaWiki\Extension\EmbedService\EmbedService\Twitch\TwitchClip;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class TwitchClipTest extends MediaWikiIntegrationTestCase {
 
@@ -38,19 +38,19 @@ class TwitchClipTest extends MediaWikiIntegrationTestCase {
 	private string $invalidUrlId = 'https://twitch.tv/!vid#eo';
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
 	 * @return void
 	 */
 	public function testInvalidId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 
 		new TwitchClip( $this->invalidId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Twitch\TwitchClip::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Twitch\TwitchClip::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Twitch\TwitchClip::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Twitch\TwitchClip::getIdRegex
 	 * @return void
 	 */
 	public function testValidId() {
@@ -60,9 +60,9 @@ class TwitchClipTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Twitch\TwitchClip::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Twitch\TwitchClip::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Twitch\TwitchClip::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Twitch\TwitchClip::getIdRegex
 	 * @return void
 	 */
 	public function testValidUrlId() {
@@ -73,21 +73,21 @@ class TwitchClipTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Twitch\TwitchClip::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Twitch\TwitchClip::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Twitch\TwitchClip::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Twitch\TwitchClip::getIdRegex
 	 * @return void
 	 */
 	public function testInvalidUrlId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 		new TwitchClip( $this->invalidUrlId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Twitch\TwitchClip::getUrl
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Twitch\TwitchClip::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Twitch\TwitchClip::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Twitch\TwitchClip::getUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Twitch\TwitchClip::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Twitch\TwitchClip::getIdRegex
 	 * @return void
 	 */
 	public function testUrl() {

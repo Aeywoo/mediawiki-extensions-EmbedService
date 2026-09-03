@@ -1,17 +1,17 @@
 <?php
 /**
- * EmbedVideo
+ * EmbedService
  * AudioTransformOutput Class
  *
  * @author  Alexia E. Smith
  * @license MIT
- * @package EmbedVideo
- * @link    https://www.mediawiki.org/wiki/Extension:EmbedVideo
+ * @package EmbedService
+ * @link    https://www.mediawiki.org/wiki/Extension:EmbedService
  */
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Media\TransformOutput;
+namespace MediaWiki\Extension\EmbedService\Media\TransformOutput;
 
 use MediaTransformOutput;
 use MediaWiki\FileRepo\File\File;

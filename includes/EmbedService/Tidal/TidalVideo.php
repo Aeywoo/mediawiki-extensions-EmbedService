@@ -2,7 +2,7 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\EmbedService\Tidal;
+namespace MediaWiki\Extension\EmbedService\EmbedService\Tidal;
 
 final class TidalVideo extends TidalAlbum {
 	/**

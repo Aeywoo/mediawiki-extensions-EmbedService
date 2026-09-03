@@ -2,18 +2,18 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\Media\TransformOutput;
+namespace MediaWiki\Extension\EmbedService\Tests\Media\TransformOutput;
 
-use MediaWiki\Extension\EmbedVideo\Media\TransformOutput\ExternalVideoTransformOutput;
+use MediaWiki\Extension\EmbedService\Media\TransformOutput\ExternalVideoTransformOutput;
 use UnregisteredLocalFile;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class ExternalVideoTransformOutputTest extends \MediaWikiIntegrationTestCase {
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\ExternalVideoTransformOutput
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\ExternalVideoTransformOutput
 	 * @return void
 	 */
 	public function testConstructor() {
@@ -26,7 +26,7 @@ class ExternalVideoTransformOutputTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\Media\TransformOutput\ExternalVideoTransformOutput::setUrl
+	 * @covers \MediaWiki\Extension\EmbedService\Media\TransformOutput\ExternalVideoTransformOutput::setUrl
 	 * @return void
 	 */
 	public function testSetUrl() {

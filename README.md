@@ -1,41 +1,41 @@
 <p align="center">
-    <a href="https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo/releases/latest" alt="Latest Release">
-        <img src="https://img.shields.io/github/v/release/starcitizenwiki/mediawiki-extensions-EmbedVideo" />
+    <a href="https://github.com/Aeywoo/mediawiki-extensions-EmbedService/releases/latest" alt="Latest Release">
+        <img src="https://img.shields.io/github/v/release/aeywoo/mediawiki-extensions-EmbedService" />
     </a>
-    <a href="https://packagist.org/packages/starcitizenwiki/embedvideo" alt="Packagist">
-        <img src="https://img.shields.io/badge/packagist-starcitizenwiki%2Fembedvideo-green" />
+    <a href="https://packagist.org/packages/aeywoo/embedservice" alt="Packagist">
+        <img src="https://img.shields.io/badge/packagist-starcitizenwiki%2Fembedservice-green" />
     </a>
-    <a href="https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo/issues/new?assignees=&labels=enhancement&template=embed-service-request.md&title=Embed+Service+Request%3A+Service+Name" alt="Request new service">
+    <a href="https://github.com/Aeywoo/mediawiki-extensions-EmbedService/issues/new?assignees=&labels=enhancement&template=embed-service-request.md&title=Embed+Service+Request%3A+Service+Name" alt="Request new service">
         <img src="https://img.shields.io/badge/request-new%20service-informational" />
     </a>
 </p>
 
-# Extension Embed Video
+# Extension Embed Service
 
 ![](docs/example-cover.png)![](docs/example-consent.png)
 
-The EmbedVideo Extension is a MediaWiki extension which adds a parser function called `#ev` and various parser tags like `<youtube>` for embedding video clips from various video sharing services.
+The EmbedService Extension is a MediaWiki extension which adds a parser function called `#ev` and various parser tags like `<youtube>` for embedding video clips from various video sharing services.
 It also adds video and audio media handlers to support transforming standard `[[File:Example.mp4]]` file links into embedded HTML5 `<video>` and `<audio>` tags.
 
 This privacy enhanced fork adds a toggleable setting that only loads external content _after_ the user gave explicit consent by clicking the video.
-Do note that thumbnails are still fetched from the respective service, which results in a connection to an external url. This behaviour can be disabled by setting `$wgEmbedVideoFetchExternalThumbnails` to `false`.
+Do note that thumbnails are still fetched from the respective service, which results in a connection to an external url. This behaviour can be disabled by setting `$wgEmbedServiceFetchExternalThumbnails` to `false`.
 
 
 Issues, bug reports, and feature requests may be created at the issue tracker:
 
-https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo/issues
+https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedService/issues
 
 The original MediaWiki extension page is located at:
 
-https://www.mediawiki.org/wiki/Extension:EmbedVideo
+https://www.mediawiki.org/wiki/Extension:EmbedService
 
 ## History
 
-Large parts of the codebase are taken from [Extension:EmbedVideo v2.9.0](https://gitlab.com/hydrawiki/extensions/EmbedVideo/-/releases/v2.9.0).
+Large parts of the codebase are taken from [Extension:EmbedService v2.9.0](https://gitlab.com/hydrawiki/extensions/EmbedService/-/releases/v2.9.0).
 
 # License
 
-EmbedVideo is released under the MIT license
+EmbedService is released under the MIT license
 
 http://www.opensource.org/licenses/mit-license.php
 
@@ -45,10 +45,10 @@ See LICENSE for more details
 
 ## Download
 
-There are three places to download the EmbedVideo extension. The first is directly from its GitHub project page, where active development takes place.  If you have git, you can use this incantation to check out a read-only copy of the extension source:
+There are three places to download the EmbedService extension. The first is directly from its GitHub project page, where active development takes place.  If you have git, you can use this incantation to check out a read-only copy of the extension source:
 
 ```
-git clone https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo.git
+git clone https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedService.git
 ```
 
 Downloadable archive packages for numbered releases will also be available from the github project page.
@@ -56,14 +56,14 @@ Downloadable archive packages for numbered releases will also be available from 
 ## Installation Instructions
 
 1. Download the contents of the extension, as outlined above.
-2. Create an EmbedVideo folder in the extensions/ folder of your MediaWiki installation.
+2. Create an EmbedService folder in the extensions/ folder of your MediaWiki installation.
 3. Copy the contents of this distribution into that folder
 4. Install FFmpeg, when using the local video handler (enabled by default)
 
 Add the following line to your LocalSettings.php:
 
 ```php
-wfLoadExtension("EmbedVideo");
+wfLoadExtension("EmbedService");
 ```
 
 # Usage
@@ -107,7 +107,7 @@ Options only available for video files:
   * Special option that sets autoplay, muted, loop and nocontrols
     e.g. makes the video behave like a gif
 
-When `$wgEmbedVideoUseEmbedStyleForLocalVideos` is enabled two additional options are available
+When `$wgEmbedServiceUseEmbedStyleForLocalVideos` is enabled two additional options are available
 * title
   * Title of the video
 * description
@@ -115,14 +115,14 @@ When `$wgEmbedVideoUseEmbedStyleForLocalVideos` is enabled two additional option
 
 ### Refreshing local metadata
 If stored metadata for a local audio or video file needs to be rebuilt, users with the
-`embedvideo-refreshmetadata` right can use the `Refresh metadata` action on the `File:` page.
+`EmbedService-refreshmetadata` right can use the `Refresh metadata` action on the `File:` page.
 
-This runs an explicit metadata refresh for local EmbedVideo-managed files and is intended for
+This runs an explicit metadata refresh for local EmbedService-managed files and is intended for
 admin use on installations where running maintenance scripts is not practical.
 
 ## Tags
 
-The EmbedVideo parser function expects to be called in any of the following ways:
+The EmbedService parser function expects to be called in any of the following ways:
 
 ### \#ev - Classic Parser Tag
 
@@ -150,19 +150,19 @@ Alternatively each parameter can be used in any order as a named parameter. The 
 * `width`
 * `height`
 * `poster` / `cover`
-  * This only has an effect if `$wgEmbedVideoRequireConsent` is set to true
+  * This only has an effect if `$wgEmbedServiceRequireConsent` is set to true
 * `title`
-  * This only has an effect if `$wgEmbedVideoRequireConsent` is set to true
+  * This only has an effect if `$wgEmbedServiceRequireConsent` is set to true
 
 **Do note** mixing named and unnamed parameters will require you to add all unnamed parameters (and blanks) in the previously mentioned order.
 E.g. using named id and unnamed description `{{#ev:service||||This is the Description|id=abc}}`/ `{{#ev:service|id=abc|||This is the Description}}`
 
-### \#evu - Embed Video Url
+### \#evu - Embed Service Url
 The `{{#evu}}` parser function tries to extract the service from the host name of an url.
 
 It takes the same arguments as `{{#ev}}`.
 
-### \#evl - Embed Video Link
+### \#evl - Embed Service Link
 The support for `{{#evl}} / {{#vlink}}` and `<evlplayer> / <vplayer>` has been added with version 3.4.0.
 
 The link parser function takes the following arguments:
@@ -176,13 +176,13 @@ Named arguments can be passed in any order, unnamed args must be passed in the o
 #### \<evlplayer> / \<vplayer>
 The corresponding player that plays the videos defined by `{{#evl}}` links.
 
-Note that this implementation differs from EmbedVideo v2.x in the following areas:
+Note that this implementation differs from EmbedService v2.x in the following areas:
 * No `default content` is supported, i.e. text inside the tags
 * If no `defaultid` is provided, the player displays a visible placeholder container (service=`videolink`) until a link is clicked
   * This restores legacy usage where a single player sits above a list of links
 * No `style` attribute can be set
 * Video lists are not supported
-* This currently disregards `$wgEmbedVideoFetchExternalThumbnails` and will fetch thumbnails upon clicking a link
+* This currently disregards `$wgEmbedServiceFetchExternalThumbnails` and will fetch thumbnails upon clicking a link
 
 ### Example
 ```mediawiki
@@ -196,7 +196,7 @@ Shows a YouTube embed for the video `pSsYTj9kCHE` and two video links, one for a
 When `defaultid` is omitted, a placeholder player is shown until a link is clicked. You can style this placeholder via CSS, e.g.:
 
 ```css
-.embedvideo.evlplayer[data-service="videolink"] .embedvideo-wrapper {
+.embedservice.evlplayer[data-service="videolink"] .embedservice-wrapper {
   background: #000; /* visible area before a link is clicked */
 }
 ```
@@ -276,7 +276,7 @@ or
 
 ## Supported Services
 
-As of version 3.x, EmbedVideo supports embedding video content from the following services:
+As of version 3.x, EmbedService supports embedding video, audio, and content from the following services:
 
 | Site                                                     | Service Name(s)                     | ID Example                              | URL Example(s)                                                                                       |
 |----------------------------------------------------------|-------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -328,27 +328,27 @@ As of version 3.x, EmbedVideo supports embedding video content from the followin
 
 ### New Services
 
-New services can be requested by using the following [link](https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo/issues/new?assignees=&labels=enhancement&template=embed-service-request.md&title=Embed+Service+Request%3A+Service+Name) or clicking `New Issue`.
+New services can be requested by using the following [link](https://github.com/Aeywoo/mediawiki-extensions-EmbedService/issues/new?assignees=&labels=enhancement&template=embed-service-request.md&title=Embed+Service+Request%3A+Service+Name) or clicking `New Issue`.
 
 # Configuration Settings
 
 | Variable                                 | Default Value    | Description                                                                                                                                                       |
 |------------------------------------------|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| $wgEmbedVideoAddFileExtensions           | true             | Boolean - Enable or disable adding video/audio file extensions to the list of allowable files to be uploaded.                                                     |
-| $wgEmbedVideoEnableVideoHandler          | true             | Boolean - Enable or disable the video media handlers for displaying embedded video in articles.                                                                   |
-| $wgEmbedVideoEnableAudioHandler          | true             | Boolean - Enable or disable the audio media handlers for displaying embedded audio in articles.                                                                   |
-| $wgEmbedVideoLazyLoadLocalVideos         | false            | Boolean - Sets 'preload="none"' on every <video> element, if the local video handler is enabled.                                                                  |
-| $wgEmbedVideoUseEmbedStyleForLocalVideos | false            | Boolean - Styles local videos like they are embedded content. DO NOTE: When changing this, every page with a local video needs to be updated in the parser cache! |
-| $wgEmbedVideoDefaultWidth                | 320              | Integer - Globally override the default width of video players. When not set this uses the video service's default width which is typically 640 pixels.           |
-| $wgEmbedVideoMinWidth                    | null             | Integer - Minimum width of video players. Widths specified below this value will be automatically bounded to it.                                                  |
-| $wgEmbedVideoMaxWidth                    | null             | Integer - Maximum width of video players. Widths specified above this value will be automatically bounded to it.                                                  |
+| $wgEmbedServiceAddFileExtensions           | true             | Boolean - Enable or disable adding video/audio file extensions to the list of allowable files to be uploaded.                                                     |
+| $wgEmbedServiceEnableVideoHandler          | true             | Boolean - Enable or disable the video media handlers for displaying embedded video in articles.                                                                   |
+| $wgEmbedServiceEnableAudioHandler          | true             | Boolean - Enable or disable the audio media handlers for displaying embedded audio in articles.                                                                   |
+| $wgEmbedServiceLazyLoadLocalVideos         | false            | Boolean - Sets 'preload="none"' on every <video> element, if the local video handler is enabled.                                                                  |
+| $wgEmbedServiceUseEmbedStyleForLocalVideos | false            | Boolean - Styles local videos like they are embedded content. DO NOTE: When changing this, every page with a local video needs to be updated in the parser cache! |
+| $wgEmbedServiceDefaultWidth                | 320              | Integer - Globally override the default width of video players. When not set this uses the video service's default width which is typically 640 pixels.           |
+| $wgEmbedServiceMinWidth                    | null             | Integer - Minimum width of video players. Widths specified below this value will be automatically bounded to it.                                                  |
+| $wgEmbedServiceMaxWidth                    | null             | Integer - Maximum width of video players. Widths specified above this value will be automatically bounded to it.                                                  |
 | $wgFFprobeLocation                       | /usr/bin/ffprobe | String  - Set the location of the ffprobe binary.                                                                                                                 |
-| $wgEmbedVideoEnabledServices             | null             | Array   - Array of service names that are allowed, if empty all services are available.                                                                           |
-| $wgEmbedVideoRequireConsent              | true             | Boolean - Set to true to _only_ load the iframe if the user clicks it.                                                                                            |
-| $wgEmbedVideoFetchExternalThumbnails     | true             | Boolean - Set to false to disable fetching video thumbnails from the external video provider. Currently only works for YouTube and Vimeo.                         |
+| $wgEmbedServiceEnabledServices             | null             | Array   - Array of service names that are allowed, if empty all services are available.                                                                           |
+| $wgEmbedServiceRequireConsent              | true             | Boolean - Set to true to _only_ load the iframe if the user clicks it.                                                                                            |
+| $wgEmbedServiceFetchExternalThumbnails     | true             | Boolean - Set to false to disable fetching video thumbnails from the external video provider. Currently only works for YouTube and Vimeo.                         |
 
 # Credits
 
-The original version of EmbedVideo was written by Jim R. Wilson.  Additional major upgrades made by Andrew Whitworth, Alexia E. Smith, and other contributors.
+The original version of EmbedService was written by Jim R. Wilson.  Additional major upgrades made by Andrew Whitworth, Alexia E. Smith, and other contributors.
 
 See [CREDITS](CREDITS.md) for details

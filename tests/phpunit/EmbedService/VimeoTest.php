@@ -2,18 +2,18 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\EmbedService;
+namespace MediaWiki\Extension\EmbedService\Tests\EmbedService;
 
 use Exception;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Vimeo;
-use MediaWiki\Extension\EmbedVideo\EmbedVideo;
-use MediaWiki\Extension\EmbedVideo\EmbedVideoException;
+use MediaWiki\Extension\EmbedService\EmbedService\Vimeo;
+use MediaWiki\Extension\EmbedService\EmbedService;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Parser\PPCustomFrame_Hash;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class VimeoTest extends MediaWikiIntegrationTestCase {
 
@@ -42,19 +42,19 @@ class VimeoTest extends MediaWikiIntegrationTestCase {
 	private string $invalidUrlId = 'https://vimeo.com/videos/some-link';
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
 	 * @return void
 	 */
 	public function testInvalidId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 
 		new Vimeo( $this->invalidId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Vimeo::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Vimeo::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Vimeo::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Vimeo::getIdRegex
 	 * @return void
 	 */
 	public function testValidId() {
@@ -64,9 +64,9 @@ class VimeoTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Vimeo::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Vimeo::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Vimeo::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Vimeo::getIdRegex
 	 * @return void
 	 */
 	public function testValidUrlId() {
@@ -77,21 +77,21 @@ class VimeoTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Vimeo::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Vimeo::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Vimeo::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Vimeo::getIdRegex
 	 * @return void
 	 */
 	public function testInvalidUrlId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 		new Vimeo( $this->invalidUrlId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getUrl
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Vimeo::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Vimeo::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Vimeo::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Vimeo::getIdRegex
 	 * @return void
 	 */
 	public function testUrl() {
@@ -101,9 +101,9 @@ class VimeoTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getUrl
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEVU
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEVU
 	 * @return void
 	 * @throws Exception
 	 */
@@ -112,7 +112,7 @@ class VimeoTest extends MediaWikiIntegrationTestCase {
 		$parser->setOptions( ParserOptions::newFromAnon() );
 		$parser->clearState();
 
-		$out = EmbedVideo::parseEVU(
+		$out = EmbedService::parseEVU(
 			$parser, new PPCustomFrame_Hash( $parser->getPreprocessor(), [] ), [
 			$this->validUrlId
 		] );

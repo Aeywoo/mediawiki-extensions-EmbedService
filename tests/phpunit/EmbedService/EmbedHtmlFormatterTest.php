@@ -2,43 +2,43 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\EmbedService;
+namespace MediaWiki\Extension\EmbedService\Tests\EmbedService;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\EmbedHtmlFormatter;
-use MediaWiki\Extension\EmbedVideo\EmbedService\EmbedServiceFactory;
-use MediaWiki\Extension\EmbedVideo\EmbedService\LocalVideo;
-use MediaWiki\Extension\EmbedVideo\Media\TransformOutput\VideoTransformOutput;
+use MediaWiki\Extension\EmbedService\EmbedService\EmbedHtmlFormatter;
+use MediaWiki\Extension\EmbedService\EmbedService\EmbedServiceFactory;
+use MediaWiki\Extension\EmbedService\EmbedService\LocalVideo;
+use MediaWiki\Extension\EmbedService\Media\TransformOutput\VideoTransformOutput;
 use MediaWiki\Html\TemplateParser;
 use MediaWikiIntegrationTestCase;
 use UnregisteredLocalFile;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class EmbedHtmlFormatterTest extends MediaWikiIntegrationTestCase {
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\EmbedHtmlFormatter::toHtml
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\EmbedHtmlFormatter::toHtml
 	 * @return void
 	 */
 	public function testToHtmlNoConsent() {
 		$this->overrideConfigValues( [
-			'EmbedVideoRequireConsent' => false,
+			'EmbedServiceRequireConsent' => false,
 		] );
 
 		$service = EmbedServiceFactory::newFromName( 'archiveorg', 'foo' );
 
-		$this->assertStringContainsString( '<figure class="embedvideo"', EmbedHtmlFormatter::toHtml( $service ) );
+		$this->assertStringContainsString( '<figure class="embedservice"', EmbedHtmlFormatter::toHtml( $service ) );
 		$this->assertStringContainsString( 'iframe', EmbedHtmlFormatter::toHtml( $service ) );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\EmbedHtmlFormatter::toHtml
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\EmbedHtmlFormatter::toHtml
 	 * @return void
 	 */
 	public function testToHtmlConsent() {
 		$this->overrideConfigValues( [
-			'EmbedVideoRequireConsent' => true,
+			'EmbedServiceRequireConsent' => true,
 		] );
 
 		$service = EmbedServiceFactory::newFromName( 'archiveorg', 'foo' );
@@ -49,12 +49,12 @@ class EmbedHtmlFormatterTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\EmbedHtmlFormatter::toHtml
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\EmbedHtmlFormatter::toHtml
 	 * @return void
 	 */
 	public function testToHtmlNoConsentCustomArgs() {
 		$this->overrideConfigValues( [
-			'EmbedVideoRequireConsent' => false,
+			'EmbedServiceRequireConsent' => false,
 		] );
 
 		$service = EmbedServiceFactory::newFromName( 'archiveorg', 'foo' );
@@ -68,12 +68,12 @@ class EmbedHtmlFormatterTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\EmbedHtmlFormatter::toHtml
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\EmbedHtmlFormatter::toHtml
 	 * @return void
 	 */
 	public function testMakeIFrameNoConsent() {
 		$this->overrideConfigValues( [
-			'EmbedVideoRequireConsent' => false,
+			'EmbedServiceRequireConsent' => false,
 		] );
 
 		$service = EmbedServiceFactory::newFromName( 'archiveorg', 'foo' );
@@ -83,12 +83,12 @@ class EmbedHtmlFormatterTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\EmbedHtmlFormatter::toHtml
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\EmbedHtmlFormatter::toHtml
 	 * @return void
 	 */
 	public function testMakeIFrameConsent() {
 		$this->overrideConfigValues( [
-			'EmbedVideoRequireConsent' => true,
+			'EmbedServiceRequireConsent' => true,
 		] );
 
 		$service = EmbedServiceFactory::newFromName( 'archiveorg', 'foo' );
@@ -97,7 +97,7 @@ class EmbedHtmlFormatterTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\EmbedHtmlFormatter::makeThumbHtml
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\EmbedHtmlFormatter::makeThumbHtml
 	 * @return void
 	 */
 	public function testMakeThumbHtml() {
@@ -109,7 +109,7 @@ class EmbedHtmlFormatterTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\EmbedHtmlFormatter::makeThumbHtml
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\EmbedHtmlFormatter::makeThumbHtml
 	 * @return void
 	 */
 	public function testMakeThumbHtmlLocalVideo() {
@@ -120,11 +120,11 @@ class EmbedHtmlFormatterTest extends MediaWikiIntegrationTestCase {
 
 		$output = EmbedHtmlFormatter::makeThumbHtml( $service );
 
-		$this->assertEquals( '<div class="embedvideo-thumbnail"></div>', $output );
+		$this->assertEquals( '<div class="embedservice-thumbnail"></div>', $output );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\EmbedHtmlFormatter::makeThumbHtml
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\EmbedHtmlFormatter::makeThumbHtml
 	 * @return void
 	 */
 	public function testMakeThumbHtmlExternalVideo() {
@@ -136,11 +136,11 @@ class EmbedHtmlFormatterTest extends MediaWikiIntegrationTestCase {
 
 		$output = EmbedHtmlFormatter::makeThumbHtml( $service );
 
-		$this->assertEquals( '<div class="embedvideo-thumbnail"></div>', $output );
+		$this->assertEquals( '<div class="embedservice-thumbnail"></div>', $output );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\EmbedHtmlFormatter::makeTitleHtml
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\EmbedHtmlFormatter::makeTitleHtml
 	 * @return void
 	 */
 	public function testMakeTitleHtml() {
@@ -150,14 +150,14 @@ class EmbedHtmlFormatterTest extends MediaWikiIntegrationTestCase {
 		$output = EmbedHtmlFormatter::makeTitleHtml( $service );
 
 		$this->assertSame(
-			'<div class="embedvideo-loader__title embedvideo-loader__title--manual">Foo</div>',
+			'<div class="embedservice-loader__title embedservice-loader__title--manual">Foo</div>',
 			$output
 		);
 		$this->assertStringNotContainsString( '<a', $output );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\EmbedHtmlFormatter::makeTitleHtml
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\EmbedHtmlFormatter::makeTitleHtml
 	 * @return void
 	 */
 	public function testMakeTitleHtmlEmpty() {
@@ -169,7 +169,7 @@ class EmbedHtmlFormatterTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\EmbedHtmlFormatter::makeConsentContainerHtml
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\EmbedHtmlFormatter::makeConsentContainerHtml
 	 * @return void
 	 */
 	public function testMakeConsentContainerHtml() {
@@ -178,11 +178,11 @@ class EmbedHtmlFormatterTest extends MediaWikiIntegrationTestCase {
 		$templateParser = new TemplateParser( __DIR__ . '/../../../includes/EmbedService/templates' );
 		$output = EmbedHtmlFormatter::makeConsentContainerHtml( $service, $templateParser );
 
-		$this->assertStringStartsWith( '<div class="embedvideo-consent" data-show-privacy-notice="', $output );
+		$this->assertStringStartsWith( '<div class="embedservice-consent" data-show-privacy-notice="', $output );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\EmbedHtmlFormatter::makePrivacyPolicyLink
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\EmbedHtmlFormatter::makePrivacyPolicyLink
 	 * @return void
 	 */
 	public function testMakePrivacyPolicyLink() {
@@ -192,7 +192,7 @@ class EmbedHtmlFormatterTest extends MediaWikiIntegrationTestCase {
 
 		$this->assertStringContainsString(
 			sprintf(
-				'<a href="%s" rel="nofollow,noopener" target="_blank" class="embedvideo-privacyNotice__link">',
+				'<a href="%s" rel="nofollow,noopener" target="_blank" class="embedservice-privacyNotice__link">',
 				$service->getPrivacyPolicyUrl()
 			),
 			$output
@@ -200,7 +200,7 @@ class EmbedHtmlFormatterTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\EmbedHtmlFormatter::makePrivacyPolicyLink
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\EmbedHtmlFormatter::makePrivacyPolicyLink
 	 * @return void
 	 */
 	public function testMakePrivacyPolicyLinkNoLink() {

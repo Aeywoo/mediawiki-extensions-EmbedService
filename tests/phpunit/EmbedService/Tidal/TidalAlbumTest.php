@@ -2,14 +2,14 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\EmbedService\Tidal;
+namespace MediaWiki\Extension\EmbedService\Tests\EmbedService\Tidal;
 
-use MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalAlbum;
-use MediaWiki\Extension\EmbedVideo\EmbedVideoException;
+use MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalAlbum;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class TidalAlbumTest extends MediaWikiIntegrationTestCase {
 
@@ -38,19 +38,19 @@ class TidalAlbumTest extends MediaWikiIntegrationTestCase {
 	private string $invalidUrlId = 'https://tidal.com/en/album/105701543';
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
 	 * @return void
 	 */
 	public function testInvalidId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 
 		new TidalAlbum( $this->invalidId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalAlbum::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalAlbum::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalAlbum::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalAlbum::getIdRegex
 	 * @return void
 	 */
 	public function testValidId() {
@@ -60,9 +60,9 @@ class TidalAlbumTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalAlbum::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalAlbum::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalAlbum::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalAlbum::getIdRegex
 	 * @return void
 	 */
 	public function testValidUrlId() {
@@ -73,21 +73,21 @@ class TidalAlbumTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalAlbum::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalAlbum::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalAlbum::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalAlbum::getIdRegex
 	 * @return void
 	 */
 	public function testInvalidUrlId() {
-		$this->expectException( EmbedVideoException::class );
+		$this->expectException( EmbedServiceException::class );
 		new TidalAlbum( $this->invalidUrlId );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getUrl
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalAlbum::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalAlbum::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalAlbum::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalAlbum::getIdRegex
 	 * @return void
 	 */
 	public function testUrl() {
@@ -97,7 +97,7 @@ class TidalAlbumTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Tidal\TidalAlbum::getServiceKey
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Tidal\TidalAlbum::getServiceKey
 	 * @return void
 	 */
 	public function testServiceKey() {

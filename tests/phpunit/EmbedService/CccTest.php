@@ -2,17 +2,17 @@
 
 declare( strict_types=1 );
 
-namespace MediaWiki\Extension\EmbedVideo\Tests\EmbedService;
+namespace MediaWiki\Extension\EmbedService\Tests\EmbedService;
 
 use Exception;
-use MediaWiki\Extension\EmbedVideo\EmbedService\Ccc;
-use MediaWiki\Extension\EmbedVideo\EmbedVideo;
+use MediaWiki\Extension\EmbedService\EmbedService\Ccc;
+use MediaWiki\Extension\EmbedService\EmbedService;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Parser\PPCustomFrame_Hash;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @group EmbedVideo
+ * @group EmbedService
  */
 class CccTest extends MediaWikiIntegrationTestCase {
 
@@ -30,9 +30,9 @@ class CccTest extends MediaWikiIntegrationTestCase {
 	private string $validUrlId = 'https://media.ccc.de/v/rc3-791680-introducing_utk_web_a_web_developer_s_view_on_firmware';
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Ccc::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Ccc::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Ccc::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Ccc::getIdRegex
 	 * @return void
 	 */
 	public function testValidId() {
@@ -42,9 +42,9 @@ class CccTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Ccc::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Ccc::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Ccc::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Ccc::getIdRegex
 	 * @return void
 	 */
 	public function testValidUrlId() {
@@ -58,10 +58,10 @@ class CccTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getUrl
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Ccc::getUrlRegex
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\Ccc::getIdRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Ccc::getUrlRegex
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\Ccc::getIdRegex
 	 * @return void
 	 */
 	public function testUrl() {
@@ -71,9 +71,9 @@ class CccTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::getUrl
-	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedVideo::parseEVU
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::parseVideoID
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService\AbstractEmbedService::getUrl
+	 * @covers \MediaWiki\Extension\EmbedService\EmbedService::parseEVU
 	 * @return void
 	 * @throws Exception
 	 */
@@ -82,7 +82,7 @@ class CccTest extends MediaWikiIntegrationTestCase {
 		$parser->setOptions( ParserOptions::newFromAnon() );
 		$parser->clearState();
 
-		$out = EmbedVideo::parseEVU(
+		$out = EmbedService::parseEVU(
 			$parser, new PPCustomFrame_Hash( $parser->getPreprocessor(), [] ), [
 			'https://media.ccc.de/v/rc3-791680-introducing_utk_web_a_web_developer_s_view_on_firmware'
 		] );
