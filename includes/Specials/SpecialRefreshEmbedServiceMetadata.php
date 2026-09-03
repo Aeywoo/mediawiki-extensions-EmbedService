@@ -24,7 +24,18 @@ class SpecialRefreshEmbedServiceMetadata extends UnlistedSpecialPage {
 		private RepoGroup $repoGroup,
 		private TitleFactory $titleFactory
 	) {
-		parent::__construct( 'RefreshEmbedServiceMetadata', 'embedservice-refreshmetadata' );
+		if ( version_compare( MW_VERSION, '1.46', '>=' ) ) {
+			parent::__construct( 'RefreshEmbedServiceMetadata' );
+		} else {
+			parent::__construct( 'RefreshEmbedServiceMetadata', 'embedservice-refreshmetadata' );
+		}
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getRestriction(): string {
+		return 'embedservice-refreshmetadata';
 	}
 
 	/**
