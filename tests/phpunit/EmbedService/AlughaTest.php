@@ -28,7 +28,7 @@ class AlughaTest extends MediaWikiIntegrationTestCase {
 			'data-mw-iframeconfig="{&quot;src&quot;:&quot;https://alugha.com/embed/web-player?v='
 			. self::VALID_ID . '&quot;}"', $html
 		);
-		
+
 		// With consent enabled, no iframe is rendered until the user clicks.
 		$this->assertStringNotContainsString( '<iframe', $html );
 	}

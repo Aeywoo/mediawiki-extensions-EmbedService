@@ -5,9 +5,9 @@ declare( strict_types=1 );
 namespace MediaWiki\Extension\EmbedService\Tests\EmbedService;
 
 use Exception;
+use MediaWiki\Extension\EmbedService\EmbedService\ArchiveOrg;
 use MediaWiki\Extension\EmbedService\EmbedService;
 use MediaWiki\Extension\EmbedService\EmbedServiceException;
-use MediaWiki\Extension\EmbedService\EmbedService\ArchiveOrg;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Parser\PPCustomFrame_Hash;
 use MediaWikiIntegrationTestCase;

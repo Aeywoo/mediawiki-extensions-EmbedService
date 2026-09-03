@@ -4,8 +4,8 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\EmbedService\Tests\EmbedService\AppleMusic;
 
-use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWiki\Extension\EmbedService\EmbedService\AppleMusic\AppleMusicPlaylist;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWikiIntegrationTestCase;
 
 /**
