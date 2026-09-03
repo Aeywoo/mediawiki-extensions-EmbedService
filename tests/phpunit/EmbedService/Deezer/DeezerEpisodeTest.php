@@ -4,8 +4,8 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\EmbedService\Tests\EmbedService\Deezer;
 
-use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWiki\Extension\EmbedService\EmbedService\Deezer\DeezerEpisode;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWikiIntegrationTestCase;
 
 /**

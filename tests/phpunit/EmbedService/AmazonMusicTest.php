@@ -4,8 +4,8 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\EmbedService\Tests\EmbedService;
 
-use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWiki\Extension\EmbedService\EmbedService\AmazonMusic;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWikiIntegrationTestCase;
 
 /**
