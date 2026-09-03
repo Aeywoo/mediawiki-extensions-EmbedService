@@ -17,7 +17,7 @@ class PodbeanTest extends MediaWikiIntegrationTestCase {
 	 * A valid ID
 	 * @var string
 	 */
-	private string $validId = 're9b6013cbd09-pb';
+	private string $validId = 're9b6-13cbd09-pb';
 
 	/**
 	 * An invalid id
@@ -35,7 +35,7 @@ class PodbeanTest extends MediaWikiIntegrationTestCase {
 	 * An invalid url
 	 * @var string
 	 */
-	private string $invalidUrlId = 'https://www.podbean.com/player-v2/?i=76217433451';
+	private string $invalidUrlId = 'https://www.podbean.com/player-v2/?i=Foo-Bar';
 
 	/**
 	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
