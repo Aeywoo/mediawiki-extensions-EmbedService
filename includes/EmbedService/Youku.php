@@ -31,7 +31,7 @@ final class Youku extends AbstractEmbedService {
 	 */
 	protected function getUrlRegex(): array {
 		return [
-			'#id_([\d\w-]+).html#is',
+			'#youku\.com/([\d\w-]+)#is'
 		];
 	}
 
@@ -40,7 +40,7 @@ final class Youku extends AbstractEmbedService {
 	 */
 	protected function getIdRegex(): array {
 		return [
-			'#^(?:id_)?([\d\w-]+)$#is'
+			'#^([\d\w-]+)$#is'
 		];
 	}
 
@@ -48,7 +48,7 @@ final class Youku extends AbstractEmbedService {
 	 * @inheritDoc
 	 */
 	public function getPrivacyPolicyUrl(): ?string {
-        // phpcs:ignore Generic.Files.LineLength.TooLong
+		// phpcs:ignore Generic.Files.LineLength.TooLong
 		return 'https://terms.alicdn.com/legal-agreement/terms/suit_bu1_unification/suit_bu1_unification202005141916_91107.html';
 	}
 
