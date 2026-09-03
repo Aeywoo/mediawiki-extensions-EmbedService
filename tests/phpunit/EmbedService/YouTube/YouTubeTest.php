@@ -6,8 +6,8 @@ namespace MediaWiki\Extension\EmbedService\Tests\EmbedService\YouTube;
 
 use Exception;
 use MediaWiki\Extension\EmbedService\EmbedService;
-use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWiki\Extension\EmbedService\EmbedService\YouTube\YouTube;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Parser\PPCustomFrame_Hash;
 use MediaWikiIntegrationTestCase;
