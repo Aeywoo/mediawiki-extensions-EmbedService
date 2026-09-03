@@ -4,9 +4,9 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\EmbedService\Tests\EmbedService;
 
-use MediaWiki\Extension\EmbedService\EmbedService\ArchiveOrg;
-use MediaWiki\Extension\EmbedService\EmbedService\EmbedServiceFactory;
 use MediaWiki\Extension\EmbedService\EmbedServiceException;
+use MediaWiki\Extension\EmbedService\EmbedService\EmbedServiceFactory;
+use MediaWiki\Extension\EmbedService\EmbedService\ArchiveOrg;
 use MediaWikiIntegrationTestCase;
 
 /**
