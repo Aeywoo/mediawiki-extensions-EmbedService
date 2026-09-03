@@ -56,16 +56,6 @@ final class Youku extends AbstractEmbedService {
 	 * @inheritDoc
 	 */
 	public function getCSPUrls(): array {
-		return [
-			'https://youku.com',
-			'https://player.youku.com',
-		];
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function getUrl(): string {
-		return sprintf( $this->getBaseUrl(), $this->getId() );
+		return [ 'https://youku.com', 'https://player.youku.com' ];
 	}
 }
