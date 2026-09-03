@@ -15,13 +15,6 @@ final class Youku extends AbstractEmbedService {
 	/**
 	 * @inheritDoc
 	 */
-	public function getServiceKey(): string {
-		return 'youku';
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	public function getBaseUrl(): string {
 		return 'https://player.youku.com/embed/%1$s';
 	}
@@ -31,7 +24,7 @@ final class Youku extends AbstractEmbedService {
 	 */
 	protected function getUrlRegex(): array {
 		return [
-			'#youku\.com/([\d\w-]+)#is'
+			'#([\d\w-]+)$#is',
 		];
 	}
 
@@ -40,7 +33,7 @@ final class Youku extends AbstractEmbedService {
 	 */
 	protected function getIdRegex(): array {
 		return [
-			'#^([\d\w-]+)$#is'
+			'#^([\d\w-]+)$#is',
 		];
 	}
 
@@ -56,6 +49,9 @@ final class Youku extends AbstractEmbedService {
 	 * @inheritDoc
 	 */
 	public function getCSPUrls(): array {
-		return [ 'https://youku.com', 'https://player.youku.com' ];
+		return [
+			'https://youku.com',
+			'https://player.youku.com',
+		];
 	}
 }
