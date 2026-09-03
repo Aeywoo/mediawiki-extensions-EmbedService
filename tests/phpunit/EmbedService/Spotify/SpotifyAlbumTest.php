@@ -4,8 +4,8 @@ declare( strict_types=1 );
 
 namespace MediaWiki\Extension\EmbedService\Tests\EmbedService\Spotify;
 
-use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWiki\Extension\EmbedService\EmbedService\Spotify\SpotifyAlbum;
+use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWikiIntegrationTestCase;
 
 /**
