@@ -14,6 +14,8 @@ use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use RepoGroup;
+use function version_compare;
+use const MW_VERSION;
 
 class SpecialRefreshEmbedVideoMetadata extends UnlistedSpecialPage {
 	/**
@@ -24,7 +26,18 @@ class SpecialRefreshEmbedVideoMetadata extends UnlistedSpecialPage {
 		private RepoGroup $repoGroup,
 		private TitleFactory $titleFactory
 	) {
-		parent::__construct( 'RefreshEmbedVideoMetadata', 'embedvideo-refreshmetadata' );
+		if ( version_compare( MW_VERSION, '1.46', '>=' ) ) {
+			parent::__construct( 'RefreshEmbedVideoMetadata' );
+		} else {
+			parent::__construct( 'RefreshEmbedVideoMetadata', 'embedvideo-refreshmetadata' );
+		}
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getRestriction(): string {
+		return 'embedvideo-refreshmetadata';
 	}
 
 	/**
