@@ -5,8 +5,8 @@ declare( strict_types=1 );
 namespace MediaWiki\Extension\EmbedService\Tests\EmbedService;
 
 use Exception;
-use MediaWiki\Extension\EmbedService\EmbedService\Bandcamp;
 use MediaWiki\Extension\EmbedService\EmbedService;
+use MediaWiki\Extension\EmbedService\EmbedService\Bandcamp;
 use MediaWiki\Extension\EmbedService\EmbedServiceException;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Parser\PPCustomFrame_Hash;
