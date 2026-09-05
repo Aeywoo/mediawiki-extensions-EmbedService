@@ -20,7 +20,6 @@ It also adds video and audio media handlers to support transforming standard `[[
 This privacy enhanced fork adds a toggleable setting that only loads external content _after_ the user gave explicit consent by clicking the video.
 Do note that thumbnails are still fetched from the respective service, which results in a connection to an external url. This behaviour can be disabled by setting `$wgEmbedVideoFetchExternalThumbnails` to `false`.
 
-
 Issues, bug reports, and feature requests may be created at the issue tracker:
 
 https://github.com/Aeywoo/mediawiki-extensions-EmbedService/issues
@@ -30,6 +29,8 @@ The original MediaWiki extension page is located at:
 https://www.mediawiki.org/wiki/Extension:EmbedVideo
 
 ## History
+
+This is a fork of StarCitizenWiki's [Extension:EmbedVideo](https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo) extension, before their utilisation of Generative AI in coding.
 
 Large parts of the codebase are taken from [Extension:EmbedVideo v2.9.0](https://gitlab.com/hydrawiki/extensions/EmbedVideo/-/releases/v2.9.0).
 

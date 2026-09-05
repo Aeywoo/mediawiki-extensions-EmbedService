@@ -2,7 +2,7 @@
 	"name": "aeywoo/embedservice",
 	"version": "4.1.2",
 	"type": "mediawiki-extension",
-	"description": "EmbedService is a fork of EmbedVideo by HydraWiki, and it provides various parser functions that allow the embedding of music, video, and other streaming content from various services.",
+	"description": "EmbedService is a fork of EmbedVideo by StarCitizenWiki and HydraWiki, and it provides various parser functions that allow the embedding of music, video, and other streaming content from various services.",
 	"license": "MIT",
 	"require": {
 		"php": ">=8.1.0",
