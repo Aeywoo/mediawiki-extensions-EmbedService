@@ -1,8 +1,8 @@
 {
-	"name": "starcitizenwiki/embedvideo",
-	"version": "4.1.1",
+	"name": "aeywoo/embedservice",
+	"version": "4.1.2",
 	"type": "mediawiki-extension",
-	"description": "Adds a parser function embedding video from popular sources.",
+	"description": "EmbedService is a fork of EmbedVideo by StarCitizenWiki and HydraWiki, and it provides various parser functions that allow the embedding of music, video, and other streaming content from various services.",
 	"license": "MIT",
 	"require": {
 		"php": ">=8.1.0",
@@ -28,7 +28,7 @@
 		"phan": "phan -d . --long-progress-bar"
 	},
 	"extra": {
-		"installer-name": "EmbedVideo"
+		"installer-name": "EmbedService"
 	},
 	"config": {
 		"allow-plugins": {

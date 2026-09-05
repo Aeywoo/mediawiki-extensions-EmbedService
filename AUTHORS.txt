@@ -3,5 +3,6 @@ Subsequent improvements added by (alphabetical order)
 
 Aeyeu Weeb (Aeywoo)
 Alexia E. Smith (Alexia)
+Alistair (Alistair3149)
 Andrew Whitworth (Whiteknight)
 Mohammed Derakhshani (Mderakhs)
