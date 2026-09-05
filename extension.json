@@ -1,15 +1,14 @@
 {
-	"name": "EmbedVideo",
-	"version": "4.1.1",
+	"name": "EmbedService",
+	"version": "4.1.2",
 	"author": [
 		"[https://www.mediawiki.org/wiki/User:Octfx Octfx]",
-		"[https://www.mediawiki.org/wiki/User:Alistair3149 Alistair3149]",
 		"Jim R. Wilson",
 		"Andrew Whitworth",
 		"Alexia E. Smith",
 		"Cameron M. Chunn"
 	],
-	"url": "https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo",
+	"url": "https://github.com/Aeywoo/mediawiki-extensions-EmbedService",
 	"descriptionmsg": "embedvideo-description",
 	"license-name": "MIT",
 	"type": "parserhook",

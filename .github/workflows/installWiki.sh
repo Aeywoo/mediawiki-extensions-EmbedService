@@ -19,7 +19,7 @@ echo '$wgShowExceptionDetails = true;' >> LocalSettings.php
 echo '$wgShowDBErrorBacktrace = true;' >> LocalSettings.php
 echo '$wgDevelopmentWarnings = true;' >> LocalSettings.php
 
-echo 'wfLoadExtension( "EmbedVideo" );' >> LocalSettings.php
+echo 'wfLoadExtension( "EmbedService" );' >> LocalSettings.php
 
 cat <<EOT >> composer.local.json
 {
