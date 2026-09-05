@@ -9,7 +9,7 @@ final class Ccc extends AbstractEmbedService {
 	 * @inheritDoc
 	 */
 	public function getBaseUrl(): string {
-		return '//media.ccc.de/v/%1$s/oembed';
+		return 'https://media.ccc.de/v/%1$s/oembed';
 	}
 
 	/**

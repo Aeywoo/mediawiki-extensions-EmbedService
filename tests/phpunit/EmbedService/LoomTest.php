@@ -97,7 +97,7 @@ class LoomTest extends MediaWikiIntegrationTestCase {
 	public function testUrl() {
 		$service = new Loom( $this->validUrlId );
 
-		$this->assertStringContainsString( '//www.loom.com/embed/', $service->getUrl() );
+		$this->assertStringContainsString( 'https://www.loom.com/embed/', $service->getUrl() );
 	}
 
 	/**

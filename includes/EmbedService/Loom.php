@@ -9,7 +9,7 @@ final class Loom extends AbstractEmbedService {
 	 * @inheritDoc
 	 */
 	public function getBaseUrl(): string {
-		return '//www.loom.com/embed/%1$s';
+		return 'https://www.loom.com/embed/%1$s';
 	}
 
 	/**

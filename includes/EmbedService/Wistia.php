@@ -10,7 +10,7 @@ final class Wistia extends AbstractEmbedService {
 	 * @inheritDoc
 	 */
 	public function getBaseUrl(): string {
-		return '//fast.wistia.net/embed/iframe/%1$s';
+		return 'https://fast.wistia.net/embed/iframe/%1$s';
 	}
 
 	/**

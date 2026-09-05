@@ -97,7 +97,7 @@ class BilibiliTest extends MediaWikiIntegrationTestCase {
 	public function testUrl() {
 		$service = new Bilibili( $this->validUrlId );
 
-		$this->assertStringContainsString( '//player.bilibili.com/player.html?bvid=', $service->getUrl() );
+		$this->assertStringContainsString( 'https://player.bilibili.com/player.html?bvid=', $service->getUrl() );
 	}
 
 	/**

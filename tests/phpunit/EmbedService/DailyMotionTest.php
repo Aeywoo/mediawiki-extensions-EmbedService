@@ -21,7 +21,7 @@ class DailyMotionTest extends MediaWikiIntegrationTestCase {
 	 * A valid ID
 	 * @var string
 	 */
-	private string $validId = 'x1adiiw_archer-waking-up-as-h-jon-benjamin_shortfilms';
+	private string $validId = 'xb3c5pa';
 
 	/**
 	 * An invalid id
@@ -33,14 +33,14 @@ class DailyMotionTest extends MediaWikiIntegrationTestCase {
 	 * A valid url containing an id
 	 * @var string
 	 */
-    // phpcs:ignore Generic.Files.LineLength.TooLong
-	private string $validUrlId = 'http://www.dailymotion.com/video/x1adiiw_archer-waking-up-as-h-jon-benjamin_shortfilms';
+	// phpcs:ignore Generic.Files.LineLength.TooLong
+	private string $validUrlId = 'https://www.dailymotion.com/video/xb3c5pa';
 
 	/**
 	 * An invalid url
 	 * @var string
 	 */
-	private string $invalidUrlId = '//www.daily-motion.com/videos/!null';
+	private string $invalidUrlId = 'https://www.daily-motion.com/videos/!null';
 
 	/**
 	 * @covers \MediaWiki\Extension\EmbedVideo\EmbedService\AbstractEmbedService::parseVideoID
@@ -74,7 +74,7 @@ class DailyMotionTest extends MediaWikiIntegrationTestCase {
 		$service = new DailyMotion( $this->validUrlId );
 
 		$this->assertInstanceOf( DailyMotion::class, $service );
-		$this->assertEquals( 'x1adiiw', $service->parseVideoID( $this->validUrlId ) );
+		$this->assertEquals( 'xb3c5pa', $service->parseVideoID( $this->validUrlId ) );
 	}
 
 	/**
@@ -98,7 +98,7 @@ class DailyMotionTest extends MediaWikiIntegrationTestCase {
 	public function testUrl() {
 		$service = new DailyMotion( $this->validUrlId );
 
-		$this->assertStringContainsString( '//www.dailymotion.com/embed/video/', $service->getUrl() );
+		$this->assertStringContainsString( 'https://www.dailymotion.com/embed/video/', $service->getUrl() );
 	}
 
 	/**
@@ -121,7 +121,7 @@ class DailyMotionTest extends MediaWikiIntegrationTestCase {
 		$this->assertIsArray( $out );
 		$this->assertCount( 2, $out );
 		$this->assertStringContainsString(
-			'x1adiiw',
+			'xb3c5pa',
 			$parser->getStripState()->unstripNoWiki( $out[0] )
 		);
 	}

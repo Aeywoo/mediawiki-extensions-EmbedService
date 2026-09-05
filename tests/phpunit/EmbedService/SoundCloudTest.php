@@ -108,7 +108,7 @@ class SoundCloudTest extends MediaWikiIntegrationTestCase {
 		$service = new SoundCloud( $this->validUrlId );
 
 		$this->assertEquals(
-            // phpcs:ignore Generic.Files.LineLength.TooLong
+			// phpcs:ignore Generic.Files.LineLength.TooLong
 			'https://w.soundcloud.com/player/?url=%1$s&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true',
 			$service->getBaseUrl()
 		);

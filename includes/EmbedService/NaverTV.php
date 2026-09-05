@@ -9,7 +9,7 @@ final class NaverTV extends AbstractEmbedService {
 	 * @inheritDoc
 	 */
 	public function getBaseUrl(): string {
-		return '//tv.naver.com/embed/%1$s';
+		return 'https://tv.naver.com/embed/%1$s';
 	}
 
 	/**
