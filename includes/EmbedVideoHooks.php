@@ -27,7 +27,7 @@ use RepoGroup;
  *
  * @license MIT
  * @package EmbedVideo
- * @link    https://www.mediawiki.org/wiki/Extension:EmbedVideo
+ * @link	https://www.mediawiki.org/wiki/Extension:EmbedVideo
  */
 
 class EmbedVideoHooks implements

@@ -92,7 +92,7 @@ class YouTubeVideoListTest extends MediaWikiIntegrationTestCase {
 		$service = new YouTubeVideoList( $this->validUrlId );
 		$service->setUrlArgs( 'playlist=pSsYTj9kCHE,pSsYTj9kCHE' );
 
-		$this->assertStringContainsString( '//www.youtube-nocookie.com/embed/', $service->getUrl() );
+		$this->assertStringContainsString( 'https://www.youtube-nocookie.com/embed/', $service->getUrl() );
 		$this->assertStringContainsString( urlencode( 'pSsYTj9kCHE,pSsYTj9kCHE' ), $service->getUrl() );
 	}
 }

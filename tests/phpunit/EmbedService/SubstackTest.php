@@ -65,6 +65,6 @@ class SubstackTest extends MediaWikiIntegrationTestCase {
 	public function testUrl() {
 		$service = new Substack( $this->validUrlId );
 
-		$this->assertStringContainsString( '//gregreese.substack.com/embed/p', $service->getUrl() );
+		$this->assertStringContainsString( 'https://gregreese.substack.com/embed/p', $service->getUrl() );
 	}
 }

@@ -10,7 +10,7 @@ final class ArchiveOrg extends AbstractEmbedService {
 	 * @inheritDoc
 	 */
 	public function getBaseUrl(): string {
-		return '//archive.org/embed/%1$s';
+		return 'https://archive.org/embed/%1$s';
 	}
 
 	/**

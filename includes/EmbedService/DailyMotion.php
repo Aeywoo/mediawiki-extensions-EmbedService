@@ -9,7 +9,7 @@ final class DailyMotion extends AbstractEmbedService {
 	 * @inheritDoc
 	 */
 	public function getBaseUrl(): string {
-		return '//www.dailymotion.com/embed/video/%1$s';
+		return 'https://www.dailymotion.com/embed/video/%1$s';
 	}
 
 	/**

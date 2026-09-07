@@ -101,7 +101,7 @@ class BandcampTest extends MediaWikiIntegrationTestCase {
 	public function testUrl() {
 		$service = new Bandcamp( $this->validUrlId );
 
-		$this->assertStringContainsString( '//bandcamp.com/EmbeddedPlayer/album=', $service->getUrl() );
+		$this->assertStringContainsString( 'https://bandcamp.com/EmbeddedPlayer/album=', $service->getUrl() );
 	}
 
 	/**

@@ -97,7 +97,7 @@ class NiconicoTest extends MediaWikiIntegrationTestCase {
 	public function testUrl() {
 		$service = new Niconico( $this->validUrlId );
 
-		$this->assertStringContainsString( '//embed.nicovideo.jp/watch/', $service->getUrl() );
+		$this->assertStringContainsString( 'https://embed.nicovideo.jp/watch/', $service->getUrl() );
 	}
 
 	/**

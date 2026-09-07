@@ -9,7 +9,7 @@ final class Bilibili extends AbstractEmbedService {
 	 * @inheritDoc
 	 */
 	public function getBaseUrl(): string {
-		return '//player.bilibili.com/player.html?bvid=%1$s';
+		return 'https://player.bilibili.com/player.html?bvid=%1$s';
 	}
 
 	/**

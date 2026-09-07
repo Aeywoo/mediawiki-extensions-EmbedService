@@ -15,15 +15,8 @@ final class Youku extends AbstractEmbedService {
 	/**
 	 * @inheritDoc
 	 */
-	public function getServiceKey(): string {
-		return 'youku';
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	public function getBaseUrl(): string {
-		return '//player.youku.com/embed/%1$s';
+		return 'https://player.youku.com/embed/%1$s';
 	}
 
 	/**
@@ -31,7 +24,7 @@ final class Youku extends AbstractEmbedService {
 	 */
 	protected function getUrlRegex(): array {
 		return [
-			'#id_([\d\w-]+).html#is',
+			'#([\d\w-]+)$#is',
 		];
 	}
 
@@ -40,7 +33,7 @@ final class Youku extends AbstractEmbedService {
 	 */
 	protected function getIdRegex(): array {
 		return [
-			'#^(?:id_)?([\d\w-]+)$#is'
+			'#^([\d\w-]+)$#is',
 		];
 	}
 
@@ -48,7 +41,7 @@ final class Youku extends AbstractEmbedService {
 	 * @inheritDoc
 	 */
 	public function getPrivacyPolicyUrl(): ?string {
-        // phpcs:ignore Generic.Files.LineLength.TooLong
+		// phpcs:ignore Generic.Files.LineLength.TooLong
 		return 'https://terms.alicdn.com/legal-agreement/terms/suit_bu1_unification/suit_bu1_unification202005141916_91107.html';
 	}
 
@@ -60,12 +53,5 @@ final class Youku extends AbstractEmbedService {
 			'https://youku.com',
 			'https://player.youku.com',
 		];
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function getUrl(): string {
-		return sprintf( $this->getBaseUrl(), $this->getId() );
 	}
 }

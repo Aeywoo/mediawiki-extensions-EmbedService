@@ -9,7 +9,7 @@ final class Niconico extends AbstractEmbedService {
 	 * @inheritDoc
 	 */
 	public function getBaseUrl(): string {
-		return '//embed.nicovideo.jp/watch/%1$s';
+		return 'https://embed.nicovideo.jp/watch/%1$s';
 	}
 
 	/**

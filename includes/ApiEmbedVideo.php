@@ -5,7 +5,7 @@
  *
  * @license MIT
  * @package EmbedVideo
- * @link    https://gitlab.com/hydrawiki/extensions/EmbedVideo
+ * @link	https://gitlab.com/hydrawiki/extensions/EmbedVideo
  */
 
 declare( strict_types=1 );

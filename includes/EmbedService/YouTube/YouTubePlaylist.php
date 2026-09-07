@@ -19,6 +19,6 @@ final class YouTubePlaylist extends YouTube {
 	 * @inheritDoc
 	 */
 	public function getBaseUrl(): string {
-		return '//www.youtube-nocookie.com/embed/videoseries?list=%1$s';
+		return 'https://www.youtube-nocookie.com/embed/videoseries?list=%1$s';
 	}
 }
