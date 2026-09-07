@@ -52,9 +52,10 @@ class SpecialRefreshEmbedVideoMetadata extends UnlistedSpecialPage {
 	 * @return void
 	 */
 	public function execute( $par ): void {
-		$this->checkReadOnly();
 		$this->setHeaders();
 		$this->outputHeader();
+		$this->checkReadOnly();
+		$this->checkPermissions();
 
 		$out = $this->getOutput();
 		$out->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
